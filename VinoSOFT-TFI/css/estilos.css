@@ -1,0 +1,18 @@
+﻿/** Hack <Google translator >*/
+body > .skiptranslate {
+    display: none;
+}
+
+#google_translate_element .goog-te-gadget {
+    font-size: 0px;
+}
+
+.goog-logo-link {
+    display: none;
+}
+
+#google_translate_element {
+    margin-left:10px;
+}
+
+body { top: 0px !important; }
