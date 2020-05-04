@@ -61,6 +61,25 @@
         </div>
       </li>
     </ul>
+
+      <ul class="nav navbar-nav ml-auto">
+          <!-- Boton de Google para traducir -->
+          <li class="nav-item">
+             <a class="nav-link" <span id="google_translate_element"></span></a>
+          </li>
+          <!-- -->
+      <li class="nav-item">
+        <a class="nav-link" href="Registracion.aspx"><span class="fas fa-user"></span>Registrese</a>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="ddIniciarSesion" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false"><span class="fas fa-sign-in-alt"></span> Login</a>
+            <div class="dropdown-menu" aria-labelledby="ddIniciarSesion">
+
+            </div>
+      </li>
+    </ul>
+
   </div>
 </nav>
 
