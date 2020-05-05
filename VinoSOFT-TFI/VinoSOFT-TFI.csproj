@@ -82,8 +82,11 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\jumbotron.css" />
     <Content Include="css\estilos.css" />
+    <Content Include="css\footer.css" />
+    <Content Include="css\login.css" />
     <Content Include="Inicio.aspx" />
     <Content Include="js\menu.js" />
+    <Content Include="Login.aspx" />
     <Content Include="packages.config" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
@@ -130,6 +133,13 @@
     </Compile>
     <Compile Include="Inicio.aspx.designer.cs">
       <DependentUpon>Inicio.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Login.aspx.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Login.aspx.designer.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
     </Compile>
     <Compile Include="MasterPage.Master.cs">
       <DependentUpon>MasterPage.Master</DependentUpon>
