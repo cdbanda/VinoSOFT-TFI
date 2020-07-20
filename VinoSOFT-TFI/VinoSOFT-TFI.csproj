@@ -24,6 +24,7 @@
     <TypeScriptToolsVersion>1.8</TypeScriptToolsVersion>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <Use64BitIISExpress />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -74,21 +75,33 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="AdminBackup.aspx" />
+    <Content Include="AdminBitacora.aspx" />
+    <Content Include="Contacto.aspx" />
     <Content Include="Content\bootstrap-grid.css" />
     <Content Include="Content\bootstrap-grid.min.css" />
     <Content Include="Content\bootstrap-reboot.css" />
     <Content Include="Content\bootstrap-reboot.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
-    <Content Include="Content\jumbotron.css" />
     <Content Include="css\estilos.css" />
     <Content Include="css\footer.css" />
     <Content Include="css\login.css" />
     <Content Include="Inicio.aspx" />
     <Content Include="js\menu.js" />
+    <Content Include="js\validaciones.js" />
     <Content Include="Login.aspx" />
+    <Content Include="MisionYVision.aspx" />
     <Content Include="packages.config" />
+    <Content Include="PlantillasMails\Email_Confirmation.html" />
+    <Content Include="PlantillasMails\Email_Consulta.html" />
     <Content Include="PoliticasPrivacidad.aspx" />
+    <Content Include="Publicidad\img\drones_vinedo.jpg" />
+    <Content Include="Publicidad\img\riego_vinedo.jpg" />
+    <Content Include="Publicidad\img\sensor_vinedo.jpg" />
+    <Content Include="Publicidad\publicidad.xml" />
+    <Content Include="RecuperarContrasena.aspx" />
+    <Content Include="RegistracionNewsletter.aspx" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -112,6 +125,15 @@
     <Content Include="Content\bootstrap-grid.min.css.map" />
     <Content Include="Content\bootstrap-grid.css.map" />
     <Content Include="MasterPage.Master" />
+    <Content Include="database\backups\BK2-11-2019_18-38-22.bak" />
+    <Content Include="database\backups\BK2-11-2019_18-41-5.bak" />
+    <Content Include="database\backups\BK2-11-2019_18-43-40.bak" />
+    <Content Include="database\backups\BK2-11-2019_18-53-15.bak" />
+    <Content Include="database\backups\BK2-11-2019_19-0-3.bak" />
+    <Content Include="database\backups\BK25-10-2019_15-36-18.bak" />
+    <Content Include="database\backups\BK25-10-2019_20-37-27.bak" />
+    <Content Include="database\backups\BK31-10-2019_20-26-19.bak" />
+    <Content Include="database\restore\BK25-10-2019_20-37-27.bak" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -129,6 +151,27 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AdminBackup.aspx.cs">
+      <DependentUpon>AdminBackup.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdminBackup.aspx.designer.cs">
+      <DependentUpon>AdminBackup.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AdminBitacora.aspx.cs">
+      <DependentUpon>AdminBitacora.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdminBitacora.aspx.designer.cs">
+      <DependentUpon>AdminBitacora.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Contacto.aspx.cs">
+      <DependentUpon>Contacto.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Contacto.aspx.designer.cs">
+      <DependentUpon>Contacto.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Inicio.aspx.cs">
       <DependentUpon>Inicio.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -150,6 +193,13 @@
     <Compile Include="MasterPage.Master.designer.cs">
       <DependentUpon>MasterPage.Master</DependentUpon>
     </Compile>
+    <Compile Include="MisionYVision.aspx.cs">
+      <DependentUpon>MisionYVision.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MisionYVision.aspx.designer.cs">
+      <DependentUpon>MisionYVision.aspx</DependentUpon>
+    </Compile>
     <Compile Include="PoliticasPrivacidad.aspx.cs">
       <DependentUpon>PoliticasPrivacidad.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -158,6 +208,20 @@
       <DependentUpon>PoliticasPrivacidad.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RecuperarContrasena.aspx.cs">
+      <DependentUpon>RecuperarContrasena.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="RecuperarContrasena.aspx.designer.cs">
+      <DependentUpon>RecuperarContrasena.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="RegistracionNewsletter.aspx.cs">
+      <DependentUpon>RegistracionNewsletter.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="RegistracionNewsletter.aspx.designer.cs">
+      <DependentUpon>RegistracionNewsletter.aspx</DependentUpon>
+    </Compile>
     <Compile Include="TerminosYCondiciones.aspx.cs">
       <DependentUpon>TerminosYCondiciones.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

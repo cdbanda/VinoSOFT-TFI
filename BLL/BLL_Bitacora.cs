@@ -34,12 +34,12 @@ namespace BLL
             return registrado;
         }
 
-        private int getIdUsuarioLogeado() {
-            BE.BE_Usuario usuario = (BE.BE_Usuario)System.Web.HttpContext.Current.Session["UsuarioLogeado"];
-            if (usuario == null) {
-                return usuario.IDUSUARIO;
-            }
-            return 0;
-        }
+        //private int getIdUsuarioLogeado() {
+        //    BE.BE_Usuario usuario = (BE.BE_Usuario)System.Web.HttpContext.Current.Session["UsuarioLogeado"];
+        //    if (usuario == null) {
+        //        return usuario.IDUSUARIO;
+        //    }
+        //    return 0;
+        //}
     }
 }

@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8" ?> 
+<Advertisements>
+    <Ad>
+        <ImageUrl>~/Publicidad/img/drones_vinedo.jpg</ImageUrl>
+        <NavigateUrl></NavigateUrl>
+        <AlternateText>Drones</AlternateText>
+        <Keyword>A</Keyword>
+        <Impressions>Imagenes</Impressions>
+        <Caption>Tecnologia aplicada a los viñedos.</Caption> 
+    </Ad>
+    <Ad>
+        <ImageUrl>~/Publicidad/img/riego_vinedo.jpg</ImageUrl>
+        <NavigateUrl></NavigateUrl>
+        <AlternateText>Drones</AlternateText>
+        <Keyword>A</Keyword>
+        <Impressions>Imagenes</Impressions>
+        <Caption>Tecnologia aplicada a los viñedos.</Caption> 
+    </Ad>
+    <Ad>
+        <ImageUrl>~/Publicidad/img/sensor_vinedo.jpg</ImageUrl>
+        <NavigateUrl></NavigateUrl>
+        <AlternateText>Drones</AlternateText>
+        <Keyword>A</Keyword>
+        <Impressions>Imagenes</Impressions>
+        <Caption>Tecnologia aplicada a los viñedos.</Caption> 
+    </Ad>
+</Advertisements>
