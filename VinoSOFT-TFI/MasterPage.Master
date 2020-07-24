@@ -12,6 +12,7 @@
     <link href="Content/bootstrap.min.css" rel="stylesheet" />
     <link href="css/estilos.css" rel="stylesheet" />
     <link href="css/footer.css" rel="stylesheet" />
+    <link href="css/modalPopup.css" rel="stylesheet" />
 
     <script src='https://www.google.com/recaptcha/api.js'></script>
     <script src="js/validaciones.js"></script>
@@ -50,7 +51,7 @@
         <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Link</a>
+        <a class="nav-link" href="AdminBackup.aspx">Link</a>
       </li>
       <li class="nav-item">
         <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>

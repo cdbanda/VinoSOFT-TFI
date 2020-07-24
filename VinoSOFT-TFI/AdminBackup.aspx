@@ -2,6 +2,8 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    <asp:ScriptManagerProxy ID="ScriptManagerProxy1" runat="server"></asp:ScriptManagerProxy>
+
      <div class="container-fluid">
             <div class="row">
                 <div class="col-md-6">
@@ -80,4 +82,49 @@
             </asp:UpdatePanel>
        </div>
         </div>
+<asp:HiddenField ID="hidForModel" runat="server" />
+
+<!-- ModalPopupExtender -->
+<ajaxtoolkit:ModalPopupExtender ID="mp1" runat="server" 
+    PopupControlID="ModalPanel" 
+    TargetControlID="hidForModel"
+    BackgroundCssClass="modalBackground"
+    BehaviorID="PopUp"
+    >
+</ajaxtoolkit:ModalPopupExtender>
+
+<asp:Panel ID="ModalPanel" runat="server" CssClass="modal-content modal-sm" Style="display:none">
+    <asp:UpdatePanel ID="UpdateModalPopUp" runat="server">
+        <ContentTemplate>
+            <div id="body" class="modal-body">
+                 <asp:label runat="server" ID="mjsBodyMP"></asp:label>
+            </div>
+            <div id="footer" class="modal-footer">
+                <asp:Button ID="btnOK" runat="server" Text="OK" CssClass="btn-success" onclick="BtnOk_Click"
+                    OnClientClick="return HidePopControl()"/>
+                <asp:Button id="btnCancel" runat="server" Text="Cancelar" CssClass="btn-danger" onclick="BtnCancel_Click"/>
+            </div>
+        </ContentTemplate>
+    <Triggers>
+        <asp:PostBackTrigger ControlID="btnOK" />
+        <asp:PostBackTrigger ControlID="btnCancel" />
+    </Triggers>
+    </asp:UpdatePanel>
+</asp:Panel>
+<!-- ModalPopupExtender -->
+
+<!-- Script para cerrar el Modal en OK event -->
+
+<script type="text/javascript">
+        $(function () {
+            $("#btnOK").click(function () {
+                HidePopControl();
+            })
+        });
+        function HidePopControl() {
+            var modalPopup = $find('PopUp');
+            modalPopup.hide();
+        }
+</script>
+
 </asp:Content>

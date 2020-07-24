@@ -13,7 +13,8 @@ namespace VinoSOFT_TFI
     {
         BLL.BLL_Backup gestorBackup = new BLL.BLL_Backup();
         BLL.BLL_Bitacora gestorBitacora = new BLL.BLL_Bitacora();
-        static public string ruta = "/bk/";
+
+        private bool esBackup = true; 
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -32,12 +33,13 @@ namespace VinoSOFT_TFI
         }
 
 
-
-
-
-
-
         protected void Button1_Click(object sender, EventArgs e)
+        {
+            esBackup = true;
+            mostrarPopUp("¿Desea realizar el backup?");
+        }
+
+        private void generarBackup()
         {
             string dircompleto = Server.MapPath("~/database/backups/");
             //string rutaGenerada = dircompleto + @"\";
@@ -59,6 +61,7 @@ namespace VinoSOFT_TFI
                     gestorBitacora.registrarEvento(evt, "fecha: " + DateTime.Now.ToString(), 0);
 
                     DisplayDownloadDialog(nombreGenerado, dircompleto + nombreGenerado);
+
                 }
                 else
                 {
@@ -70,26 +73,11 @@ namespace VinoSOFT_TFI
             {
                 Response.Write("<script>alert('" + ex.ToString() + "')</script>");
             }
-            Response.Redirect("~/AdminBackup.aspx");
-        }
 
-        private void descargarArchivo(string nombreArchivo, string dirCompleto)
-        {
-            try
-            {
-                System.Web.HttpResponse response = System.Web.HttpContext.Current.Response;
-                response.Clear();
-                response.ContentType = "application/octet-stream";
-                response.AppendHeader("Content-Disposition", "attachment; filename=" + nombreArchivo + ";");
-                //response.TransmitFile(Server.MapPath("~/File/001.jpg"));
-                response.TransmitFile(dirCompleto);
-                HttpContext.Current.ApplicationInstance.CompleteRequest();
-                // Causes ASP.NET to bypass all events and filtering in the HTTP pipeline chain of execution and directly execute the EndRequest event.
-            }
-            catch (Exception ex)
-            {
-                Response.Write("<script>alert('" + ex.ToString() + "')</script>");
-            }
+            Server.Transfer("AdminBackup.aspx");
+
+
+
         }
 
         private void DisplayDownloadDialog(string nombreArchivo, string dirCompleto)
@@ -107,12 +95,19 @@ namespace VinoSOFT_TFI
             Response.AddHeader("Content-Length", fileContent.Length.ToString());
             Response.AddHeader("Content-Disposition", "attachment; filename=" + nombreArchivo);
             Response.BinaryWrite(fileContent);
-            Response.Flush();
+            //Se saco el flush para redireccionar correctamente.
+            //Response.Flush();
             HttpContext.Current.ApplicationInstance.CompleteRequest();
+
         }
 
         protected void ButtonRestore_Click(object sender, EventArgs e)
         {
+            esBackup = false;
+            mostrarPopUp("¿Desea restaurar el Backup?");
+        }
+
+        private void generarRestore() {
             string ubicacion = Server.MapPath("~/database/restore/");
 
             if (FileUploadRestore.HasFile == true)
@@ -134,8 +129,6 @@ namespace VinoSOFT_TFI
                     Response.Write("<script>alert('" + ex.ToString() + "')</script>");
 
                 }
-
-
             }
             else
             {
@@ -147,6 +140,31 @@ namespace VinoSOFT_TFI
         {
             DgvBackup.PageIndex = e.NewPageIndex;
             this.llenarGrilla();
+        }
+
+        private void mostrarPopUp(string mensaje) {
+            mp1.Show();
+            mjsBodyMP.Text = mensaje;
+        }
+
+        protected void BtnOk_Click(object sender, EventArgs e) {
+            mp1.Hide();
+
+                if (esBackup)
+                {
+                    generarBackup();
+                }
+                else
+                {
+                    generarRestore();
+                }
+
+        }
+
+            protected void BtnCancel_Click(object sender, EventArgs e) {
+
+                mp1.Hide();
+                Server.Transfer("AdminBackup.aspx");
         }
     }
 }
