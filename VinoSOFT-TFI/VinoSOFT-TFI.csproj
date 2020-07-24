@@ -88,6 +88,7 @@
     <Content Include="css\footer.css" />
     <Content Include="css\login.css" />
     <Content Include="css\modalPopup.css" />
+    <Content Include="EditarNoticia.aspx" />
     <Content Include="Inicio.aspx" />
     <Content Include="js\menu.js" />
     <Content Include="js\validaciones.js" />
@@ -172,6 +173,13 @@
     </Compile>
     <Compile Include="Contacto.aspx.designer.cs">
       <DependentUpon>Contacto.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="EditarNoticia.aspx.cs">
+      <DependentUpon>EditarNoticia.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="EditarNoticia.aspx.designer.cs">
+      <DependentUpon>EditarNoticia.aspx</DependentUpon>
     </Compile>
     <Compile Include="Inicio.aspx.cs">
       <DependentUpon>Inicio.aspx</DependentUpon>
