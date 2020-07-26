@@ -14,8 +14,6 @@ namespace VinoSOFT_TFI
         BLL.BLL_Backup gestorBackup = new BLL.BLL_Backup();
         BLL.BLL_Bitacora gestorBitacora = new BLL.BLL_Bitacora();
 
-        private bool esBackup = true; 
-
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!Page.IsPostBack)
@@ -35,7 +33,6 @@ namespace VinoSOFT_TFI
 
         protected void Button1_Click(object sender, EventArgs e)
         {
-            esBackup = true;
             mostrarPopUp("¿Desea realizar el backup?");
         }
 
@@ -65,19 +62,18 @@ namespace VinoSOFT_TFI
                 }
                 else
                 {
-                    Response.Write("<script>alert('Error al Generar el backup')</script>");
+                    ModalPopUpMensajes.Show();
+                    LabelMensaje.Text = "Error al generar el Backup";
                 }
 
             }
             catch (Exception ex)
             {
-                Response.Write("<script>alert('" + ex.ToString() + "')</script>");
+                ModalPopUpMensajes.Show();
+                LabelMensaje.Text = ex.ToString();
             }
 
             Server.Transfer("AdminBackup.aspx");
-
-
-
         }
 
         private void DisplayDownloadDialog(string nombreArchivo, string dirCompleto)
@@ -103,8 +99,7 @@ namespace VinoSOFT_TFI
 
         protected void ButtonRestore_Click(object sender, EventArgs e)
         {
-            esBackup = false;
-            mostrarPopUp("¿Desea restaurar el Backup?");
+             generarRestore();
         }
 
         private void generarRestore() {
@@ -121,18 +116,21 @@ namespace VinoSOFT_TFI
                     bool ok = gestorBackup.restaurarBackup(backupfile);
                     if (ok)
                     {
-                        Response.Write("<script>alert('Restore Hecho.')</script>");
+                        ModalPopUpMensajes.Show();
+                        LabelMensaje.Text = "Restore realizado con exito.";
                     }
                 }
                 catch (Exception ex)
                 {
-                    Response.Write("<script>alert('" + ex.ToString() + "')</script>");
+                    ModalPopUpMensajes.Show();
+                    LabelMensaje.Text = ex.ToString();
 
                 }
             }
             else
             {
-                Response.Write("<script>alert('No hay archivo seleccionado.')</script>");
+                ModalPopUpMensajes.Show();
+                LabelMensaje.Text = "No se selecciono el archivo.";
             }
         }
 
@@ -148,23 +146,13 @@ namespace VinoSOFT_TFI
         }
 
         protected void BtnOk_Click(object sender, EventArgs e) {
-            mp1.Hide();
-
-                if (esBackup)
-                {
-                    generarBackup();
-                }
-                else
-                {
-                    generarRestore();
-                }
-
+            generarBackup();
         }
 
-            protected void BtnCancel_Click(object sender, EventArgs e) {
+        protected void BtnCancel_Click(object sender, EventArgs e) {
 
                 mp1.Hide();
-                Server.Transfer("AdminBackup.aspx");
+                Server.Transfer("~/AdminBackup.aspx");
         }
     }
 }

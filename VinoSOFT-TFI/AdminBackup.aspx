@@ -127,4 +127,28 @@
         }
 </script>
 
+
+<!-- ModalPopUpRestore -->
+<asp:HiddenField ID="HiddenMesajes" runat="server" />
+
+<ajaxtoolkit:ModalPopupExtender ID="ModalPopUpMensajes" runat="server" 
+    PopupControlID="PanelMensajes" 
+    TargetControlID="HiddenMesajes"
+    BackgroundCssClass="modalBackground"
+    cancelcontrolID="BtnCerrar">
+</ajaxtoolkit:ModalPopupExtender>
+
+<asp:Panel ID="PanelMensajes" runat="server" CssClass="modal-content modal-sm" Style="display:none">
+            <div id="bodyMesajes" class="modal-body">
+                 <asp:label runat="server" ID="LabelMensaje"></asp:label>
+            </div>
+            <div id="footerMensajese" class="modal-footer">
+                <asp:Button ID="BtnCerrar" runat="server" Text="Aceptar" CssClass="btn-info"/>
+            </div>
+</asp:Panel>
+
+<!-- ModalPopupRestore -->
+
+
+
 </asp:Content>
