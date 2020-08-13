@@ -41,6 +41,7 @@
   <ItemGroup>
     <Compile Include="MPP_Backup.cs" />
     <Compile Include="MPP_Bitacora.cs" />
+    <Compile Include="MPP_Categoria.cs" />
     <Compile Include="MPP_Familia.cs" />
     <Compile Include="MPP_Newsletter.cs" />
     <Compile Include="MPP_Noticia.cs" />

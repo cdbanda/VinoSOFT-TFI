@@ -41,6 +41,7 @@
   <ItemGroup>
     <Compile Include="BLL_Backup.cs" />
     <Compile Include="BLL_Bitacora.cs" />
+    <Compile Include="BLL_Categoria.cs" />
     <Compile Include="BLL_Cliente.cs" />
     <Compile Include="BLL_Familia.cs" />
     <Compile Include="BLL_Newsletter.cs" />

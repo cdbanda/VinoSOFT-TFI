@@ -15,9 +15,9 @@ namespace BE
             set { id = value; }
         }
 
-        private string categoria;
+        private BE.BE_Categoria categoria;
 
-        public string CATEGORIA
+        public BE.BE_Categoria CATEGORIA
         {
             get { return categoria; }
             set { categoria = value; }
@@ -38,6 +38,30 @@ namespace BE
         {
             get { return cuerpo; }
             set { cuerpo = value; }
+        }
+
+        private int habilitado;
+
+        public int HABILITADO
+        {
+            get { return habilitado; }
+            set { habilitado = value; }
+        }
+
+        private DateTime fechaCreacion;
+
+        public DateTime FECHACREACION
+        {
+            get { return fechaCreacion; }
+            set { fechaCreacion = value; }
+        }
+
+        private DateTime fechaModificacion;
+
+        public DateTime FECHAMODIFICACION
+        {
+            get { return fechaModificacion; }
+            set { fechaModificacion = value; }
         }
 
     }

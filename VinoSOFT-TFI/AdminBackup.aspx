@@ -143,7 +143,7 @@
                  <asp:label runat="server" ID="LabelMensaje"></asp:label>
             </div>
             <div id="footerMensajese" class="modal-footer">
-                <asp:Button ID="BtnCerrar" runat="server" Text="Aceptar" CssClass="btn-info"/>
+                <asp:Button ID="BtnCerrar" runat="server" Text="Aceptar" CssClass="btn-info" OnClick="BtnCerrar_Click"/>
             </div>
 </asp:Panel>
 

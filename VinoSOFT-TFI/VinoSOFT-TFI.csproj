@@ -47,11 +47,17 @@
     <Reference Include="AjaxControlToolkit">
       <HintPath>..\packages\AjaxControlToolkit.19.1.0\lib\net40\AjaxControlToolkit.dll</HintPath>
     </Reference>
+    <Reference Include="AjaxControlToolkit.HtmlEditor.Sanitizer, Version=19.1.0.0, Culture=neutral, PublicKeyToken=28f01b0e84b6d53e, processorArchitecture=MSIL">
+      <HintPath>..\packages\AjaxControlToolkit.HtmlEditor.Sanitizer.19.1.0\lib\net40\AjaxControlToolkit.HtmlEditor.Sanitizer.dll</HintPath>
+    </Reference>
     <Reference Include="BotDetect">
       <HintPath>..\packages\Captcha.4.4.2\lib\net35\BotDetect.dll</HintPath>
     </Reference>
     <Reference Include="BotDetect.Web.Mvc">
       <HintPath>..\packages\Captcha.4.4.2\lib\net35\BotDetect.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="HtmlAgilityPack, Version=1.4.9.0, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a, processorArchitecture=MSIL">
+      <HintPath>..\packages\HtmlAgilityPack.1.4.9\lib\Net40\HtmlAgilityPack.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data.SQLite">
@@ -89,6 +95,7 @@
     <Content Include="css\login.css" />
     <Content Include="css\modalPopup.css" />
     <Content Include="EditarNoticia.aspx" />
+    <Content Include="GestionNoticias.aspx" />
     <Content Include="Inicio.aspx" />
     <Content Include="js\menu.js" />
     <Content Include="js\validaciones.js" />
@@ -180,6 +187,13 @@
     </Compile>
     <Compile Include="EditarNoticia.aspx.designer.cs">
       <DependentUpon>EditarNoticia.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="GestionNoticias.aspx.cs">
+      <DependentUpon>GestionNoticias.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="GestionNoticias.aspx.designer.cs">
+      <DependentUpon>GestionNoticias.aspx</DependentUpon>
     </Compile>
     <Compile Include="Inicio.aspx.cs">
       <DependentUpon>Inicio.aspx</DependentUpon>

@@ -41,6 +41,7 @@
   <ItemGroup>
     <Compile Include="BE_Backup.cs" />
     <Compile Include="BE_Bitacora.cs" />
+    <Compile Include="BE_Categoria.cs" />
     <Compile Include="BE_Cliente.cs" />
     <Compile Include="BE_Evento.cs" />
     <Compile Include="BE_Familia.cs" />
