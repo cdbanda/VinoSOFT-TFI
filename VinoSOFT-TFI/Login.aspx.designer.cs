@@ -13,22 +13,13 @@ namespace VinoSOFT_TFI {
     public partial class Login {
         
         /// <summary>
-        /// Control txtBoxUserName.
+        /// Control UCUsuarioPass.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtBoxUserName;
-        
-        /// <summary>
-        /// Control txtBoxPassword.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtBoxPassword;
+        protected global::VinoSOFT_TFI.CU_UsuarioPass UCUsuarioPass;
         
         /// <summary>
         /// Control btnLoginPage.

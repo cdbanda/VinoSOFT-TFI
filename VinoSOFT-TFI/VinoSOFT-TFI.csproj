@@ -94,6 +94,8 @@
     <Content Include="css\footer.css" />
     <Content Include="css\login.css" />
     <Content Include="css\modalPopup.css" />
+    <Content Include="CU_Mail.ascx" />
+    <Content Include="CU_UsuarioPass.ascx" />
     <Content Include="EditarNoticia.aspx" />
     <Content Include="GestionNoticias.aspx" />
     <Content Include="Inicio.aspx" />
@@ -180,6 +182,20 @@
     </Compile>
     <Compile Include="Contacto.aspx.designer.cs">
       <DependentUpon>Contacto.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CU_Mail.ascx.cs">
+      <DependentUpon>CU_Mail.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CU_Mail.ascx.designer.cs">
+      <DependentUpon>CU_Mail.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="CU_UsuarioPass.ascx.cs">
+      <DependentUpon>CU_UsuarioPass.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CU_UsuarioPass.ascx.designer.cs">
+      <DependentUpon>CU_UsuarioPass.ascx</DependentUpon>
     </Compile>
     <Compile Include="EditarNoticia.aspx.cs">
       <DependentUpon>EditarNoticia.aspx</DependentUpon>

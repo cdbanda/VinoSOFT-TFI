@@ -13,31 +13,13 @@ namespace VinoSOFT_TFI {
     public partial class RegistracionNewsletter {
         
         /// <summary>
-        /// Control inpAltaEmail.
+        /// Control CU_Mail.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox inpAltaEmail;
-        
-        /// <summary>
-        /// Control EmailRequerido.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator EmailRequerido;
-        
-        /// <summary>
-        /// Control regexEmailValid.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RegularExpressionValidator regexEmailValid;
+        protected global::VinoSOFT_TFI.CU_Mail CU_Mail;
         
         /// <summary>
         /// Control checkBoxListReg.

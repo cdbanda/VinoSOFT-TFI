@@ -1,4 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.Master" AutoEventWireup="true" CodeBehind="RecuperarContrasena.aspx.cs" Inherits="VinoSOFT_TFI.RecuperarContrasena" %>
+<%@ Register TagPrefix="CUMail" TagName="UserMail" Src="~/CU_Mail.ascx" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -12,14 +13,7 @@
 
                 <div class="form-horizontal">
 
-                    <div class="form-group">
-                        <label>E-mail</label>
-                        <div>
-                           <asp:TextBox ID="inpEnviarEmail" CssClass="form-control" runat="server" MaxLength="320"></asp:TextBox>
-                           <asp:RequiredFieldValidator ForeColor="Red"  ID="EmailRequerido" runat="server" ErrorMessage="Campo requerido  (Max 320 caracteres)" ControlToValidate="inpEnviarEmail"></asp:RequiredFieldValidator>
-                           <asp:RegularExpressionValidator ID="regexEmailValid" runat="server" ValidationExpression="\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*" ControlToValidate="inpEnviarEmail" ErrorMessage="Formato de Email inválido"></asp:RegularExpressionValidator>
-                        </div>
-                    </div>
+                    <CUMail:UserMail runat="server" id="CU_Mail"></CUMail:UserMail>
 
                      <div class="form-group">
                         <div>

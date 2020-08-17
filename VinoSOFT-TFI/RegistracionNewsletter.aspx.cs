@@ -71,7 +71,8 @@ namespace VinoSOFT_TFI
         protected void limpiarPantalla()
         {
             chkTyC.Checked = false;
-            inpAltaEmail.Text = "";
+            //TextBox impMail = (TextBox)CU_Mail.FindControl("inpEnviarEmail");
+            CU_Mail.Text = "";
             foreach (ListItem item in checkBoxListReg.Items)
             {
                 item.Selected = false;

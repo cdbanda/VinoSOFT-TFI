@@ -1,4 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.Master" AutoEventWireup="true" CodeBehind="RegistracionNewsletter.aspx.cs" Inherits="VinoSOFT_TFI.RegistracionNewsletter" %>
+<%@ Register TagPrefix="CUMail" TagName="UserMail" Src="~/CU_Mail.ascx" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -13,14 +15,7 @@
             <div class="col-md-8 col-md-offset-1">
                 <div class="form-horizontal">
 
-                    <div class="form-group">
-                        <label for="email" class="col-sm-2 control-label">E-mail</label>
-                        <div class="col-sm-6">
-                           <asp:TextBox ID="inpAltaEmail" CssClass="form-control" runat="server" MaxLength="320"></asp:TextBox>
-                           <asp:RequiredFieldValidator ForeColor="Red"  ID="EmailRequerido" runat="server" ErrorMessage="Campo requerido  (Max 320 caracteres)" ControlToValidate="inpAltaEmail"></asp:RequiredFieldValidator>
-                           <asp:RegularExpressionValidator ID="regexEmailValid" runat="server" ValidationExpression="\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*" ControlToValidate="inpAltaEmail" ErrorMessage="Formato de Email inválido"></asp:RegularExpressionValidator>
-                        </div>
-                    </div>
+                    <CUMail:UserMail runat="server" id="CU_Mail"></CUMail:UserMail>
 
                     <div class="form-group">
                         <div class="col-sm-6 col-sm-offset-2">

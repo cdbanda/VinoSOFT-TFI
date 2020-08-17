@@ -1,4 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.Master" AutoEventWireup="true" CodeBehind="Login.aspx.cs" Inherits="VinoSOFT_TFI.Login" %>
+<%@ Register Src="~/CU_UsuarioPass.ascx" TagName="UsuarioPass" TagPrefix="uc" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -10,16 +11,8 @@
                     <p>Use su email y contrase&ntilde;a para iniciar sesion.</p>
                 </div>
 
-                <div class="form-group">
-                    <label>Usuario</label>
-                    <asp:TextBox ID="txtBoxUserName" runat="server" TabIndex="1" CssClass="form-control" placeholder="Usuario"
-                        MaxLength="20" AutoComplete="off"></asp:TextBox>
-                </div>
-                <div class="form-group">
-                    <label>Contrase&ntilde;a</label>
-                    <asp:TextBox ID="txtBoxPassword" runat="server" TabIndex="2" CssClass="form-control" placeholder="Contrase&ntilde;a"
-                        MaxLength="20" AutoComplete="off" TextMode="Password"></asp:TextBox>
-                </div>
+                <uc:UsuarioPass ID="UCUsuarioPass" runat="server"></uc:UsuarioPass>
+
                 <div class="form-group">
                     <div class="row">
                         <div class="col-md-12">

@@ -10,42 +10,33 @@
 namespace VinoSOFT_TFI {
     
     
-    public partial class RecuperarContrasena {
+    public partial class CU_Mail {
         
         /// <summary>
-        /// Control CU_Mail.
+        /// Control inpEnviarEmail.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::VinoSOFT_TFI.CU_Mail CU_Mail;
+        protected global::System.Web.UI.WebControls.TextBox inpEnviarEmail;
         
         /// <summary>
-        /// Control RecuperarCaptcha.
+        /// Control EmailRequerido.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::BotDetect.Web.UI.WebFormsCaptcha RecuperarCaptcha;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator EmailRequerido;
         
         /// <summary>
-        /// Control CaptchaCodeTextBox.
+        /// Control regexEmailValid.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox CaptchaCodeTextBox;
-        
-        /// <summary>
-        /// Control btnEnviar.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnEnviar;
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator regexEmailValid;
     }
 }
