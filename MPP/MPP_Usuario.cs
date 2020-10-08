@@ -287,5 +287,30 @@ namespace MPP
                 return false;
             }
         }
+
+        public bool ValidarEmail(string email) {
+            Hashtable hdatos = new Hashtable();
+            hdatos.Add("@email", email);
+            string mail="";
+
+            DataSet ds = new DataSet();
+            ds = sqlHelper.Leer("usuario_validaremail",hdatos);
+            if (ds.Tables.Count > 0) {
+                if (ds.Tables[0].Rows.Count > 0) {
+                    foreach (DataRow item in ds.Tables[0].Rows) {
+                        mail = item["email"].ToString();
+                    }
+                }
+            }
+
+            if (email == mail)
+            {
+                return true;
+            }
+            else {
+                return false;
+            }
+
+        }
     }
 }

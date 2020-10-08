@@ -13,17 +13,17 @@ namespace BLL
             return mapperNewsletter.verificarMailExistente(usuario);
         }
 
-        public bool insertarMail(BE.BE_UsuarioSuscripcion usuario) {
+        public int insertarMail(BE.BE_UsuarioSuscripcion usuario) {
             if (verificarMailExistente(usuario))
             {
-                return false;
+                return 1;
             }
             else {
                 return mapperNewsletter.insertarMail(usuario);
             }
         }
 
-        public bool borrarMail(string mail) {
+        public int borrarMail(string mail) {
             return mapperNewsletter.borrarMail(mail);
         }
 

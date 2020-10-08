@@ -13,5 +13,24 @@ namespace VinoSOFT_TFI
         {
 
         }
+
+        protected void Btnenviar_Onclick(object sender, EventArgs e) {
+            // validate the Captcha to check we're not dealing with a bot
+            bool isHuman = RecuperarCaptcha.Validate(CaptchaCodeTextBox.Text);
+
+            CaptchaCodeTextBox.Text = null; // clear previous user input
+
+            if (!isHuman)
+            {
+                // TODO: Captcha validation failed, show error message  
+                ModalPopUpMensajes.Show();
+                LabelMensaje.Text = "Error en el captcha.";
+            }
+            else
+            {
+                // TODO: captcha validation succeeded; execute the protected action
+
+            }
+        }
     }
 }

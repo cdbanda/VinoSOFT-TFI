@@ -25,7 +25,7 @@
 
                      <div class="form-group">
                         <div>
-                            <asp:Button ID="btnEnviar" CssClass="btn btn-success" runat="server" Text="Enviar" />
+                            <asp:Button ID="btnEnviar" CssClass="btn btn-success" runat="server" Text="Enviar" OnClick="Btnenviar_Onclick" />
                         </div>
                      </div>
 
@@ -35,4 +35,27 @@
             </div>
         </div>
     </div>
+
+    <!-- ModalPopUpRestore -->
+    <asp:HiddenField ID="HiddenMesajes" runat="server" />
+
+    <ajaxToolkit:ModalPopupExtender ID="ModalPopUpMensajes" runat="server"
+        PopupControlID="PanelMensajes"
+        TargetControlID="HiddenMesajes"
+        BackgroundCssClass="modalBackground"
+        CancelControlID="BtnCerrar">
+    </ajaxToolkit:ModalPopupExtender>
+
+    <asp:Panel ID="PanelMensajes" runat="server" CssClass="modal-content modal-sm" Style="display: none">
+        <div id="bodyMesajes" class="modal-body">
+            <asp:Label runat="server" ID="LabelMensaje"></asp:Label>
+        </div>
+        <div id="footerMensajese" class="modal-footer">
+            <asp:Button ID="BtnCerrar" runat="server" Text="Aceptar" CssClass="btn-info" />
+        </div>
+    </asp:Panel>
+
+<!-- ModalPopupRestore -->
+
+
 </asp:Content>

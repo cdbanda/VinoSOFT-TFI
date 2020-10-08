@@ -40,7 +40,7 @@ namespace MPP
 
         }
 
-        public bool insertarMail(BE.BE_UsuarioSuscripcion usuario)
+        public int insertarMail(BE.BE_UsuarioSuscripcion usuario)
         {
             Hashtable hdatos = new Hashtable();
             hdatos.Add("@mail", usuario.EMAIL);
@@ -48,16 +48,28 @@ namespace MPP
             hdatos.Add("@humedad",usuario.HUMEDAD);
             hdatos.Add("@imagenes", usuario.IMAGENES);
 
-            bool guardado = SQLhelp.Escribir("suscripcion_insertar", hdatos);
-            return guardado;
+            if (SQLhelp.Escribir("suscripcion_insertar", hdatos))
+            {
+                return 0;
+            }
+            else {
+                return 2;
+            }
+  
         }
 
-        public bool borrarMail(string mail) {
+        public int borrarMail(string mail) {
             Hashtable hdatos = new Hashtable();
             hdatos.Add("@mail", mail);
 
             bool ok = SQLhelp.Escribir("suscripcion_borrar", hdatos);
-            return ok;
+            if (ok)
+            {
+                return 0;
+            }
+            else {
+                return 1;
+            }
         }
 
     }

@@ -65,5 +65,9 @@ namespace BLL
         public bool quitarPermiso(int idUsuario, int idPermiso) {
             return mapperUsuario.quitarPermiso(idUsuario,idPermiso);
         }
+
+        public bool ValidarEmail(string email) {
+            return mapperUsuario.ValidarEmail(email);
+        }
     }
 }

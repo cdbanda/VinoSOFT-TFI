@@ -96,6 +96,7 @@
     <Content Include="css\modalPopup.css" />
     <Content Include="CU_Mail.ascx" />
     <Content Include="CU_UsuarioPass.ascx" />
+    <Content Include="DesregistracionNewsletter.aspx" />
     <Content Include="EditarNoticia.aspx" />
     <Content Include="GestionNoticias.aspx" />
     <Content Include="Inicio.aspx" />
@@ -103,8 +104,10 @@
     <Content Include="js\validaciones.js" />
     <Content Include="Login.aspx" />
     <Content Include="MisionYVision.aspx" />
+    <Content Include="Noticias.aspx" />
     <Content Include="packages.config" />
-    <Content Include="PlantillasMails\Email_Confirmation.html" />
+    <Content Include="PlantillasMails\Email_CambiarContrasena.html" />
+    <Content Include="PlantillasMails\Email_Confirmacion.html" />
     <Content Include="PlantillasMails\Email_Consulta.html" />
     <Content Include="PoliticasPrivacidad.aspx" />
     <Content Include="Publicidad\img\drones_vinedo.jpg" />
@@ -113,6 +116,7 @@
     <Content Include="Publicidad\publicidad.xml" />
     <Content Include="RecuperarContrasena.aspx" />
     <Content Include="RegistracionNewsletter.aspx" />
+    <Content Include="RegistrarNuevoCliente.aspx" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -197,6 +201,13 @@
     <Compile Include="CU_UsuarioPass.ascx.designer.cs">
       <DependentUpon>CU_UsuarioPass.ascx</DependentUpon>
     </Compile>
+    <Compile Include="DesregistracionNewsletter.aspx.cs">
+      <DependentUpon>DesregistracionNewsletter.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DesregistracionNewsletter.aspx.designer.cs">
+      <DependentUpon>DesregistracionNewsletter.aspx</DependentUpon>
+    </Compile>
     <Compile Include="EditarNoticia.aspx.cs">
       <DependentUpon>EditarNoticia.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -239,6 +250,13 @@
     <Compile Include="MisionYVision.aspx.designer.cs">
       <DependentUpon>MisionYVision.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Noticias.aspx.cs">
+      <DependentUpon>Noticias.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Noticias.aspx.designer.cs">
+      <DependentUpon>Noticias.aspx</DependentUpon>
+    </Compile>
     <Compile Include="PoliticasPrivacidad.aspx.cs">
       <DependentUpon>PoliticasPrivacidad.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -260,6 +278,13 @@
     </Compile>
     <Compile Include="RegistracionNewsletter.aspx.designer.cs">
       <DependentUpon>RegistracionNewsletter.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="RegistrarNuevoCliente.aspx.cs">
+      <DependentUpon>RegistrarNuevoCliente.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="RegistrarNuevoCliente.aspx.designer.cs">
+      <DependentUpon>RegistrarNuevoCliente.aspx</DependentUpon>
     </Compile>
     <Compile Include="TerminosYCondiciones.aspx.cs">
       <DependentUpon>TerminosYCondiciones.aspx</DependentUpon>

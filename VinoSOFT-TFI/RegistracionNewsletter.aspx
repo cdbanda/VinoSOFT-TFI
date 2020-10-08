@@ -21,7 +21,7 @@
                         <div class="col-sm-6 col-sm-offset-2">
                             <h4>Noticias a recibir por correo.</h4>
                             <label>
-                                <asp:CheckBoxList ID="checkBoxListReg" runat="server" AutoPostBack="true" SelectionMode="Multiple">
+                                <asp:CheckBoxList ID="checkBoxListReg" runat="server" AutoPostBack="false" SelectionMode="Multiple">
                                     <asp:ListItem Value="Riego">Riego</asp:ListItem>
                                     <asp:ListItem Value="Humedad">Humedad y Temperatura</asp:ListItem>
                                     <asp:ListItem Value="Imagenes">Imagenes con Drones</asp:ListItem>
@@ -63,5 +63,26 @@
             </div>
         </div>
 </div>
+
+ <!-- ModalPopUpRestore -->
+    <asp:HiddenField ID="HiddenMesajes" runat="server" />
+
+    <ajaxToolkit:ModalPopupExtender ID="ModalPopUpMensajes" runat="server"
+        PopupControlID="PanelMensajes"
+        TargetControlID="HiddenMesajes"
+        BackgroundCssClass="modalBackground"
+        CancelControlID="BtnCerrar">
+    </ajaxToolkit:ModalPopupExtender>
+
+    <asp:Panel ID="PanelMensajes" runat="server" CssClass="modal-content modal-sm" Style="display: none">
+        <div id="bodyMesajes" class="modal-body">
+            <asp:Label runat="server" ID="LabelMensaje"></asp:Label>
+        </div>
+        <div id="footerMensajese" class="modal-footer">
+            <asp:Button ID="BtnCerrar" runat="server" Text="Aceptar" CssClass="btn-info" />
+        </div>
+    </asp:Panel>
+
+<!-- ModalPopupRestore -->
 
 </asp:Content>
