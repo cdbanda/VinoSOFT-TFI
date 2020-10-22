@@ -8,12 +8,12 @@
                <table>
                    <tr>
                        <td>
-                           <asp:Label ID="lblTitulo" runat="server" Text='<%# Eval("FriendID")%>'></asp:Label>
+                           <asp:Label ID="lblTitulo" runat="server" Text='<%# Eval("titulo")%>'></asp:Label>
                            <br />
-                           <asp:Label ID="lblfecha" runat="server" Text='<%# Eval("FriendID")%>'></asp:Label>
-                           <asp:Label ID="lblCate" runat="server" Text='<%# Eval("FriendID")%>'></asp:Label>
+                           <asp:Label ID="lblfecha" runat="server" Text='<%# Eval("fechaModificacion")%>'></asp:Label>
+                           <asp:Label ID="lblCate" runat="server" Text='<%# Eval("categoria.nombre")%>'></asp:Label>
                            <br />
-                           <asp:Label ID="lblContenido" runat="server" Text='<%# Eval("FriendID")%>'></asp:Label>
+                           <asp:Literal ID="litCuerpo" runat="server" Text='<%# Eval("cuerpo")%>'></asp:Literal>
                            <br />
                        </td>
                    </tr>
