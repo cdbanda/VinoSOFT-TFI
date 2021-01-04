@@ -7,11 +7,13 @@
 // </generado automáticamente>
 //------------------------------------------------------------------------------
 
-namespace VinoSOFT_TFI {
-    
-    
-    public partial class CU_Mail {
-        
+namespace VinoSOFT_TFI
+{
+
+
+    public partial class CU_Mail
+    {
+
         /// <summary>
         /// Control inpEnviarEmail.
         /// </summary>
@@ -20,7 +22,7 @@ namespace VinoSOFT_TFI {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox inpEnviarEmail;
-        
+
         /// <summary>
         /// Control EmailRequerido.
         /// </summary>
@@ -29,7 +31,7 @@ namespace VinoSOFT_TFI {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RequiredFieldValidator EmailRequerido;
-        
+
         /// <summary>
         /// Control regexEmailValid.
         /// </summary>

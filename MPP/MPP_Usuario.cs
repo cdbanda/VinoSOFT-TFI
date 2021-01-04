@@ -139,6 +139,22 @@ namespace MPP
             }
         }
 
+        public int BuscarUltimoIDUsuario()
+        {
+            DataSet ds = new DataSet();
+            ds = sqlHelper.Leer("usuario_buscarUltimoID", null);
+            int id = 0;
+            if (ds.Tables.Count > 0)
+            {
+                if (ds.Tables[0].Rows.Count > 0)
+                {
+                    DataRow item = ds.Tables[0].Rows[0];
+                    id =  int.Parse(item["id"].ToString());
+                }
+            }
+            return id;
+        }
+
         public bool desbloquear(BE.BE_Usuario usuario)
         {
             usuario.ACTIVO = true;
@@ -311,6 +327,14 @@ namespace MPP
                 return false;
             }
 
+        }
+
+        public bool BorrarMailSuscripcion(string email) {
+            Hashtable hdatos = new Hashtable();
+            hdatos.Add("@email", email);
+
+            bool resultado = sqlHelper.Escribir("usuario_BorrarMailSuscripcion", hdatos);
+            return resultado;
         }
     }
 }

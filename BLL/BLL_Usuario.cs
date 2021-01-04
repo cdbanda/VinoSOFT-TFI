@@ -26,6 +26,7 @@ namespace BLL
             if (mapperUsuario.validarExistente(usuario)) {
                 return false;
             }
+            //generar en la tabla usuario_cambio, el hash para recuperar la contraseña.
             return mapperUsuario.crear(usuario);
         }
 
@@ -69,5 +70,23 @@ namespace BLL
         public bool ValidarEmail(string email) {
             return mapperUsuario.ValidarEmail(email);
         }
+
+        public bool BorrarMailSuscripcion(string email){
+            return mapperUsuario.BorrarMailSuscripcion(email);
+        }
+
+        public static string GenerarHashRecuperacionContrasena(int length)
+        {
+            Random random = new Random();
+            string characters = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+            StringBuilder result = new StringBuilder(length);
+            for (int i = 0; i < length; i++)
+            {
+                result.Append(characters[random.Next(characters.Length)]);
+            }
+            return result.ToString();
+        }
+
     }
 }
+

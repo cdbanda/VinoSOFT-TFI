@@ -41,7 +41,7 @@ namespace DAL
             //string db = "VINOSOFT";
             conexion = new SqlConnection();
             //conexion.ConnectionString = connectionstringtxt(db);
-            conexion.ConnectionString = @"Integrated Security=SSPI;Persist Security Info=False;Initial Catalog=VinoSOFT;Data Source=INSPIRON14\INSPIRON14";
+            conexion.ConnectionString = @"Integrated Security=SSPI;Persist Security Info=False;Initial Catalog=VinoSOFT;Data Source=HPMINI";
             conexion.Open();
         }
 
@@ -50,7 +50,7 @@ namespace DAL
             //string db = "master";
             conexion = new SqlConnection();
             //conexion.ConnectionString = connectionstringtxt(db);
-            conexion.ConnectionString = @"Integrated Security=SSPI;Persist Security Info=False;Initial Catalog=master;Data Source=INSPIRON14\INSPIRON14";
+            conexion.ConnectionString = @"Integrated Security=SSPI;Persist Security Info=False;Initial Catalog=master;Data Source=HPMINI";
             conexion.Open();
         }
 

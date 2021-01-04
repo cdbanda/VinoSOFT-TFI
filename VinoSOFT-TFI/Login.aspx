@@ -25,7 +25,7 @@
                 <div class="form-group">
                     <div class="col-lg-6">
                         <div class="text-center">
-                            <a href="#" tabindex="4">&iquest;Olvid&oacute; su contrase&ntilde;a?</a>
+                            <a href="RecuperarContrasena.aspx" tabindex="4">&iquest;Olvid&oacute; su contrase&ntilde;a?</a>
                         </div>
                     </div>
                 </div>

@@ -29,7 +29,18 @@ namespace VinoSOFT_TFI
             else
             {
                 // TODO: captcha validation succeeded; execute the protected action
+                BLL.BLL_Usuario gestorUsuario = new BLL.BLL_Usuario();
+                bool existe = gestorUsuario.ValidarEmail(CU_Mail.Text);
+                if (!existe)
+                {
+                    ModalPopUpMensajes.Show();
+                    LabelMensaje.Text = "El email indicado no existe en nuestra base de datos.";
+                }
+                else {
+                    //Enviar mail si existe el mismo en la base.
+                    //bool resultado = gestorUsuario.BorrarEmailSuscripcion(CU_Mail.Text);
 
+                }
             }
         }
     }
