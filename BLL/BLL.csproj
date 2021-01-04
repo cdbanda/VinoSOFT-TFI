@@ -44,6 +44,7 @@
     <Compile Include="BLL_Categoria.cs" />
     <Compile Include="BLL_Cliente.cs" />
     <Compile Include="BLL_Familia.cs" />
+    <Compile Include="BLL_Mail.cs" />
     <Compile Include="BLL_Newsletter.cs" />
     <Compile Include="BLL_Noticia.cs" />
     <Compile Include="BLL_Permiso.cs" />
