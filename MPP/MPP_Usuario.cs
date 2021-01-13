@@ -22,8 +22,6 @@ namespace MPP
                 if (ds.Tables[0].Rows.Count > 0)
                 {
                     DataRow item = ds.Tables[0].Rows[0];
-                    BE.BE_Cliente clienteAsoc = new BE.BE_Cliente();
-                    //clienteAsoc.IDCLIENTE = 0;
                     BE.BE_Usuario usuario = new BE.BE_Usuario();
                     usuario.IDUSUARIO = int.Parse(item["id_usuario"].ToString());
                     usuario.NOMBRE = item["nombre"].ToString();
@@ -35,12 +33,6 @@ namespace MPP
                     usuario.ESEMPLEADO = bool.Parse(item["es_empleado"].ToString());
                     usuario.DNI = Convert.IsDBNull(item["dni"]) ? 0 : int.Parse(item["dni"].ToString());
                     usuario.ACTIVO = bool.Parse(item["activo"].ToString());
-                    int esInt = 0;
-                    if (!Convert.IsDBNull(item["id_cliente"]) && int.TryParse(item["id_cliente"].ToString(), out esInt))
-                    {
-                        clienteAsoc.IDCLIENTE = int.Parse(item["id_cliente"].ToString());
-                    }
-                    usuario.CLIENTE = clienteAsoc;
                     usuario.LISTAFAMILIA = getFamiliaPorUsuario(usuario.IDUSUARIO);
                     usuario.LISTAPERMISO = getPermisosUsuario(usuario.IDUSUARIO);
                     return usuario;
@@ -116,15 +108,6 @@ namespace MPP
             hdatos.Add("@telefono", usuario.TELEFONO);
             hdatos.Add("@dni", usuario.DNI);
             hdatos.Add("@activo", usuario.ACTIVO);
-            if (usuario.CLIENTE == null)
-            {
-                hdatos.Add("@id_cliente", DBNull.Value);
-            }
-            else
-            {
-                hdatos.Add("@id_cliente", usuario.CLIENTE.IDCLIENTE);
-            }
-
             hdatos.Add("@esempleado", usuario.ESEMPLEADO);
 
             bool resutado = sqlHelper.Escribir("usuario_crear", hdatos);
@@ -211,12 +194,6 @@ namespace MPP
                         usuario.ESEMPLEADO = bool.Parse(item["es_empleado"].ToString());
                         usuario.DNI = Convert.IsDBNull(item["dni"]) ? 0 : int.Parse(item["dni"].ToString());
                         usuario.ACTIVO = bool.Parse(item["activo"].ToString());
-                        int esInt = 0;
-                        if (!Convert.IsDBNull(item["id_cliente"]) && int.TryParse(item["id_cliente"].ToString(), out esInt))
-                        {
-                            clienteAsoc.IDCLIENTE = int.Parse(item["id_cliente"].ToString());
-                        }
-                        usuario.CLIENTE = clienteAsoc;
                         //usuario.LISTAFAMILIA = getFamiliaPorUsuario(usuario.IDUSUARIO);
                         //usuario.LISTAPERMISO = getPermisosUsuario(usuario.IDUSUARIO);
                         lista.Add(usuario);

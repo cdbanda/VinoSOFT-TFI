@@ -9,7 +9,7 @@ namespace VinoSOFT_TFI
 {
     public partial class Contacto : System.Web.UI.Page
     {
-        BLL.BLL_Cliente gestorCliente = new BLL.BLL_Cliente();
+        BLL.BLL_Mail gestorCliente = new BLL.BLL_Mail();
 
         protected void Page_Load(object sender, EventArgs e)
         {

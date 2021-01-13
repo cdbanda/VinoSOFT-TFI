@@ -112,15 +112,5 @@ namespace BE
             set { esEmpleado = value; }
         }
 
-        private BE.BE_Cliente cliente;
-
-        public BE.BE_Cliente CLIENTE
-        {
-            get { return cliente; }
-            set { cliente = value; }
-        }
-
-
-
     }
 }

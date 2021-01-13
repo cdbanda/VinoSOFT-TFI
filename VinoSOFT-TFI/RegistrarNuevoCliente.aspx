@@ -11,6 +11,42 @@
                     <p>Ingrese un email y contrase&ntilde;a para poder registrarse.</p>
                 </div>
 
+                <div class="form-group">
+                    <label>Nombre</label>
+                    <asp:TextBox ID="txtBoxNombre" runat="server" TabIndex="1" CssClass="form-control" placeholder="Nombre"
+                        MaxLength="20" AutoComplete="off"></asp:TextBox>
+                </div>
+
+                <div class="form-group">
+                    <label>Apellido</label>
+                    <asp:TextBox ID="txtBoxApellido" runat="server" TabIndex="2" CssClass="form-control" placeholder="Apellido"
+                        MaxLength="20" AutoComplete="off"></asp:TextBox>
+                </div>
+
+                <div class="form-group">
+                    <label>DNI</label>
+                    <asp:TextBox ID="txtBoxDNI" runat="server" TabIndex="3" CssClass="form-control" placeholder="Documento"
+                        MaxLength="20" AutoComplete="off"></asp:TextBox>
+                </div>
+
+                <div class="form-group">
+                    <label>Telefono</label>
+                    <asp:TextBox ID="txtBoxTelefono" runat="server" TabIndex="3" CssClass="form-control" placeholder="Telefono"
+                        MaxLength="20" AutoComplete="off"></asp:TextBox>
+                </div>
+
+                <div class="form-group">
+                    <label>Dirección</label>
+                    <asp:TextBox ID="txtBoxDir" runat="server" TabIndex="3" CssClass="form-control" placeholder="Direccion"
+                        MaxLength="20" AutoComplete="off"></asp:TextBox>
+                </div>
+
+                <div class="form-group">
+                    <label>Ciudad</label>
+                    <asp:TextBox ID="txtBoxCiudad" runat="server" TabIndex="3" CssClass="form-control" placeholder="Ciudad"
+                        MaxLength="20" AutoComplete="off"></asp:TextBox>
+                </div>
+
                 <uc:Mail ID="UC_Mail" runat="server"></uc:Mail>
 
                 <div class="form-group">

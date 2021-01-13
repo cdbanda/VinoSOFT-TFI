@@ -9,6 +9,7 @@ namespace BLL
     public class BLL_Usuario
     {
         MPP.MPP_Usuario mapperUsuario = new MPP.MPP_Usuario();
+        BLL.BLL_Seguridad gestorSeguridad = new BLL_Seguridad();
 
         public BE.BE_Usuario getPorId(int idUsuario) {
             return getPorId(idUsuario);
@@ -27,6 +28,9 @@ namespace BLL
                 return false;
             }
             //generar en la tabla usuario_cambio, el hash para recuperar la contraseña.
+
+            //Se encripta la contraseña
+            usuario.CONTRASEÑA = gestorSeguridad.Encriptar(usuario.CONTRASEÑA);
             return mapperUsuario.crear(usuario);
         }
 

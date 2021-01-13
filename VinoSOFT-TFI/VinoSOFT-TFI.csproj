@@ -83,6 +83,7 @@
   <ItemGroup>
     <Content Include="AdminBackup.aspx" />
     <Content Include="AdminBitacora.aspx" />
+    <Content Include="ClienteDatos.aspx" />
     <Content Include="Contacto.aspx" />
     <Content Include="Content\bootstrap-grid.css" />
     <Content Include="Content\bootstrap-grid.min.css" />
@@ -179,6 +180,13 @@
     </Compile>
     <Compile Include="AdminBitacora.aspx.designer.cs">
       <DependentUpon>AdminBitacora.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ClienteDatos.aspx.cs">
+      <DependentUpon>ClienteDatos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ClienteDatos.aspx.designer.cs">
+      <DependentUpon>ClienteDatos.aspx</DependentUpon>
     </Compile>
     <Compile Include="Contacto.aspx.cs">
       <DependentUpon>Contacto.aspx</DependentUpon>
