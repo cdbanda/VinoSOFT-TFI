@@ -78,13 +78,13 @@ namespace VinoSOFT_TFI
         protected global::VinoSOFT_TFI.CU_Mail UC_Mail;
 
         /// <summary>
-        /// Control txtBoxPassword.
+        /// Control txtBoxContrasena.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtBoxPassword;
+        protected global::System.Web.UI.WebControls.TextBox txtBoxContrasena;
 
         /// <summary>
         /// Control txtBoxRepContrasena.
@@ -96,6 +96,24 @@ namespace VinoSOFT_TFI
         protected global::System.Web.UI.WebControls.TextBox txtBoxRepContrasena;
 
         /// <summary>
+        /// Control RecuperarCaptcha.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::BotDetect.Web.UI.WebFormsCaptcha RecuperarCaptcha;
+
+        /// <summary>
+        /// Control CaptchaCodeTextBox.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox CaptchaCodeTextBox;
+
+        /// <summary>
         /// Control btnRegistrarse.
         /// </summary>
         /// <remarks>
@@ -103,5 +121,50 @@ namespace VinoSOFT_TFI
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnRegistrarse;
+
+        /// <summary>
+        /// Control HiddenMesajes.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField HiddenMesajes;
+
+        /// <summary>
+        /// Control ModalPopUpMensajes.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::AjaxControlToolkit.ModalPopupExtender ModalPopUpMensajes;
+
+        /// <summary>
+        /// Control PanelMensajes.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel PanelMensajes;
+
+        /// <summary>
+        /// Control LabelMensaje.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label LabelMensaje;
+
+        /// <summary>
+        /// Control BtnCerrar.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button BtnCerrar;
     }
 }

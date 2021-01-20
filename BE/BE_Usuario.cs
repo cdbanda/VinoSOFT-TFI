@@ -112,5 +112,14 @@ namespace BE
             set { esEmpleado = value; }
         }
 
+        private string ciudad;
+
+        public string CIUDAD
+        {
+            get { return ciudad; }
+            set { ciudad = value; }
+        }
+
+
     }
 }
