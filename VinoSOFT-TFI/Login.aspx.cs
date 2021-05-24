@@ -9,6 +9,10 @@ namespace VinoSOFT_TFI
 {
     public partial class Login : System.Web.UI.Page
     {
+
+        BLL.BLL_Usuario gestorUsuario = new BLL.BLL_Usuario();
+        BLL.BLL_Seguridad gestorSeguridad = new BLL.BLL_Seguridad();
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack) {
@@ -17,6 +21,11 @@ namespace VinoSOFT_TFI
         }
 
         protected void registrarCuenta() {
+
+        }
+
+        protected void btnLoginPage_Click(object sender, EventArgs e)
+        {
 
         }
     }

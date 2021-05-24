@@ -79,7 +79,33 @@ namespace VinoSOFT_TFI
             usuario.EMAIL = UC_Mail.Text;
             usuario.DNI = int.Parse(txtBoxDNI.Text);
             usuario.TELEFONO = txtBoxTelefono.Text;
+            usuario.CONTRASEÑA = txtBoxContrasena.Text;
+            usuario.ESEMPLEADO = false;
 
+            if (gestorUsuario.crear(usuario))
+            {
+                ModalPopUpMensajes.Show();
+                LabelMensaje.Text = "Usuario Creado Correctamente.";
+                LimpiarTxtBoxes(Page);
+            }
+            else {
+                ModalPopUpMensajes.Show();
+                LabelMensaje.Text = "Error al crear el usuario.";
+            }
+        }
+
+        private void LimpiarTxtBoxes(Control c) {
+            foreach (Control c1 in c.Controls)
+            {
+                if (c1.GetType() == typeof(TextBox))
+                {
+                    ((TextBox)c1).Text = "";
+                }
+                if (c1.HasControls())
+                {
+                    LimpiarTxtBoxes(c1);
+                }
+            }
         }
     }
 }

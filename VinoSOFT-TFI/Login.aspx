@@ -17,7 +17,7 @@
                     <div class="row">
                         <div class="col-md-12">
                             <div class="text-center">
-                                <asp:Button ID="btnLoginPage" runat="server" Text="Ingresar" TabIndex="3" CssClass="form-control btn btn-success" />
+                                <asp:Button ID="btnLoginPage" runat="server" Text="Ingresar" TabIndex="3" CssClass="form-control btn btn-success" onclick="btnLoginPage_Click"/>
                             </div>
                         </div>
                     </div>

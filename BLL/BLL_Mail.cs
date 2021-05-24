@@ -13,6 +13,7 @@ namespace BLL
         //TIPO = 1 : Confirmacion
         //TIPO = 2 : Consulta
         //TIPO = 3 : Newsletter
+        //Tipo = 4 : contraseña
 
         private string bodyEmail;
 
@@ -27,9 +28,9 @@ namespace BLL
             {
 
             }
-            if (tipo == 3)
+            if (tipo == 4)
             {
-
+                bodyEmail = File.ReadAllText(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"PlantillasMails\" + "Cambio_Contrasena.html"));
             }
         }
 
@@ -56,6 +57,14 @@ namespace BLL
             cargarPlantilla(tipo);
             string mensaje = reemplazarValoresMail(bodyEmail, email, body, nombre);
             return enviarEmail(mail, mensaje, subject);
+        }
+
+        public bool enviarCambioContraseña(string mail,string body, string nombre) {
+            //va el mail del cliente;
+
+            string mensaje = reemplazarValoresMail(bodyEmail,mail, body, nombre);
+            string subject = "Solicitud de cambio de contraseña. VinoSOFT.";
+            return enviarEmail(mail,mensaje, subject);
         }
 
         public string reemplazarValoresMail(string mail, string email, string body, string nombre)

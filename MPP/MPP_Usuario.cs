@@ -100,6 +100,7 @@ namespace MPP
         public bool crear(BE.BE_Usuario usuario)
         {
             Hashtable hdatos = new Hashtable();
+            int id = BuscarUltimoIDUsuario() + 1;
 
             hdatos.Add("@nombre", usuario.NOMBRE);
             hdatos.Add("@apellido", usuario.APELLIDO);
@@ -109,8 +110,12 @@ namespace MPP
             hdatos.Add("@dni", usuario.DNI);
             hdatos.Add("@activo", usuario.ACTIVO);
             hdatos.Add("@esempleado", usuario.ESEMPLEADO);
+            hdatos.Add("@id", id);
+            hdatos.Add("@domicilio", usuario.DOMICILIO);
+            hdatos.Add("@ciudad", usuario.CIUDAD);
 
             bool resutado = sqlHelper.Escribir("usuario_crear", hdatos);
+            CrearhashContraseña(id, 0);
 
             if (resutado)
             {
@@ -120,6 +125,27 @@ namespace MPP
             {
                 return false;
             }
+        }
+
+        public bool CrearhashContraseña(int id, int esCambio) {
+            string hash = GenerarHashRecuperacionContrasena(25);
+
+            Hashtable hdatos = new Hashtable();
+            hdatos.Add("@idUsuario", id);
+            hdatos.Add("@hash", hash);
+            hdatos.Add("@solicitoCambio", esCambio);
+
+            bool resultado = sqlHelper.Escribir("usuario_crearHash",hdatos);
+
+            if (resultado)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+
         }
 
         public int BuscarUltimoIDUsuario()
@@ -202,6 +228,18 @@ namespace MPP
             }
 
             return lista;
+        }
+
+        public static string GenerarHashRecuperacionContrasena(int length)
+        {
+            Random random = new Random();
+            string characters = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+            StringBuilder result = new StringBuilder(length);
+            for (int i = 0; i < length; i++)
+            {
+                result.Append(characters[random.Next(characters.Length)]);
+            }
+            return result.ToString();
         }
 
         public bool modificarContrasenia(BE.BE_Usuario usuario)

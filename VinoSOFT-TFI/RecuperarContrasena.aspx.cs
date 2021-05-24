@@ -9,6 +9,8 @@ namespace VinoSOFT_TFI
 {
     public partial class RecuperarContrasena : System.Web.UI.Page
     {
+        BLL.BLL_Usuario gestorUsuario = new BLL.BLL_Usuario();
+
         protected void Page_Load(object sender, EventArgs e)
         {
 
@@ -39,6 +41,7 @@ namespace VinoSOFT_TFI
                 else {
                     //Enviar mail si existe el mismo en la base.
                     //bool resultado = gestorUsuario.BorrarEmailSuscripcion(CU_Mail.Text);
+                    bool resultado = gestorUsuario.EnviarMailCambioContraseña(CU_Mail.Text);
 
                 }
             }
