@@ -13,5 +13,14 @@ namespace VinoSOFT_TFI
         {
 
         }
+
+        public string usuario {
+            get { return txtBoxUserName.Text; }
+            set { txtBoxUserName.Text = value; }
+        }
+
+        public string contrasena {
+            get { return txtBoxPassword.Text; }
+        }
     }
 }

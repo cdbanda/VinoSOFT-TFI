@@ -81,6 +81,15 @@ namespace BLL
             return true;
         }
 
+        public bool verificarUsuario(string usuario, string contrasena) {
+            
+            bool resultado = true;
+
+
+
+            return resultado;
+        }
+
     }
 }
 
