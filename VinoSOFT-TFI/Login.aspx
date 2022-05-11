@@ -29,6 +29,9 @@
                         </div>
                     </div>
                 </div>
+                <div>
+                    <a href="RegistrarNuevoCliente.aspx">Registrarse</a>
+                </div>
 
             </div>
         </div>

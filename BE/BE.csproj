@@ -47,8 +47,10 @@
     <Compile Include="BE_Familia.cs" />
     <Compile Include="BE_Noticia.cs" />
     <Compile Include="BE_Permiso.cs" />
+    <Compile Include="BE_ProductoComentario.cs" />
     <Compile Include="BE_Usuario.cs" />
     <Compile Include="BE_UsuarioSuscripcion.cs" />
+    <Compile Include="BE_Producto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

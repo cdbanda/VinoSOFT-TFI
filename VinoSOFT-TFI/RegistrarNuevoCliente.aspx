@@ -22,7 +22,7 @@
                     <asp:TextBox ID="txtBoxApellido" runat="server" TabIndex="2" CssClass="form-control" placeholder="Apellido"
                         MaxLength="20" AutoComplete="off"></asp:TextBox>
                 </div>
-
+                
                 <div class="form-group">
                     <label>DNI</label>
                     <asp:TextBox ID="txtBoxDNI" runat="server" TabIndex="3" CssClass="form-control" placeholder="Documento"
@@ -46,7 +46,7 @@
                     <asp:TextBox ID="txtBoxCiudad" runat="server" TabIndex="6" CssClass="form-control" placeholder="Ciudad"
                         MaxLength="20" AutoComplete="off"></asp:TextBox>
                 </div>
-
+                
                 <uc:Mail ID="UC_Mail" runat="server" TabIndex="7"></uc:Mail>
 
                 <div class="form-group">

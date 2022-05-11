@@ -20,18 +20,34 @@ namespace VinoSOFT_TFI
             }
         }
 
-        protected void registrarCuenta() {
+        protected bool VerificarSesionIniciada() {
 
+            if (Session["Usuario"] != null)
+            {
+                return true;
+            }
+            else {
+                return false;
+            }
         }
+
 
         protected void btnLoginPage_Click(object sender, EventArgs e)
         {
-            //tomo los datos del control de usuario 
-            string contrasena = UCUsuarioPass.contrasena;
-            string usuario = UCUsuarioPass.usuario;
 
-            bool resultado = gestorUsuario.verificarUsuario(usuario,contrasena);
-            
+            if (VerificarSesionIniciada() == false)
+            {
+                //tomo los datos del control de usuario 
+                string contrasena = UCUsuarioPass.contrasena;
+                string usuario = UCUsuarioPass.usuario;
+
+                bool resultado = gestorUsuario.verificarUsuario(usuario, contrasena);
+
+
+            }
+            else { 
+               
+            }
         }
     }
 }

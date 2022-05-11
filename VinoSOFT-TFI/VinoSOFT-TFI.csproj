@@ -111,6 +111,10 @@
     <Content Include="PlantillasMails\Email_Confirmacion.html" />
     <Content Include="PlantillasMails\Email_Consulta.html" />
     <Content Include="PoliticasPrivacidad.aspx" />
+    <Content Include="Productos.aspx" />
+    <Content Include="Publicidad\banners\drones_vinedo.jpg" />
+    <Content Include="Publicidad\banners\riego_vinedo.jpg" />
+    <Content Include="Publicidad\banners\sensor_vinedo.jpg" />
     <Content Include="Publicidad\img\drones_vinedo.jpg" />
     <Content Include="Publicidad\img\riego_vinedo.jpg" />
     <Content Include="Publicidad\img\sensor_vinedo.jpg" />
@@ -271,6 +275,13 @@
     </Compile>
     <Compile Include="PoliticasPrivacidad.aspx.designer.cs">
       <DependentUpon>PoliticasPrivacidad.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Productos.aspx.cs">
+      <DependentUpon>Productos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Productos.aspx.designer.cs">
+      <DependentUpon>Productos.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RecuperarContrasena.aspx.cs">
