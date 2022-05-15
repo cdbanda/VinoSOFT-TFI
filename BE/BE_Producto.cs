@@ -5,7 +5,7 @@ using System.Text;
 
 namespace BE
 {
-    class BE_Producto
+    public class BE_Producto
     {
         private int idProduto;
 
@@ -62,8 +62,6 @@ namespace BE
             get { return precio; }
             set { precio = value; }
         }
-
-
 
     }
 }

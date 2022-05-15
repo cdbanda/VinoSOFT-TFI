@@ -48,20 +48,29 @@
   <div class="collapse navbar-collapse" id="navbarsExampleDefault">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
-        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="GestionNoticias.aspx">Link</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+        <a class="nav-link" href="Inicio.aspx">Inicio <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
+        <a class="nav-link dropdown-toggle" href="#" id="ddInstitucional" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Institucional</a>
         <div class="dropdown-menu" aria-labelledby="dropdown01">
-          <a class="dropdown-item" href="#">Action</a>
-          <a class="dropdown-item" href="#">Another action</a>
-          <a class="dropdown-item" href="#">Something else here</a>
+          <a class="dropdown-item" href="MisionYVision.aspx">Mision - Visión</a>
+          <a class="dropdown-item" href="Noticias.aspx">Noticias</a>
+        </div>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" href="Productos.aspx">Productos</a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" href="#">Preguntas Frecuentes</a>
+      </li>
+
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="ddSeguridad" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Seguridad</a>
+        <div class="dropdown-menu" aria-labelledby="dropdown01">
+          <a class="dropdown-item" href="AdminBitacora.aspx">Bitacora</a>
+            <a class="dropdown-item" href="GestionNoticias.aspx">Noticias</a>
         </div>
       </li>
     </ul>
@@ -73,7 +82,7 @@
           </li>
           <!-- -->
           <li class="nav-item">
-            <a class="nav-link" href="#">Registrarse</a>
+            <a class="nav-link" href="RegistrarNuevoCliente.aspx">Registrarse</a>
         </li>
             <li class="nav-item">
         <a class="nav-link" href="Login.aspx">Iniciar Sesion</a>
@@ -93,4 +102,9 @@
  
     </form>
 </body>
+    <footer class="footer">
+      <div class="container">
+        <span class="text-muted">VinoSOFT S.A.S. - 2022</span>
+      </div>
+    </footer>
 </html>

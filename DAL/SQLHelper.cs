@@ -41,7 +41,7 @@ namespace DAL
             //string db = "VINOSOFT";
             conexion = new SqlConnection();
             //conexion.ConnectionString = connectionstringtxt(db);
-            conexion.ConnectionString = @"Integrated Security=SSPI;Persist Security Info=False;Initial Catalog=VinoSOFT;Data Source=HPMINI";
+            conexion.ConnectionString = @"Integrated Security=SSPI;Persist Security Info=False;Initial Catalog=VINOSOFT;Data Source=INSPIRON14\SQLEXPRESS";
             conexion.Open();
         }
 

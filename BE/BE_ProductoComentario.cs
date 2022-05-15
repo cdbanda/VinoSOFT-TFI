@@ -5,7 +5,7 @@ using System.Text;
 
 namespace BE
 {
-    class BE_ProductoComentario
+    public class BE_ProductoComentario
     {
         private int idComentario;
 
@@ -45,6 +45,14 @@ namespace BE
         {
             get { return fechaHora; }
             set { fechaHora = value; }
+        }
+
+        private string comentario;
+
+        public string COMENTARIO
+        {
+            get { return comentario; }
+            set { comentario = value; }
         }
 
     }
