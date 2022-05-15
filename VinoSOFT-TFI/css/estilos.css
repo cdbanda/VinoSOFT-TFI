@@ -14,3 +14,10 @@ body > .skiptranslate {
 #google_translate_element {
     margin-left:10px;
 }
+
+/** Carousel productos**/
+.carousel {
+    width: 640px;
+    height: 360px;
+}
+

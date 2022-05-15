@@ -3,36 +3,33 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
-    <div class="row">
-        <div class="row carousel-holder">
-            <!-- banners -->
-            <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-                <ol class="carousel-indicators">
-                    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-                    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-                    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-                </ol>
-                <div class="carousel-inner">
-                    <div class="carousel-item active">
-                        <img class="d-block w-100" src="Publicidad/banners/drones_vinedo.jpg" alt="First slide"/>
-                    </div>
-                    <div class="carousel-item">
-                        <img class="d-block w-100" src="Publicidad/banners/riego_vinedo.jpg" alt="Second slide"/>
-                    </div>
-                    <div class="carousel-item">
-                        <img class="d-block w-100" src="Publicidad/banners/sensor_vinedo.jpg" alt="Third slide"/>
-                    </div>
-                </div>
-                <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="sr-only">Previous</span>
-                </a>
-                <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="sr-only">Next</span>
-                </a>
-            </div>
+    <div class="row" style="text-align: center">
+        <div>
+            <asp:UpdatePanel ID="updatePanelAds" runat="server">
+                <ContentTemplate>
+                    <asp:AdRotator ID="AdRotatorDefault" runat="server"
+                        AdvertisementFile="~/Publicidad/publicidad.xml"
+                        Height="200px"
+                        Width="300px" />
+                    <asp:Timer ID="Timer1" Interval="3000" runat="server" />
+                </ContentTemplate>
+                <Triggers>
+                    <asp:AsyncPostBackTrigger ControlID="Timer1" EventName="Tick" />
+                </Triggers>
+            </asp:UpdatePanel>
         </div>
+    </div>
+    <div class="row">
+        <asp:Repeater ID="repeaterProducto" runat="server">
+           <ItemTemplate>
+               <div>
+                   <a class="alert-danger"> Hola</a>
+               </div>
+           </ItemTemplate>
+            <SeparatorTemplate>
+                <hr />
+            </SeparatorTemplate>
+        </asp:Repeater>
     </div>
 
 
