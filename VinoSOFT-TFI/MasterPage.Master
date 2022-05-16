@@ -78,14 +78,15 @@
       <ul class="nav navbar-nav ml-auto">
           <!-- Boton de Google para traducir -->
           <li class="nav-item">
-             <a class="nav-link" <span id="google_translate_element"></span></a>
+             <span id="google_translate_element"></span>
           </li>
           <!-- -->
-          <li class="nav-item">
-            <a class="nav-link" href="RegistrarNuevoCliente.aspx">Registrarse</a>
-        </li>
-            <li class="nav-item">
-        <a class="nav-link" href="Login.aspx">Iniciar Sesion</a>
+          <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="ddIniciarSesion" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Mi Cuenta</a>
+        <div class="dropdown-menu" aria-labelledby="dropdown01">
+          <a class="dropdown-item" href="Login.aspx">Iniciar Sesion</a>
+            <a class="dropdown-item" href="RegistrarNuevoCliente.aspx">Registrarse</a>
+        </div>
       </li>
     </ul>
   </div>

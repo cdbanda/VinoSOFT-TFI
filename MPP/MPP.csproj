@@ -46,6 +46,7 @@
     <Compile Include="MPP_Newsletter.cs" />
     <Compile Include="MPP_Noticia.cs" />
     <Compile Include="MPP_Permiso.cs" />
+    <Compile Include="MPP_Producto.cs" />
     <Compile Include="MPP_ProductoComentario.cs" />
     <Compile Include="MPP_Usuario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

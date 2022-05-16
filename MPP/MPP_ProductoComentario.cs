@@ -4,19 +4,17 @@ using System.Linq;
 using System.Text;
 using System.Collections;
 using System.Data;
-using System.Data.SqlClient;
-
 
 namespace MPP
 {
     public class MPP_ProductoComentario
     {
-        DAL.SQLHelper SQLhelp = new DAL.SQLHelper();
+        DAL.SQLHelper sqlHelper = new DAL.SQLHelper();
 
         public List<BE.BE_ProductoComentario> listar(Hashtable filtros)
         {
             DataSet ds = new DataSet();
-            ds = SQLhelp.Leer("productoComentario_obtener", filtros);
+            ds = sqlHelper.Leer("productoComentario_obtener", filtros);
 
             List<BE.BE_ProductoComentario> listado = new List<BE.BE_ProductoComentario>();
             if (ds.Tables.Count > 0)
@@ -44,10 +42,14 @@ namespace MPP
         }
 
         public bool insertarComentario(BE.BE_ProductoComentario unComentario) {
-            bool ok = false;
 
-
-            return ok;
+            Hashtable hdatos = new Hashtable();
+            hdatos.Add("@autor", unComentario.AUTOR);
+            hdatos.Add("@activo", unComentario.ACTIVO);
+            hdatos.Add("@idProducto", unComentario.IDPRODUCTO);
+            hdatos.Add("@fechaHora", unComentario.FECHAHORA);
+            hdatos.Add("@comentario",unComentario.COMENTARIO);
+            return sqlHelper.Escribir("comentario_registrar", hdatos);
         }
     }
 }
