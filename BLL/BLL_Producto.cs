@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Collections;
+using System.Data;
 
 namespace BLL
 {
@@ -25,8 +27,25 @@ namespace BLL
 
         public List<BE.BE_Producto> listarProducto()
         {
-            List<BE.BE_Producto> lista = mapperProducto.listar();
+            Hashtable filtros = new Hashtable();
+            filtros = null;
+            List<BE.BE_Producto> lista = mapperProducto.listar(filtros);
 
+            return lista;
+        }
+
+        public bool insertarComentario(BE.BE_ProductoComentario unComentario) {
+            bool ok = mapperProdComen.insertarComentario(unComentario);
+            return ok;
+        }
+
+        public List<BE.BE_ProductoComentario> listarComentarios(int idProducto) {
+
+            Hashtable datos = new Hashtable();
+            datos.Add("@id",idProducto);
+
+            List<BE.BE_ProductoComentario> lista = new List<BE.BE_ProductoComentario>();
+            lista = mapperProdComen.listar(datos);
             return lista;
         }
 

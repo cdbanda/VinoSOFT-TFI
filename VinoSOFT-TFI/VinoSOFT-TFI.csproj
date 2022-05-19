@@ -111,6 +111,7 @@
     <Content Include="PlantillasMails\Email_Confirmacion.html" />
     <Content Include="PlantillasMails\Email_Consulta.html" />
     <Content Include="PoliticasPrivacidad.aspx" />
+    <Content Include="ProductoDetalle.aspx" />
     <Content Include="Productos.aspx" />
     <Content Include="Publicidad\banners\drones_vinedo.jpg" />
     <Content Include="Publicidad\banners\riego_vinedo.jpg" />
@@ -118,6 +119,7 @@
     <Content Include="Publicidad\img\drones_vinedo.jpg" />
     <Content Include="Publicidad\img\riego_vinedo.jpg" />
     <Content Include="Publicidad\img\sensor_vinedo.jpg" />
+    <Content Include="Publicidad\img\thumb\drone_thumb.jpg" />
     <Content Include="Publicidad\publicidad.xml" />
     <Content Include="RecuperarContrasena.aspx" />
     <Content Include="RegistracionNewsletter.aspx" />
@@ -275,6 +277,13 @@
     </Compile>
     <Compile Include="PoliticasPrivacidad.aspx.designer.cs">
       <DependentUpon>PoliticasPrivacidad.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ProductoDetalle.aspx.cs">
+      <DependentUpon>ProductoDetalle.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ProductoDetalle.aspx.designer.cs">
+      <DependentUpon>ProductoDetalle.aspx</DependentUpon>
     </Compile>
     <Compile Include="Productos.aspx.cs">
       <DependentUpon>Productos.aspx</DependentUpon>
