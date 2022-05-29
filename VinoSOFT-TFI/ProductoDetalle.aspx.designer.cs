@@ -33,13 +33,13 @@ namespace VinoSOFT_TFI
         protected global::System.Web.UI.WebControls.Literal ltlTitulo;
 
         /// <summary>
-        /// Control ltlDescpCorta.
+        /// Control ltlDescripcionCorta.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal ltlDescpCorta;
+        protected global::System.Web.UI.WebControls.Literal ltlDescripcionCorta;
 
         /// <summary>
         /// Control ltlPrecio.
@@ -78,22 +78,13 @@ namespace VinoSOFT_TFI
         protected global::System.Web.UI.WebControls.Button btnAgregarCarrito;
 
         /// <summary>
-        /// Control ltlDescripcion.
+        /// Control txtAutor.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal ltlDescripcion;
-
-        /// <summary>
-        /// Control iptAutor.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox iptAutor;
+        protected global::System.Web.UI.WebControls.TextBox txtAutor;
 
         /// <summary>
         /// Control txtComentario.
@@ -112,15 +103,6 @@ namespace VinoSOFT_TFI
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnGuardarComentario;
-
-        /// <summary>
-        /// Control divComentarios.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divComentarios;
 
         /// <summary>
         /// Control rptComentarios.

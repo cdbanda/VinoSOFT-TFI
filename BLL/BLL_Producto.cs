@@ -39,14 +39,25 @@ namespace BLL
             return ok;
         }
 
-        public List<BE.BE_ProductoComentario> listarComentarios(int idProducto) {
+        public List<BE.BE_ProductoComentario> listarComentariosPorID(int idProducto) {
 
             Hashtable datos = new Hashtable();
             datos.Add("@id",idProducto);
 
             List<BE.BE_ProductoComentario> lista = new List<BE.BE_ProductoComentario>();
-            lista = mapperProdComen.listar(datos);
+            lista = mapperProdComen.listarPorID(datos);
             return lista;
+        }
+
+        public BE.BE_Producto listarProductoPorID(int id) {
+            Hashtable filtros = new Hashtable();
+            filtros.Add("@id", id);
+            BE.BE_Producto producto = new BE.BE_Producto();
+            producto = mapperProducto.listarProductoPorID(filtros);
+            //Agregar lista de comentarios
+            producto.COMENTARIOS = listarComentariosPorID(id);
+            return producto;
+        
         }
 
    }

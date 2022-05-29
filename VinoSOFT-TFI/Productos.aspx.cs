@@ -14,7 +14,7 @@ namespace VinoSOFT_TFI
         {
             if (!IsPostBack)
             {
-
+                listarProductos();
             }
 
         }
@@ -23,6 +23,11 @@ namespace VinoSOFT_TFI
             List<BE.BE_Producto> lista = new List<BE.BE_Producto>();
             lista = gestorProducto.listarProducto();
 
+            repeaterProducto.DataSource = null;
+            repeaterProducto.DataBind();
+
+            repeaterProducto.DataSource = lista;
+            repeaterProducto.DataBind();
             
         
         }

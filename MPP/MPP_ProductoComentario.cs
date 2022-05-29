@@ -11,10 +11,10 @@ namespace MPP
     {
         DAL.SQLHelper sqlHelper = new DAL.SQLHelper();
 
-        public List<BE.BE_ProductoComentario> listar(Hashtable filtros)
+        public List<BE.BE_ProductoComentario> listarPorID(Hashtable filtros)
         {
             DataSet ds = new DataSet();
-            ds = sqlHelper.Leer("productoComentario_obtener", filtros);
+            ds = sqlHelper.Leer("productoComentario_listarPorID", filtros);
 
             List<BE.BE_ProductoComentario> listado = new List<BE.BE_ProductoComentario>();
             if (ds.Tables.Count > 0)
@@ -29,7 +29,7 @@ namespace MPP
                         unComentario.AUTOR = item["autor"].ToString();
                         unComentario.COMENTARIO = item["comentario"].ToString();
                         unComentario.ACTIVO = int.Parse(item["activo"].ToString());
-                        unComentario.IDPRODUCTO = int.Parse(item["id_producto"].ToString());
+                        //unComentario.IDPRODUCTO = int.Parse(item["id_producto"].ToString());
                         unComentario.FECHAHORA = DateTime.Parse(item["fechaHora"].ToString());
 
 
@@ -49,7 +49,7 @@ namespace MPP
             hdatos.Add("@idProducto", unComentario.IDPRODUCTO);
             hdatos.Add("@fechaHora", unComentario.FECHAHORA);
             hdatos.Add("@comentario",unComentario.COMENTARIO);
-            return sqlHelper.Escribir("comentario_registrar", hdatos);
+            return sqlHelper.Escribir("productoComentario_registrar", hdatos);
         }
     }
 }

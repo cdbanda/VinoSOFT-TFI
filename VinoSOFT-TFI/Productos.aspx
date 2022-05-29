@@ -21,21 +21,22 @@
  </div>
 
     <div class="row">
-        <p>productos:</p>
         <asp:Repeater ID="repeaterProducto" runat="server">
            <ItemTemplate>
                <div class="col-sm-4 col-lg-4 col-md-4">
                    <div class="">
                        <asp:Image ID="imgProd" ImageUrl="/Publicidad/img/thumb/drone_thumb.jpg" runat="server" />
-                       <h4 class="pull-right">$ 1000</h4>
-                       <h4><a href="">Producto Ampliado</a>
-                           <asp:Literal ID="ltlNombre" runat="server" Text="Dron"></asp:Literal>
+                       <h4 class="pull-right">$ <%# (Container.DataItem as BE.BE_Producto).PRECIO %></h4>
+                       <label>"<%# (Container.DataItem as BE.BE_Producto).IDPRODUCTO %>"</label>
+                       <h4><a href="/ProductoDetalle.aspx?id=<%# (Container.DataItem as BE.BE_Producto).IDPRODUCTO %>">
+                           <asp:Literal ID="ltlNombre" runat="server" Text="<%# (Container.DataItem as BE.BE_Producto).NOMBRE %>"> </asp:Literal>
+                           </a>
                        </h4>
                        <h6>
-                           <asp:literal  ID="ltlCate" runat="server" Text="Categoria"></asp:literal>
+                           <asp:literal  ID="ltlCate" runat="server" Text="<%# (Container.DataItem as BE.BE_Producto).IDCATEGORIA %>"></asp:literal>
                        </h6>
                        <p>
-                           <asp:Literal ID="ltlDescCorta" runat="server" Text="descripcion corta"></asp:Literal>
+                           <asp:Literal ID="ltlDescCorta" runat="server" Text="<%# (Container.DataItem as BE.BE_Producto).DESCRIPCIONCORTA %>"></asp:Literal>
                        </p>
                    </div>
                </div>

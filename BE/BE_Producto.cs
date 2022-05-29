@@ -63,5 +63,21 @@ namespace BE
             set { precio = value; }
         }
 
+        private string descripcionCorta;
+
+        public string DESCRIPCIONCORTA
+        {
+            get { return descripcionCorta; }
+            set { descripcionCorta = value; }
+        }
+
+        private List<BE.BE_ProductoComentario> comentarios;
+
+        public List<BE.BE_ProductoComentario> COMENTARIOS
+        {
+            get { return comentarios; }
+            set { comentarios = value; }
+        }
+
     }
 }
