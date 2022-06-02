@@ -9,9 +9,13 @@ namespace VinoSOFT_TFI
 {
     public partial class CarritoCliente : System.Web.UI.Page
     {
+        BE.BE_Venta venta = new BE.BE_Venta();
+
         protected void Page_Load(object sender, EventArgs e)
         {
 
         }
+
+
     }
 }
