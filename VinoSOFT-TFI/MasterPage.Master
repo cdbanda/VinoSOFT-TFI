@@ -102,10 +102,11 @@
     </div>
  
     </form>
-</body>
+
     <footer class="footer">
-      <div class="container">
+      <div>
         <span class="text-muted">VinoSOFT S.A.S. - 2022</span>
       </div>
     </footer>
+</body>
 </html>

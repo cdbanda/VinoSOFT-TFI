@@ -56,13 +56,5 @@ namespace BE
             set { idFactura = value; }
         }
 
-        private string nombreCliente;
-
-        public string NOMBRECLIENTE
-        {
-            get { return nombreCliente; }
-            set { nombreCliente = value; }
-        }
-
     }
 }

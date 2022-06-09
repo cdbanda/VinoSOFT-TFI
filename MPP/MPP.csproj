@@ -49,6 +49,7 @@
     <Compile Include="MPP_Producto.cs" />
     <Compile Include="MPP_ProductoComentario.cs" />
     <Compile Include="MPP_Usuario.cs" />
+    <Compile Include="MPP_Venta.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

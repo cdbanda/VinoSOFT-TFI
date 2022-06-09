@@ -51,6 +51,7 @@
     <Compile Include="BLL_Noticia.cs" />
     <Compile Include="BLL_Permiso.cs" />
     <Compile Include="BLL_Usuario.cs" />
+    <Compile Include="BLL_Venta.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
