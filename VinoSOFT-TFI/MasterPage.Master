@@ -77,8 +77,8 @@
 
       <ul class="nav navbar-nav ml-auto">
           <!-- Boton de Google para traducir -->
-          <li class="nav-item">
-             <span id="google_translate_element"></span>
+          <li>
+             <div id="google_translate_element"></div>
           </li>
           <!-- -->
           <li class="nav-item dropdown">
@@ -101,12 +101,15 @@
         </asp:ContentPlaceHolder>
     </div>
  
-    </form>
 
-    <footer class="footer">
-      <div>
-        <span class="text-muted">VinoSOFT S.A.S. - 2022</span>
-      </div>
-    </footer>
+         <footer>
+                <p>
+                    <span><a href="TerminosYCondiciones.aspx">T&eacute;rminos y Condiciones</a></span>
+                    &nbsp;|&nbsp;
+                    <span><a href="PoliticasPrivacidad.aspx">Pol&iacute;ticas de Privacidad</a></span>
+                    <span class="pull-right">&copy; VinoSOFT 2022.</span>
+                </p>
+            </footer>
+    </form>
 </body>
 </html>
