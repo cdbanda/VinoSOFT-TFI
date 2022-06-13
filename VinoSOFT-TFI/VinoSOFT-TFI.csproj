@@ -83,6 +83,10 @@
   <ItemGroup>
     <Content Include="AdminBackup.aspx" />
     <Content Include="AdminBitacora.aspx" />
+    <Content Include="AdminFamiliasEdicion.aspx" />
+    <Content Include="AdminFamiliasLista.aspx" />
+    <Content Include="AdminUsuariosEditar.aspx" />
+    <Content Include="AdminUsuariosLista.aspx" />
     <Content Include="CarritoCliente.aspx" />
     <Content Include="ClienteDatos.aspx" />
     <Content Include="Contacto.aspx" />
@@ -187,6 +191,34 @@
     </Compile>
     <Compile Include="AdminBitacora.aspx.designer.cs">
       <DependentUpon>AdminBitacora.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AdminFamiliasEdicion.aspx.cs">
+      <DependentUpon>AdminFamiliasEdicion.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdminFamiliasEdicion.aspx.designer.cs">
+      <DependentUpon>AdminFamiliasEdicion.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AdminFamiliasLista.aspx.cs">
+      <DependentUpon>AdminFamiliasLista.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdminFamiliasLista.aspx.designer.cs">
+      <DependentUpon>AdminFamiliasLista.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AdminUsuariosEditar.aspx.cs">
+      <DependentUpon>AdminUsuariosEditar.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdminUsuariosEditar.aspx.designer.cs">
+      <DependentUpon>AdminUsuariosEditar.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AdminUsuariosLista.aspx.cs">
+      <DependentUpon>AdminUsuariosLista.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdminUsuariosLista.aspx.designer.cs">
+      <DependentUpon>AdminUsuariosLista.aspx</DependentUpon>
     </Compile>
     <Compile Include="CarritoCliente.aspx.cs">
       <DependentUpon>CarritoCliente.aspx</DependentUpon>
