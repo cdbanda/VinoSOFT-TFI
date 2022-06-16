@@ -51,6 +51,15 @@ namespace VinoSOFT_TFI
         protected global::System.Web.UI.WebControls.TextBox iptContrasena;
 
         /// <summary>
+        /// Control RequiredFieldValidator_iptContrasena.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator_iptContrasena;
+
+        /// <summary>
         /// Control txtPwdGuardada.
         /// </summary>
         /// <remarks>
@@ -157,6 +166,33 @@ namespace VinoSOFT_TFI
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView dgvFamilias;
+
+        /// <summary>
+        /// Control ddPermisos.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddPermisos;
+
+        /// <summary>
+        /// Control RequiredFieldValidator_ddPermisos.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator_ddPermisos;
+
+        /// <summary>
+        /// Control btnAgregarPermiso.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnAgregarPermiso;
 
         /// <summary>
         /// Control dgvPermisos.

@@ -178,6 +178,9 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ACL.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
     <Compile Include="AdminBackup.aspx.cs">
       <DependentUpon>AdminBackup.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

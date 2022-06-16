@@ -34,5 +34,14 @@ namespace BE
             set { idPermiso = value; }
         }
 
+        private int tipo;
+
+        public int TIPO
+        {
+            get { return tipo; }
+            set { tipo = value; }
+        }
+
+
     }
 }

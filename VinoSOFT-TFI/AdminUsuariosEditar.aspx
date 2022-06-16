@@ -5,7 +5,7 @@
     <div class="form-group clearfix">
         <a href="AdminUsuariosLista.aspx" class="btn btn-info pull-left">Volver al Listado</a>
         <a href="AdminUsuariosEditar.aspx" class="btn btn-warning pull-left">Nuevo</a>
-        <asp:Button id="btnEliminar" runat="server" CssClass="btn btn-danger pull-right" UseSubmitBehavior="false" Visible="false" Text="Eliminar" />
+        <asp:Button id="btnEliminar" runat="server" CssClass="btn btn-danger pull-right" UseSubmitBehavior="false" Visible="false" Text="Eliminar" OnClick="btnEliminar_Click"/>
     </div>
     <asp:HiddenField ID="iptCodigo" runat="server" />
 
@@ -23,7 +23,7 @@
             </div>
             <div class="col-md-5">
                 <asp:TextBox ID="iptContrasena" runat="server" ClientIDMode="Static" required="required" MaxLength="15" CssClass="form-control" TextMode="Password"></asp:TextBox>
-                <asp:RequiredFieldValidator ForeColor="Red" runat="server" ErrorMessage="Campo Requerido" ControlToValidate="iptContrasena"></asp:RequiredFieldValidator>
+                <asp:RequiredFieldValidator ForeColor="Red" id="RequiredFieldValidator_iptContrasena" runat="server" ErrorMessage="Campo Requerido" ControlToValidate="iptContrasena"></asp:RequiredFieldValidator>
 
                 <asp:TextBox ID="txtPwdGuardada" Visible="false" Enabled="false" CssClass="form-control" ReadOnly="true" value="*********" runat="server"></asp:TextBox>
             </div>
@@ -122,13 +122,13 @@
                </div>
             <div class="col-md-6">
                 <div class="col-md-12"><span class="lead">Asignar Permisos</span></div>
-<%--                <div class="col-md-6">
+                <div class="col-md-6">
                     <asp:DropDownList ID="ddPermisos" CssClass="form-control" runat="server" AppendDataBoundItems="true" ValidationGroup="vgAgregarPermiso">
                         <asp:ListItem Enabled="true" Selected="True" Value="">Seleccione...</asp:ListItem>
                     </asp:DropDownList>
                     <asp:RequiredFieldValidator ForeColor="Red" ID="RequiredFieldValidator_ddPermisos" runat="server" ErrorMessage="Campo Requerido" ControlToValidate="ddPermisos"
                          ValidationGroup="vgAgregarPermiso"></asp:RequiredFieldValidator>
-                </div>--%>
+                </div>
 <%--                <div class="col-md-4">
                     <asp:DropDownList ID="ddTipoPermiso" CssClass="form-control" runat="server" ValidationGroup="vgAgregarPermiso">
                         <asp:ListItem Value="">Seleccione...</asp:ListItem>
@@ -138,9 +138,9 @@
                     <asp:RequiredFieldValidator ForeColor="Red" ID="RequiredFieldValidator_ddTipoPermiso" runat="server" ErrorMessage="Campo Requerido" ControlToValidate="ddTipoPermisos"
                          ValidationGroup="vgAgregarPermiso"></asp:RequiredFieldValidator>
                 </div>--%>
-<%--                <div class="col-md-2">
+                <div class="col-md-2">
                     <asp:Button ID="btnAgregarPermiso" OnClick="btnAgregarPermiso_Click" runat="server" CssClass="btn btn.sm btn-warning" Text="Agregar" ValidationGroup="vgAgregarPermiso" />
-                </div>--%>
+                </div>
                 <div class="col-md-12">
                     <asp:gridview ID="dgvPermisos" CssClass="table table-hover table-bordered" BorderStyle="None" itemtype="BE_Permiso" runat="server" AutoGenerateColumns="false">
                         <Columns>

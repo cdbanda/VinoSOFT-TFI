@@ -9,6 +9,15 @@ namespace BE
     {
         private bool activo;
 
+        private string usuario;
+
+        public string USUARIO
+        {
+            get { return usuario; }
+            set { usuario = value; }
+        }
+
+
         public bool ACTIVO
         {
             get { return activo; }
@@ -118,6 +127,23 @@ namespace BE
         {
             get { return ciudad; }
             set { ciudad = value; }
+        }
+
+        public bool TienePermiso(string cod_patente)
+        {
+            if (this.ESADMIN)
+            {
+                return true;
+            }
+            foreach(BE.BE_Permiso permiso in this.LISTAPERMISO)
+            {
+                if(permiso.CODIGO.ToUpper() == cod_patente.ToUpper())
+                {
+                    //corregir el tipo
+                    return true;
+                }
+            }
+            return false;
         }
 
 
