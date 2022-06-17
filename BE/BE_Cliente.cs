@@ -7,9 +7,6 @@ namespace BE
 {
     public class BE_Cliente
     {
-        public const string ORIGEN_WEB = "WEB";
-        public const string ORIGEN_LOCAL = "LOCAL";
-
 
         private int idCliente;
 

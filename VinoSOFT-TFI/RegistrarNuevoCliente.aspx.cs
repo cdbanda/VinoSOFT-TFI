@@ -69,20 +69,20 @@ namespace VinoSOFT_TFI
         }
 
         private void CargarCliente() {
-            BE.BE_Usuario usuario = new BE.BE_Usuario();
-            BLL.BLL_Usuario gestorUsuario = new BLL.BLL_Usuario();
+            BE.BE_Cliente cliente = new BE.BE_Cliente();
+            BLL.BLL_Cliente gestorCliente = new BLL.BLL_Cliente();
 
-            usuario.APELLIDO = txtBoxApellido.Text;
-            usuario.NOMBRE = txtBoxNombre.Text;
-            usuario.DOMICILIO = txtBoxDir.Text;
-            usuario.CIUDAD = txtBoxCiudad.Text;
-            usuario.EMAIL = UC_Mail.Text;
-            usuario.DNI = int.Parse(txtBoxDNI.Text);
-            usuario.TELEFONO = txtBoxTelefono.Text;
-            usuario.CONTRASEÑA = txtBoxContrasena.Text;
-            usuario.ESEMPLEADO = false;
+            cliente.APELLIDO = txtBoxApellido.Text;
+            cliente.NOMBRE = txtBoxNombre.Text;
+            cliente.DOMICILIO = txtBoxDir.Text;
+            cliente.CIUDAD = txtBoxCiudad.Text;
+            cliente.EMAIL = UC_Mail.Text;
+            cliente.DNI = int.Parse(txtBoxDNI.Text);
+            cliente.TELEFONO = txtBoxTelefono.Text;
+            cliente.CONTRASENA = txtBoxContrasena.Text;
 
-            if (gestorUsuario.crear(usuario))
+
+            if (gestorCliente.crear(cliente))
             {
                 ModalPopUpMensajes.Show();
                 LabelMensaje.Text = "Usuario Creado Correctamente.";

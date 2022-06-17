@@ -51,13 +51,19 @@ namespace MPP
             hdatos.Add("@email", cliente.EMAIL);
 
             int idCliente = ObtenerUltimoID();
-            hdatos.Add("@id", idCliente);
+            if(idCliente < 1)
+            {
+                idCliente = 1;
+            }
+            hdatos.Add("@idcliente", idCliente);
             cliente.IDCLIENTE = idCliente;
 
 
-            bool guardado = SQLHelper.Escribir("Cliente_insertar",hdatos);
-            int idUsuario = CrearUsuario(cliente);
-            if()
+            bool guardado = SQLHelper.Escribir("Cliente_crear",hdatos);
+            //int idUsuario = CrearUsuario(cliente);
+            //---
+
+            return guardado;
         }
 
         public int ObtenerUltimoID()
@@ -65,7 +71,7 @@ namespace MPP
             int id = 0;
             DataSet ds = new DataSet();
 
-            ds = SQLHelper.Leer("Cliente_ultimoID", null);
+            ds = SQLHelper.Leer("Cliente_obtenerUltimoID", null);
 
             if (ds.Tables[0].Rows.Count > 0)
             {
@@ -75,6 +81,25 @@ namespace MPP
             }
 
             return id;
+        }
+
+        public bool Editar(BE.BE_Cliente cliente)
+        {
+            Hashtable hdatos = new Hashtable();
+            hdatos.Add("@nombre", cliente.NOMBRE);
+            hdatos.Add("@apellido", cliente.APELLIDO);
+            hdatos.Add("@domicilio", cliente.DOMICILIO);
+            hdatos.Add("@dni", cliente.DNI);
+            hdatos.Add("@ciudad", cliente.CIUDAD);
+            hdatos.Add("@telefono", cliente.TELEFONO);
+            hdatos.Add("@contrasena", cliente.CONTRASENA);
+            hdatos.Add("@email", cliente.EMAIL);
+            hdatos.Add("@idCliente", cliente.IDCLIENTE);
+
+            bool guardado = SQLHelper.Escribir("Cliente_editar", hdatos);
+
+            return guardado;
+
         }
         
     }
