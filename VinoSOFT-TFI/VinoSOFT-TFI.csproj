@@ -161,6 +161,7 @@
     <Content Include="database\backups\BK25-10-2019_20-37-27.bak" />
     <Content Include="database\backups\BK31-10-2019_20-26-19.bak" />
     <Content Include="database\restore\BK25-10-2019_20-37-27.bak" />
+    <Content Include="database\VINOSOFT_160622_v2.bak" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
