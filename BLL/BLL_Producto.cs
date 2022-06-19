@@ -25,6 +25,12 @@ namespace BLL
             return ok;
         }
 
+        public bool eliminarProducto(BE.BE_Producto unProducto)
+        {
+            bool ok = mapperProducto.eliminar(unProducto);
+            return ok;
+        }
+
         public List<BE.BE_Producto> listarProducto()
         {
             Hashtable filtros = new Hashtable();

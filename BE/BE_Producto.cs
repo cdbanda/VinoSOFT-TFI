@@ -23,12 +23,12 @@ namespace BE
             set { activo = value; }
         }
 
-        private int idCategoria;
+        private BE.BE_Categoria categoria;
 
-        public int IDCATEGORIA
+        public BE.BE_Categoria CATEGORIA
         {
-            get { return idCategoria; }
-            set { idCategoria = value; }
+            get { return categoria; }
+            set { categoria = value; }
         }
 
         private string descripcion;
@@ -78,6 +78,24 @@ namespace BE
             get { return comentarios; }
             set { comentarios = value; }
         }
+
+        private int stock;
+
+        public int STOCK
+        {
+            get { return stock; }
+            set { stock = value; }
+        }
+
+        private int stockMinimo;
+
+        public int STOCKMINIMO
+        {
+            get { return stockMinimo; }
+            set { stockMinimo = value; }
+        }
+
+
 
     }
 }

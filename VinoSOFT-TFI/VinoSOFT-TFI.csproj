@@ -85,6 +85,8 @@
     <Content Include="AdminBitacora.aspx" />
     <Content Include="AdminFamiliasEdicion.aspx" />
     <Content Include="AdminFamiliasLista.aspx" />
+    <Content Include="AdminProductosEdicion.aspx" />
+    <Content Include="AdminProductosLista.aspx" />
     <Content Include="AdminUsuariosEditar.aspx" />
     <Content Include="AdminUsuariosLista.aspx" />
     <Content Include="CarritoCliente.aspx" />
@@ -209,6 +211,20 @@
     </Compile>
     <Compile Include="AdminFamiliasLista.aspx.designer.cs">
       <DependentUpon>AdminFamiliasLista.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AdminProductosEdicion.aspx.cs">
+      <DependentUpon>AdminProductosEdicion.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdminProductosEdicion.aspx.designer.cs">
+      <DependentUpon>AdminProductosEdicion.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AdminProductosLista.aspx.cs">
+      <DependentUpon>AdminProductosLista.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdminProductosLista.aspx.designer.cs">
+      <DependentUpon>AdminProductosLista.aspx</DependentUpon>
     </Compile>
     <Compile Include="AdminUsuariosEditar.aspx.cs">
       <DependentUpon>AdminUsuariosEditar.aspx</DependentUpon>
@@ -392,7 +408,7 @@
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="img\" />
+    <Folder Include="img\productos\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BE\BE.csproj">

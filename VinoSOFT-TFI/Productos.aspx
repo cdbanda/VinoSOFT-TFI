@@ -33,7 +33,7 @@
                            </a>
                        </h4>
                        <h6>
-                           <asp:literal  ID="ltlCate" runat="server" Text="<%# (Container.DataItem as BE.BE_Producto).IDCATEGORIA %>"></asp:literal>
+                           <asp:literal  ID="ltlCate" runat="server" Text="<%# (Container.DataItem as BE.BE_Producto).CATEGORIA.NOMBRE %>"></asp:literal>
                        </h6>
                        <p>
                            <asp:Literal ID="ltlDescCorta" runat="server" Text="<%# (Container.DataItem as BE.BE_Producto).DESCRIPCIONCORTA %>"></asp:Literal>
