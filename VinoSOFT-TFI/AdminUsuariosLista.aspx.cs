@@ -10,7 +10,7 @@ namespace VinoSOFT_TFI
     public partial class AdminUsuariosLista : System.Web.UI.Page
     {
         BLL.BLL_Usuario gestorUsuarios = new BLL.BLL_Usuario();
-
+        ACL gestorPermisos = new ACL();
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -42,11 +42,26 @@ namespace VinoSOFT_TFI
         protected void dgvUsuarios_RowDeleting(object sender, GridViewDeleteEventArgs e)
         {
             GridViewRow row = dgvUsuarios.Rows[e.RowIndex];
-            string idUsuario = row.Cells[0].Text;
+            string idUsu = row.Cells[0].Text;
+            int idUsuario = 0;
 
-            if(int.TryParse(idUsuario, out _))
+            if (int.TryParse(idUsu, out _))
             {
-               
+                idUsuario = int.Parse(idUsu);
+               //if(idUsuario == gestorPermisos.GetIdUsuario())
+               // {
+               //     return;
+               // }
+
+                BE.BE_Usuario usuario = new BE.BE_Usuario();
+                usuario.IDUSUARIO = idUsuario;
+                bool eliminado = gestorUsuarios.eliminar(usuario);
+
+                if (eliminado)
+                {
+                    Response.Redirect("AdminUsuariosLista.aspx");
+                }
+
             }
         }
 

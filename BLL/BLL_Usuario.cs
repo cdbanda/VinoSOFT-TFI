@@ -12,7 +12,7 @@ namespace BLL
         BLL.BLL_Seguridad gestorSeguridad = new BLL_Seguridad();
 
         public BE.BE_Usuario getPorId(int idUsuario) {
-            return getPorId(idUsuario);
+            return mapperUsuario.getPorID(idUsuario);
         }
 
         public bool agregarFamilia(int Idfamilia, int idUsuario) {
@@ -28,7 +28,7 @@ namespace BLL
                 return false;
             }
             //Se encripta la contraseña
-            usuario.CONTRASEÑA = gestorSeguridad.Encriptar(usuario.CONTRASEÑA);
+            usuario.CONTRASENA = gestorSeguridad.Encriptar(usuario.CONTRASENA);
             return mapperUsuario.crear(usuario);
         }
 
@@ -46,7 +46,7 @@ namespace BLL
         public bool eliminar(BE.BE_Usuario usuario) {
             if (mapperUsuario.puedeEliminarUsuario(usuario))
             {
-                return true;
+                return mapperUsuario.eliminar(usuario);
             }
             else {
                 return false; // verficar si super admin

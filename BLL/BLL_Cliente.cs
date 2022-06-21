@@ -10,11 +10,21 @@ namespace BLL
         MPP.MPP_Cliente mapperCliente = new MPP.MPP_Cliente();
         BLL.BLL_Seguridad gestorSeguridad = new BLL_Seguridad();
 
+
         public bool crear(BE.BE_Cliente cliente)
         {
             //Se encripta la contraseña
-            cliente.CONTRASENA = gestorSeguridad.Encriptar(cliente.CONTRASENA);
-            return mapperCliente.Crear(cliente);
+            bool existeCliente = mapperCliente.validarExistentePorMail(cliente);
+            if (existeCliente)
+            {
+                return false;
+            }
+            else
+            {
+                cliente.CONTRASENA = gestorSeguridad.Encriptar(cliente.CONTRASENA);
+                return mapperCliente.Crear(cliente);
+            }
+
         }
 
         public bool editar(BE.BE_Cliente cliente)
@@ -24,7 +34,17 @@ namespace BLL
 
         //public bool eliminar(BE.BE_Cliente cliente)
         //{
-        //    return mapperCliente.eliminar(cliente);
+        //    //return mapperCliente.eliminar(cliente);
         //}
+
+        //public List<BE.BE_Cliente> listar()
+        //{
+
+        //}
+
+        public BE.BE_Cliente getPorID (int idCliente)
+        {
+            return mapperCliente.GetPorID(idCliente);
+        }
     }
 }

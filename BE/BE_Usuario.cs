@@ -32,12 +32,12 @@ namespace BE
             set { apellido = value; }
         }
 
-        private string contraseña;
+        private string contrasena;
 
-        public string CONTRASEÑA
+        public string CONTRASENA
         {
-            get { return contraseña; }
-            set { contraseña = value; }
+            get { return contrasena; }
+            set { contrasena = value; }
         }
 
         private string email;
@@ -97,13 +97,6 @@ namespace BE
             set { dni = value; }
         }
 
-        private string domicilio;
-
-        public string DOMICILIO
-        {
-            get { return domicilio; }
-            set { domicilio = value; }
-        }
 
         private bool esAdmin;
 
@@ -121,13 +114,15 @@ namespace BE
             set { esEmpleado = value; }
         }
 
-        private string ciudad;
 
-        public string CIUDAD
+        private BE.BE_Cliente cliente;
+
+        public BE.BE_Cliente CLIENTE
         {
-            get { return ciudad; }
-            set { ciudad = value; }
+            get { return cliente; }
+            set { cliente = value; }
         }
+
 
         public bool TienePermiso(string cod_patente)
         {

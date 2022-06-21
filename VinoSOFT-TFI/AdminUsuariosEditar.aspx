@@ -129,25 +129,27 @@
                     <asp:RequiredFieldValidator ForeColor="Red" ID="RequiredFieldValidator_ddPermisos" runat="server" ErrorMessage="Campo Requerido" ControlToValidate="ddPermisos"
                          ValidationGroup="vgAgregarPermiso"></asp:RequiredFieldValidator>
                 </div>
-<%--                <div class="col-md-4">
+                 <div class="col-md-4">
                     <asp:DropDownList ID="ddTipoPermiso" CssClass="form-control" runat="server" ValidationGroup="vgAgregarPermiso">
                         <asp:ListItem Value="">Seleccione...</asp:ListItem>
                         <asp:ListItem Value="1">Permitir</asp:ListItem>
                         <asp:ListItem Value="0">Denegar</asp:ListItem>
                     </asp:DropDownList>
-                    <asp:RequiredFieldValidator ForeColor="Red" ID="RequiredFieldValidator_ddTipoPermiso" runat="server" ErrorMessage="Campo Requerido" ControlToValidate="ddTipoPermisos"
+                    <asp:RequiredFieldValidator ForeColor="Red" ID="RequiredFieldValidator_ddTipoPermiso" runat="server" ErrorMessage="Campo Requerido" ControlToValidate="ddTipoPermiso"
                          ValidationGroup="vgAgregarPermiso"></asp:RequiredFieldValidator>
-                </div>--%>
+                </div>
                 <div class="col-md-2">
-                    <asp:Button ID="btnAgregarPermiso" OnClick="btnAgregarPermiso_Click" runat="server" CssClass="btn btn.sm btn-warning" Text="Agregar" ValidationGroup="vgAgregarPermiso" />
+                    <asp:Button ID="btnAgregarPermiso" OnClick="btnAgregarPermiso_Click" runat="server" CssClass="btn btn.sm btn-warning" Text="Agregar" 
+                        ValidationGroup="vgAgregarPermiso"/>
                 </div>
                 <div class="col-md-12">
-                    <asp:gridview ID="dgvPermisos" CssClass="table table-hover table-bordered" BorderStyle="None" itemtype="BE_Permiso" runat="server" AutoGenerateColumns="false">
+                    <asp:gridview ID="dgvPermisos" CssClass="table table-hover table-bordered" BorderStyle="None" itemtype="BE_Permiso" 
+                        runat="server" AutoGenerateColumns="false" OnRowDataBound="dgvPermisos_RowDataBound" OnRowDeleting="dgvPermisos_RowDeleting">
                         <Columns>
                             <asp:BoundField DataField="idPermiso" HeaderText="Codigo" ReadOnly="true" SortExpression="IdPermiso" />
                             <asp:BoundField DataField="Descripcion" HeaderText="Nombre" ReadOnly="true" SortExpression="Descripcion" />
-                           <%-- <asp:BoundField DataField="Tipo" HeaderText="Tipo" ReadOnly="true" SortExpression="Tipo" />--%>
-<%--                            <asp:CommandField ShowDeleteButton="true" DeleteText="Eliminar" ControlStyle-CssClass="btn btn-xs btn-danger" ControlStyle-BorderStyle="None" HeaderText="Eliminar" />--%>
+                            <asp:BoundField DataField="Tipo" HeaderText="Tipo" ReadOnly="true" SortExpression="Tipo" />
+                            <asp:CommandField ShowDeleteButton="true" DeleteText="Eliminar" ControlStyle-CssClass="btn btn-xs btn-danger" ControlStyle-BorderStyle="None" HeaderText="Eliminar" />
                         </Columns>
                     </asp:gridview>
                 </div>
@@ -158,7 +160,7 @@
     <div class="form-group clearfix">
         <a href="AdminUsuariosLista.aspx" class="btn btn-info pull-left">Volver al Listado</a>
         <input type="reset" class="btn btn-secondary pull-left" name="cancelar" value="Cancelar" />
-        <asp:Button ID="btnGuardar" runat="server" CssClass="btn btn-success" Text="Guardar" />
+        <asp:Button ID="btnGuardar" runat="server" CssClass="btn btn-success" Text="Guardar" OnClick="btnGuardar_Click"/>
     </div>
 
 </asp:Content>

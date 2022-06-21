@@ -77,6 +77,23 @@ namespace VinoSOFT_TFI
             }
         }
 
+
+        public void validarAccesoCliente() 
+            {
+            if(EstaLogueado() == false)
+            {
+                Response.Redirect("Login.aspx");
+            }
+            int idCliente = GetIdCliente();
+
+            if(idCliente < 0)
+            {
+                Session.Clear();
+                Session.Abandon();
+                Response.Redirect("Login.aspx");
+            }
+            } 
+
         public bool TienePermiso(string CodPermisoValidar)
         {
             if(HttpContext.Current.Session["UsuarioLogeado"] == null)

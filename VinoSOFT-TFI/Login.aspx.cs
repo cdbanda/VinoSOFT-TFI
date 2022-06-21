@@ -15,39 +15,28 @@ namespace VinoSOFT_TFI
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!IsPostBack) {
-
-            }
-        }
-
-        protected bool VerificarSesionIniciada() {
-
-            if (Session["Usuario"] != null)
+            if(Session["UsuarioLogeado"] != null)
             {
-                return true;
-            }
-            else {
-                return false;
+                Response.Redirect("Inicio.aspx");
             }
         }
-
 
         protected void btnLoginPage_Click(object sender, EventArgs e)
         {
 
-            if (VerificarSesionIniciada() == false)
-            {
-                //tomo los datos del control de usuario 
-                string contrasena = UCUsuarioPass.contrasena;
-                string usuario = UCUsuarioPass.usuario;
+            //if (VerificarSesionIniciada() == false)
+            //{
+            //    //tomo los datos del control de usuario 
+            //    string contrasena = UCUsuarioPass.contrasena;
+            //    string usuario = UCUsuarioPass.usuario;
 
-                bool resultado = gestorUsuario.verificarUsuario(usuario, contrasena);
+            //    bool resultado = gestorUsuario.verificarUsuario(usuario, contrasena);
 
 
-            }
-            else { 
+            //}
+            //else { 
                
-            }
+            //}
         }
     }
 }

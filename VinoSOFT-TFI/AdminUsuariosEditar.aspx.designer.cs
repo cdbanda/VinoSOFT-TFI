@@ -186,6 +186,24 @@ namespace VinoSOFT_TFI
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator_ddPermisos;
 
         /// <summary>
+        /// Control ddTipoPermiso.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddTipoPermiso;
+
+        /// <summary>
+        /// Control RequiredFieldValidator_ddTipoPermiso.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator_ddTipoPermiso;
+
+        /// <summary>
         /// Control btnAgregarPermiso.
         /// </summary>
         /// <remarks>

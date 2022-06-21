@@ -11,6 +11,9 @@ namespace MPP
     public class MPP_Cliente
     {
         DAL.SQLHelper SQLHelper = new DAL.SQLHelper();
+        //ID para familia del cliente,
+        const int ID_FAMILIA_CLIENTE = 2;
+        MPP.MPP_Usuario mapperUsuario = new MPP_Usuario();
 
         public BE.BE_Cliente GetPorID(int id)
         {
@@ -60,9 +63,41 @@ namespace MPP
 
 
             bool guardado = SQLHelper.Escribir("Cliente_crear",hdatos);
-            //int idUsuario = CrearUsuario(cliente);
-            //---
+            //se asigna familia
+            if (guardado)
+            {
+                int idUsuario = mapperUsuario.BuscarUltimoIDUsuario() + 1;
+                bool clienteGuardado = CrearUsuario(cliente);
+                bool asigFamilia = AsignarFamilia(idUsuario);
+                return clienteGuardado;
+                
+            }
+            else
+            {
+               return guardado;
+            }
 
+        }
+
+        public bool CrearUsuario(BE.BE_Cliente cliente)
+        {
+            Hashtable hdatos = new Hashtable();
+
+            hdatos.Add("@nombre", cliente.NOMBRE);
+            hdatos.Add("@apellido", cliente.APELLIDO);
+            hdatos.Add("@domicilio", cliente.DOMICILIO);
+            hdatos.Add("@dni", cliente.DNI);
+            hdatos.Add("@ciudad", cliente.CIUDAD);
+            hdatos.Add("@telefono", cliente.TELEFONO);
+            hdatos.Add("@contrasena", cliente.CONTRASENA);
+            hdatos.Add("@email", cliente.EMAIL);
+            hdatos.Add("@idCliente", cliente.IDCLIENTE);
+            hdatos.Add("@activo", 0); //el cliente no tiene acceso a la parte admin, se habilita desde la gestion del usuario.
+            hdatos.Add("@esempleado", 0);
+            int idUsuario = mapperUsuario.BuscarUltimoIDUsuario() + 1;
+            hdatos.Add("@id", idUsuario);
+
+            bool guardado = SQLHelper.Escribir("usuario_crear", hdatos);
             return guardado;
         }
 
@@ -96,11 +131,36 @@ namespace MPP
             hdatos.Add("@email", cliente.EMAIL);
             hdatos.Add("@idCliente", cliente.IDCLIENTE);
 
-            bool guardado = SQLHelper.Escribir("Cliente_editar", hdatos);
+            bool guardado = SQLHelper.Escribir("Cliente_actualizar", hdatos);
 
             return guardado;
 
         }
-        
+
+        public bool AsignarFamilia(int idUsuario)
+        {
+            bool ok = false;
+            MPP.MPP_Usuario mapperUsuario = new MPP_Usuario();
+
+            ok = mapperUsuario.agregarFamilia(ID_FAMILIA_CLIENTE, idUsuario);
+            return ok;
+        }
+
+        public bool validarExistentePorMail(BE.BE_Cliente cliente)
+        {
+            Hashtable hdatos = new Hashtable();
+            hdatos.Add("@email", cliente.EMAIL);
+
+            DataSet ds = new DataSet();
+            ds = SQLHelper.Leer("cliente_validarExistentePorMail", hdatos);
+            if (ds.Tables[0].Rows.Count > 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
     }
 }

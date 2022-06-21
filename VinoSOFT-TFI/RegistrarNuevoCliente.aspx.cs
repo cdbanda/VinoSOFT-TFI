@@ -77,7 +77,14 @@ namespace VinoSOFT_TFI
             cliente.DOMICILIO = txtBoxDir.Text;
             cliente.CIUDAD = txtBoxCiudad.Text;
             cliente.EMAIL = UC_Mail.Text;
-            cliente.DNI = int.Parse(txtBoxDNI.Text);
+            if(int.TryParse(txtBoxDNI.Text, out _))
+            {
+                cliente.DNI = int.Parse(txtBoxDNI.Text);
+            }
+            else
+            {
+                cliente.DNI = 0;
+            }
             cliente.TELEFONO = txtBoxTelefono.Text;
             cliente.CONTRASENA = txtBoxContrasena.Text;
 

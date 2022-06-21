@@ -23,31 +23,41 @@ namespace MPP
                 {
                     DataRow item = ds.Tables[0].Rows[0];
                     BE.BE_Usuario usuario = new BE.BE_Usuario();
+                    BE.BE_Cliente clienteAsociado = new BE.BE_Cliente();
+                    clienteAsociado.IDCLIENTE = 0;
+
                     usuario.IDUSUARIO = int.Parse(item["id_usuario"].ToString());
                     usuario.NOMBRE = item["nombre"].ToString();
                     usuario.APELLIDO = item["apellido"].ToString();
                     usuario.EMAIL = item["email"].ToString();
                     usuario.TELEFONO = Convert.IsDBNull(item["telefono"]) ? "" : item["telefono"].ToString();
-                    usuario.CONTRASEÑA = item["contrasenia"].ToString();
-                    //ver si hay pregunta de seguridad
+                    usuario.CONTRASENA = item["contrasenia"].ToString();
                     usuario.ESEMPLEADO = bool.Parse(item["es_empleado"].ToString());
                     usuario.DNI = Convert.IsDBNull(item["dni"]) ? 0 : int.Parse(item["dni"].ToString());
                     usuario.ACTIVO = bool.Parse(item["activo"].ToString());
-                    usuario.LISTAFAMILIA = getFamiliaPorUsuario(usuario.IDUSUARIO);
-                    usuario.LISTAPERMISO = getPermisosUsuario(usuario.IDUSUARIO);
+
+                    if(item["idCliente"] != null && int.TryParse(item["idCliente"].ToString(),out _))
+                    {
+                        clienteAsociado.IDCLIENTE = int.Parse(item["idCliente"].ToString());
+                    }
+
+                    usuario.CLIENTE = clienteAsociado;
+                    usuario.LISTAFAMILIA = getFamiliasPorUsuario(usuario.IDUSUARIO);
+                    usuario.LISTAPERMISO = getPermisosPorUsuario(usuario.IDUSUARIO);
+
                     return usuario;
                 }
             }
             return null;
         }
 
-        private List<BE.BE_Familia> getFamiliaPorUsuario(int idUsuario)
+        private List<BE.BE_Familia> getFamiliasPorUsuario(int idUsuario)
         {
             DataSet ds = new DataSet();
             Hashtable hdatos = new Hashtable();
-            hdatos.Add("@idUsuario", hdatos);
+            hdatos.Add("@idUsuario", idUsuario);
             List<BE.BE_Familia> listado = new List<BE.BE_Familia>();
-            ds = sqlHelper.Leer("familias_obtenerporusuario", hdatos);
+            ds = sqlHelper.Leer("familia_obtenerporusuario", hdatos);
             if (ds.Tables[0].Rows.Count > 0)
             {
                 foreach (DataRow dr in ds.Tables[0].Rows)
@@ -61,7 +71,7 @@ namespace MPP
             return listado;
         }
 
-        private List<BE.BE_Permiso> getPermisosUsuario(int idUsuario)
+        private List<BE.BE_Permiso> getPermisosPorUsuario(int idUsuario)
         {
             DataSet ds = new DataSet();
             Hashtable hdatos = new Hashtable();
@@ -75,6 +85,7 @@ namespace MPP
                 permiso.IDPERMISO = int.Parse(dr["id_permiso"].ToString());
                 permiso.DESCRIPCION = dr["descripcion"].ToString();
                 permiso.CODIGO = dr["codigo"].ToString();
+                permiso.TIPO = int.Parse(dr["tipo"].ToString());
                 listado.Add(permiso);
             }
             return listado;
@@ -84,8 +95,41 @@ namespace MPP
             Hashtable hdatos = new Hashtable();
             hdatos.Add("@idUsuario", idUsuario);
             hdatos.Add("@idFamilia", idFamilia);
+            hdatos.Add("@id", BuscarUltimoIDUsuarioFamilia() + 1); //suma 1 al ultimo id de la tabla usuario_familia
             bool realizado = sqlHelper.Escribir("familia_agregarusuario", hdatos);
             return realizado;
+        }
+
+        private int BuscarUltimoIDUsuarioFamilia()
+        {
+            DataSet ds = new DataSet();
+            ds = sqlHelper.Leer("familia_BuscarUltimoIDUsuarioFamilia", null);
+            int id = 0;
+            if (ds.Tables.Count > 0)
+            {
+                if (ds.Tables[0].Rows.Count > 0)
+                {
+                    DataRow item = ds.Tables[0].Rows[0];
+                    id = int.Parse(item["id"].ToString());
+                }
+            }
+            return id;
+        }
+
+        private int BuscarUltimoIDUsuarioPermiso()
+        {
+            DataSet ds = new DataSet();
+            ds = sqlHelper.Leer("familia_BuscarUltimoIDUsuarioPermiso", null);
+            int id = 0;
+            if (ds.Tables.Count > 0)
+            {
+                if (ds.Tables[0].Rows.Count > 0)
+                {
+                    DataRow item = ds.Tables[0].Rows[0];
+                    id = int.Parse(item["id"].ToString());
+                }
+            }
+            return id;
         }
 
         public bool agregarPermiso(int idUsuario, BE.BE_Permiso permiso)
@@ -93,6 +137,8 @@ namespace MPP
             Hashtable hdatos = new Hashtable();
             hdatos.Add("@idUsuario", idUsuario);
             hdatos.Add("@idPermiso", permiso.IDPERMISO);
+            hdatos.Add("@tipo", permiso.TIPO);
+            hdatos.Add("@id", BuscarUltimoIDUsuarioPermiso() + 1);
             bool realizado = sqlHelper.Escribir("usuario_agregarpermiso", hdatos);
             return realizado;
         }
@@ -104,18 +150,16 @@ namespace MPP
 
             hdatos.Add("@nombre", usuario.NOMBRE);
             hdatos.Add("@apellido", usuario.APELLIDO);
-            hdatos.Add("@contrasenia", usuario.CONTRASEÑA);
+            hdatos.Add("@contrasenia", usuario.CONTRASENA);
             hdatos.Add("@email", usuario.EMAIL);
             hdatos.Add("@telefono", usuario.TELEFONO);
             hdatos.Add("@dni", usuario.DNI);
             hdatos.Add("@activo", usuario.ACTIVO);
             hdatos.Add("@esempleado", usuario.ESEMPLEADO);
             hdatos.Add("@id", id);
-            hdatos.Add("@domicilio", usuario.DOMICILIO);
-            hdatos.Add("@ciudad", usuario.CIUDAD);
 
             bool resutado = sqlHelper.Escribir("usuario_crear", hdatos);
-            CrearhashContraseña(id, 0);
+            //CrearhashContraseña(id, 0);
 
             if (resutado)
             {
@@ -127,26 +171,26 @@ namespace MPP
             }
         }
 
-        public bool CrearhashContraseña(int id, int esCambio) {
-            string hash = GenerarHashRecuperacionContrasena(25);
+        //public bool CrearhashContraseña(int id, int esCambio) {
+        //    string hash = GenerarHashRecuperacionContrasena(25);
 
-            Hashtable hdatos = new Hashtable();
-            hdatos.Add("@idUsuario", id);
-            hdatos.Add("@hash", hash);
-            hdatos.Add("@solicitoCambio", esCambio);
+        //    Hashtable hdatos = new Hashtable();
+        //    hdatos.Add("@idUsuario", id);
+        //    hdatos.Add("@hash", hash);
+        //    hdatos.Add("@solicitoCambio", esCambio);
 
-            bool resultado = sqlHelper.Escribir("usuario_crearHash",hdatos);
+        //    bool resultado = sqlHelper.Escribir("usuario_crearHash",hdatos);
 
-            if (resultado)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+        //    if (resultado)
+        //    {
+        //        return true;
+        //    }
+        //    else
+        //    {
+        //        return false;
+        //    }
 
-        }
+        //}
 
         public int BuscarUltimoIDUsuario()
         {
@@ -176,12 +220,12 @@ namespace MPP
 
             hdatos.Add("@nombre", usuario.NOMBRE);
             hdatos.Add("@apellido", usuario.APELLIDO);
-            hdatos.Add("@contrasenia", usuario.CONTRASEÑA);
+            hdatos.Add("@contrasenia", usuario.CONTRASENA);
             hdatos.Add("@email", usuario.EMAIL);
             hdatos.Add("@telefono", usuario.TELEFONO);
             hdatos.Add("@dni", usuario.DNI);
             hdatos.Add("@activo", usuario.ACTIVO);
-            hdatos.Add("@esempleado", usuario.ESEMPLEADO);
+            hdatos.Add("idUsuario", usuario.IDUSUARIO);
 
             bool resutado = sqlHelper.Escribir("usuario_modificar", hdatos);
 
@@ -193,6 +237,13 @@ namespace MPP
             {
                 return false;
             }
+        }
+
+        public bool eliminar(BE.BE_Usuario usuario)
+        {
+            Hashtable hdatos = new Hashtable();
+            hdatos.Add("@idUsuario", usuario.IDUSUARIO);
+            return sqlHelper.Escribir("usuario_eliminar", hdatos);
         }
 
         public List<BE.BE_Usuario> listar(Hashtable filtros)
@@ -207,8 +258,8 @@ namespace MPP
                 {
                     foreach (DataRow item in ds.Tables[0].Rows)
                     {
-                        BE.BE_Cliente clienteAsoc = new BE.BE_Cliente();
-                        clienteAsoc.IDCLIENTE = 0;
+                        BE.BE_Cliente clienteAsociado = new BE.BE_Cliente();
+                        clienteAsociado.IDCLIENTE = 0;
 
                         BE.BE_Usuario usuario = new BE.BE_Usuario();
                         usuario.IDUSUARIO = int.Parse(item["id_usuario"].ToString());
@@ -216,12 +267,20 @@ namespace MPP
                         usuario.APELLIDO = item["apellido"].ToString();
                         usuario.EMAIL = item["email"].ToString();
                         usuario.TELEFONO = Convert.IsDBNull(item["telefono"]) ? "" : item["telefono"].ToString();
-                        usuario.CONTRASEÑA = item["contrasenia"].ToString();
+                        usuario.CONTRASENA = item["contrasenia"].ToString();
                         usuario.ESEMPLEADO = bool.Parse(item["es_empleado"].ToString());
                         usuario.DNI = Convert.IsDBNull(item["dni"]) ? 0 : int.Parse(item["dni"].ToString());
                         usuario.ACTIVO = bool.Parse(item["activo"].ToString());
-                        //usuario.LISTAFAMILIA = getFamiliaPorUsuario(usuario.IDUSUARIO);
-                        //usuario.LISTAPERMISO = getPermisosUsuario(usuario.IDUSUARIO);
+
+                        if (item["idCliente"] != null && int.TryParse(item["idCliente"].ToString(), out _))
+                        {
+                            clienteAsociado.IDCLIENTE = int.Parse(item["idCliente"].ToString());
+                        }
+
+                        usuario.LISTAFAMILIA = getFamiliasPorUsuario(usuario.IDUSUARIO);
+                        usuario.LISTAPERMISO = getPermisosPorUsuario(usuario.IDUSUARIO);
+                        usuario.CLIENTE = clienteAsociado;
+
                         lista.Add(usuario);
                     }
                 }
@@ -246,7 +305,7 @@ namespace MPP
         {
             Hashtable hdatos = new Hashtable();
             hdatos.Add("@idusuario", usuario.IDUSUARIO);
-            hdatos.Add("@contrasenia", usuario.CONTRASEÑA);
+            hdatos.Add("@contrasenia", usuario.CONTRASENA);
             bool resultado = sqlHelper.Escribir("usuario_cambiarcontrasenia", hdatos);
             return resultado;
         }
@@ -257,7 +316,7 @@ namespace MPP
             hdatos.Add("@idUsuario", idUsuario);
             hdatos.Add("@idFamilia", idFamilia);
 
-            bool resultado = sqlHelper.Escribir("usuario_quitarPermiso", hdatos);
+            bool resultado = sqlHelper.Escribir("usuario_quitarFamilia", hdatos);
             return resultado;
         }
 
@@ -282,10 +341,10 @@ namespace MPP
             if (ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
             {
                 DataSet dscantidad = new DataSet();
-                dscantidad = sqlHelper.Leer("usuario_haymasadmin", null);
+                dscantidad = sqlHelper.Leer("usuario_haymasadmins", null);
                 DataRow dr = dscantidad.Tables[0].Rows[0];
                 int cant = int.Parse(dr["cantidad"].ToString());
-                return false;
+                return cant > 1;
             }
             return true;
 
