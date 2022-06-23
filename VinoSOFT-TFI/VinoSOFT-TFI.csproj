@@ -164,6 +164,7 @@
     <Content Include="database\backups\BK31-10-2019_20-26-19.bak" />
     <Content Include="database\restore\BK25-10-2019_20-37-27.bak" />
     <Content Include="database\VINOSOFT_160622_v2.bak" />
+    <Content Include="Backend.Master" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -239,6 +240,13 @@
     </Compile>
     <Compile Include="AdminUsuariosLista.aspx.designer.cs">
       <DependentUpon>AdminUsuariosLista.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Backend.Master.cs">
+      <DependentUpon>Backend.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Backend.Master.designer.cs">
+      <DependentUpon>Backend.Master</DependentUpon>
     </Compile>
     <Compile Include="CarritoCliente.aspx.cs">
       <DependentUpon>CarritoCliente.aspx</DependentUpon>
