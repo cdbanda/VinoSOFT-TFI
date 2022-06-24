@@ -62,15 +62,31 @@
         <a class="nav-link" href="Productos.aspx">Productos</a>
       </li>
 
-      <li class="nav-item">
+<%--      <li class="nav-item">
         <a class="nav-link" href="#">Preguntas Frecuentes</a>
-      </li>
+      </li>--%>
 
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="ddSeguridad" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Seguridad</a>
         <div class="dropdown-menu" aria-labelledby="dropdown01">
-          <a class="dropdown-item" href="AdminBitacora.aspx">Bitacora</a>
-            <a class="dropdown-item" href="GestionNoticias.aspx">Noticias</a>
+          <a class="dropdown-item" href="AdminBitacora.aspx">Modulo Bitacora</a>
+            <a class="dropdown-item" href="AdminUsuariosLista.aspx">Modulo Usuarios</a>
+            <a class="dropdown-item" href="AdminFamiliasLista.aspx">Modulo Roles</a>
+            <a class="dropdown-item" href="AdminBackup.aspx">Backup</a>
+        </div>
+      </li>
+
+       <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="ddMarketing" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Marketing</a>
+        <div class="dropdown-menu" aria-labelledby="dropdown01">
+          <a class="dropdown-item" href="AdminProductosLista.aspx">Modulo Productos</a>
+        </div>
+      </li>
+
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="ddVentas" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Ventas</a>
+        <div class="dropdown-menu" aria-labelledby="dropdown01">
+          <a class="dropdown-item" href="AdminVentasLista.aspx">Modulo Ventas</a>
         </div>
       </li>
       
@@ -82,14 +98,14 @@
 
 
       <ul class="nav navbar-nav nav-right">
-          <%
+<%--          <%
               if(Session["UsuarioLogueado"] != null)
               {
                   BE.BE_Usuario usuarioLogueado = (BE.BE_Usuario)Session["UsuarioLogueado"];
               }
-          %>
+          %>--%>
 
-          <li class="dropdown" visible="false" runat="server" id="liEcommerce">
+<%--          <li class="dropdown" visible="false" runat="server" id="liEcommerce">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><span>*</span>
                   <asp:Literal ID="ltlCantItems" runat="server"></asp:Literal>
                   - Items<span class="caret"></span>
@@ -111,7 +127,7 @@
                   </asp:Repeater>
                   <li class="divider"
               </ul>
-          </li>
+          </li>--%>
 
 
           <li class="nav-item dropdown">

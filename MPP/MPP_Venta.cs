@@ -59,5 +59,24 @@ namespace MPP
         }
 
 
+        public List<BE.BE_Venta> Listar(Hashtable filtros)
+        {
+            DataSet ds = new DataSet();
+            List<BE.BE_Venta> lista = new List<BE.BE_Venta>();
+
+            ds = SQLHelper.Leer("ventas_obtener",filtros);
+            if (ds.Tables[0].Rows.Count > 0)
+            {
+                foreach(DataRow dr in ds.Tables[0].Rows)
+                {
+                    BE.BE_Venta unaVenta = new BE.BE_Venta();
+
+                }
+            }
+
+            return lista;
+        }
+
+
     }
 }

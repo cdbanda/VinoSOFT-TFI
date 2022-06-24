@@ -89,6 +89,8 @@
     <Content Include="AdminProductosLista.aspx" />
     <Content Include="AdminUsuariosEditar.aspx" />
     <Content Include="AdminUsuariosLista.aspx" />
+    <Content Include="AdminVentasEditar.aspx" />
+    <Content Include="AdminVentasLista.aspx" />
     <Content Include="CarritoCliente.aspx" />
     <Content Include="ClienteDatos.aspx" />
     <Content Include="Contacto.aspx" />
@@ -240,6 +242,20 @@
     </Compile>
     <Compile Include="AdminUsuariosLista.aspx.designer.cs">
       <DependentUpon>AdminUsuariosLista.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AdminVentasEditar.aspx.cs">
+      <DependentUpon>AdminVentasEditar.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdminVentasEditar.aspx.designer.cs">
+      <DependentUpon>AdminVentasEditar.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AdminVentasLista.aspx.cs">
+      <DependentUpon>AdminVentasLista.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdminVentasLista.aspx.designer.cs">
+      <DependentUpon>AdminVentasLista.aspx</DependentUpon>
     </Compile>
     <Compile Include="Backend.Master.cs">
       <DependentUpon>Backend.Master</DependentUpon>

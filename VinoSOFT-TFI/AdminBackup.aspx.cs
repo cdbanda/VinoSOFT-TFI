@@ -154,5 +154,10 @@ namespace VinoSOFT_TFI
                 mp1.Hide();
                 Server.Transfer("~/AdminBackup.aspx");
         }
+
+        protected void BtnCerrar_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
