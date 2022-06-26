@@ -18,9 +18,34 @@ namespace BLL
         public object Login(string usuario, string password)
         {
             string passwordEncriptado = Encriptar(password);
-            MPP.se
+            MPP.MPP_Seguridad mapperSeguridad = new MPP.MPP_Seguridad();
+            object respuestaLogin = mapperSeguridad.Login(usuario, passwordEncriptado);
+
+            if(respuestaLogin is BE.BE_Usuario)
+            {
+                usuarioLogueado = mapperSeguridad.GetUsuarioLogueado();
+            }
+            int idUsuario = usuarioLogueado.IDUSUARIO;
+
+            usuarioLogueado.ESADMIN = mapperSeguridad.EsAdministrador(idUsuario);
+
+
+            if(respuestaLogin is BE.BE_Usuario)
+            {
+                BE.BE_Usuario usuarioRespuesta = (BE.BE_Usuario)respuestaLogin;
+                idUsuario = usuarioRespuesta.IDUSUARIO;
+
+                mapperSeguridad.CargarPermisos(idUsuario);
+                return respuestaLogin;
+            }
+
+            return -1;
         }
 
+        public void Logout()
+        {
+
+        }
 
 
         public string Encriptar(string texto)

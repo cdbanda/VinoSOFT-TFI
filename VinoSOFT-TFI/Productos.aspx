@@ -5,7 +5,7 @@
 
     <div class="row">
 
-            <asp:UpdatePanel ID="updatePanelAds" runat="server">
+<%--            <asp:UpdatePanel ID="updatePanelAds" runat="server">
                 <ContentTemplate>
                     <asp:AdRotator ID="AdRotatorDefault" runat="server"
                         AdvertisementFile="~/Publicidad/publicidad.xml"
@@ -16,10 +16,11 @@
                 <Triggers>
                     <asp:AsyncPostBackTrigger ControlID="Timer1" EventName="Tick" />
                 </Triggers>
-            </asp:UpdatePanel>
-
+            </asp:UpdatePanel>--%>
+        <h3>Nuestros Productos</h3>
+       
  </div>
-
+    <hr />
     <div class="row">
         <asp:Repeater ID="repeaterProducto" runat="server">
            <ItemTemplate>

@@ -23,7 +23,22 @@ namespace VinoSOFT_TFI
 
         protected void btnLoginPage_Click(object sender, EventArgs e)
         {
+            object respuesta = gestorSeguridad.Login(UCUsuarioPass.usuario, UCUsuarioPass.contrasena);
+            if(respuesta is BE.BE_Usuario)
+            {
+                BE.BE_Usuario dataUsuario = (BE.BE_Usuario)respuesta;
+                if (dataUsuario.ESEMPLEADO) {
+                    Response.Redirect("AdminDefault.aspx");
 
+                }
+                else
+                {
+                    BLL.BLL_Venta gestorVentas = new BLL.BLL_Venta();
+                    dataUsuario.CLIENTE.VENTA = gestorVentas.GetCarrito(dataUsuario.CLIENTE.IDCLIENTE);
+                    Session["venta"] = dataUsuario.CLIENTE.VENTA;
+                    Response.Redirect("Inicio.aspx");
+                }
+            }
 
 
             //if (VerificarSesionIniciada() == false)

@@ -37,7 +37,7 @@ namespace MPP
             CargarPermisosDeFamilia(idUsuario);
         }
 
-        public BE.BE_Usuario GetUsuarioLogeuado()
+        public BE.BE_Usuario GetUsuarioLogueado()
         {
             return usuarioLogueado;
         }
@@ -50,7 +50,7 @@ namespace MPP
         private void CargarDatosCliente(DataRow dr)
         {
             usuarioLogueado.CLIENTE = null;
-            if (dr["id_cliente"].ToString() != null)
+            if (dr["id_cliente"].ToString() != "") //ver con digitos
             {
                 if (int.Parse(dr["id_cliente"].ToString()) > 0) {
                     BE.BE_Cliente cliente = new BE.BE_Cliente();
@@ -63,7 +63,7 @@ namespace MPP
                     cliente.CIUDAD = dr["ciudad"].ToString();
                     cliente.TELEFONO = dr["telefono"].ToString();
                     cliente.IDCLIENTE = int.Parse(dr["id_cliente"].ToString());
-                    cliente.CONTRASENA = dr["contrasena"].ToString();
+                    cliente.CONTRASENA = dr["contrasenia"].ToString();
 
                     usuarioLogueado.CLIENTE = cliente;
                 }
@@ -88,7 +88,7 @@ namespace MPP
                 this.usuarioLogueado.IDUSUARIO = int.Parse(dr["id_usuario"].ToString());
                 this.usuarioLogueado.NOMBRE = dr["nombre"].ToString();
                 this.usuarioLogueado.APELLIDO = dr["apellido"].ToString();
-                this.usuarioLogueado.CONTRASENA = dr["contrasena"].ToString();
+                this.usuarioLogueado.CONTRASENA = dr["contrasenia"].ToString();
                 this.usuarioLogueado.EMAIL = dr["email"].ToString();
                 this.usuarioLogueado.TELEFONO = dr["telefono"].ToString();
                 this.usuarioLogueado.ACTIVO = bool.Parse(dr["activo"].ToString());
@@ -124,7 +124,7 @@ namespace MPP
                 Hashtable hdatos = new Hashtable();
 
                 hdatos.Add("idsFamilias", string.Join(",", idsFamilias.ToArray()));
-                ds = SQLHelper.Leer("GetPermisosFamilias",hdatos);
+                ds = SQLHelper.Leer("Seguridad_GetPermisosFamilias",hdatos);
                 if(ds != null)
                 {
                     DataTable dt = ds.Tables[0];
@@ -164,6 +164,40 @@ namespace MPP
             DataSet ds = new DataSet();
             Hashtable hdatos = new Hashtable();
 
+            hdatos.Add("@idusuario", idUsuario);
+            ds = SQLHelper.Leer("seguridad_getpermisosheredadosporusuario", hdatos);
+            usuarioLogueado.LISTAPERMISO = new List<BE.BE_Permiso>();
+            foreach(DataRow dr in ds.Tables[0].Rows) {
+                BE.BE_Permiso permiso = new BE.BE_Permiso();
+                permiso.IDPERMISO = int.Parse(dr["id_permiso"].ToString());
+                permiso.DESCRIPCION = dr["descripcion"].ToString();
+                permiso.TIPO = int.Parse(dr["tipo"].ToString());
+                permiso.CODIGO = dr["codigo"].ToString();
+
+                usuarioLogueado.LISTAPERMISO.Add(permiso);
+            } 
+
+        }
+
+        private void CargarFamilias(int idUsuario)
+        {
+            DataSet ds = new DataSet();
+            Hashtable hdatos = new Hashtable();
+
+            hdatos.Add("@idusuario", idUsuario);
+            ds = SQLHelper.Leer("seguridad_getfamiliasporusuario", hdatos);
+            usuarioLogueado.LISTAFAMILIA = new List<BE.BE_Familia>();
+
+            if(ds.Tables[0].Rows.Count > 0) {
+                foreach(DataRow dr in ds.Tables[0].Rows)
+                {
+                    BE.BE_Familia familia = new BE.BE_Familia();
+                    familia.IDFAMILIA = int.Parse(dr["id_familia"].ToString());
+                    familia.NOMBRE = dr["nombre"].ToString();
+                    usuarioLogueado.LISTAFAMILIA.Add(familia);
+                }
+
+                } 
         }
     }
 }
