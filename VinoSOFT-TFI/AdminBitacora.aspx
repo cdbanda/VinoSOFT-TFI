@@ -1,7 +1,7 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.Master" AutoEventWireup="true" CodeBehind="AdminBitacora.aspx.cs" Inherits="VinoSOFT_TFI.AdminBitacora" %>
-<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Backend.Master" AutoEventWireup="true" CodeBehind="AdminBitacora.aspx.cs" Inherits="VinoSOFT_TFI.AdminBitacora" %>
+<asp:Content ID="Content1" ContentPlaceHolderID="headBackend" runat="server">
 </asp:Content>
-<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+<asp:Content ID="Content2" ContentPlaceHolderID="ContenidoBackendMasterPage" runat="server">
        <div class="block full">
         <div class="row">
             <div id="filter-panel" class="filter-panel">

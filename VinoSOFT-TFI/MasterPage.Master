@@ -66,29 +66,7 @@
         <a class="nav-link" href="#">Preguntas Frecuentes</a>
       </li>--%>
 
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="ddSeguridad" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Seguridad</a>
-        <div class="dropdown-menu" aria-labelledby="dropdown01">
-          <a class="dropdown-item" href="AdminBitacora.aspx">Modulo Bitacora</a>
-            <a class="dropdown-item" href="AdminUsuariosLista.aspx">Modulo Usuarios</a>
-            <a class="dropdown-item" href="AdminFamiliasLista.aspx">Modulo Roles</a>
-            <a class="dropdown-item" href="AdminBackup.aspx">Backup</a>
-        </div>
-      </li>
-
-       <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="ddMarketing" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Marketing</a>
-        <div class="dropdown-menu" aria-labelledby="dropdown01">
-          <a class="dropdown-item" href="AdminProductosLista.aspx">Modulo Productos</a>
-        </div>
-      </li>
-
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="ddVentas" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Ventas</a>
-        <div class="dropdown-menu" aria-labelledby="dropdown01">
-          <a class="dropdown-item" href="AdminVentasLista.aspx">Modulo Ventas</a>
-        </div>
-      </li>
+     
       
       <li><!-- Boton de Google para traducir -->
           <div id="google_translate_element"></div>

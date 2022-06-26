@@ -3,6 +3,8 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
+    <asp:HiddenField ID="iptCodigo" runat="server" />
+
     <div class="container-fluid">
         <div class="content-wrapper">
             <!-- parte de detalle producto -->
@@ -26,7 +28,7 @@
                         <div class="" runat="server" id="divSinStock" visible="false">Sin Stock</div>
                         <hr />
                         <div class="">
-                            <asp:Button ID="btnAgregarCarrito" runat="server" CssClass="btn btn-success" Text="Agregar al Carrito" />
+                            <asp:Button ID="btnAgregarCarrito" runat="server" CssClass="btn btn-success" Text="Agregar al Carrito" OnClick="btnAgregarCarrito_Click"/>
                         </div>
                         <div class="">
 

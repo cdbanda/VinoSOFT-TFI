@@ -1,7 +1,7 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.Master" AutoEventWireup="true" CodeBehind="AdminUsuariosEditar.aspx.cs" Inherits="VinoSOFT_TFI.AdminUsuariosEditar" %>
-<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Backend.Master" AutoEventWireup="true" CodeBehind="AdminUsuariosEditar.aspx.cs" Inherits="VinoSOFT_TFI.AdminUsuariosEditar" %>
+<asp:Content ID="Content1" ContentPlaceHolderID="headBackend" runat="server">
 </asp:Content>
-<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+<asp:Content ID="Content2" ContentPlaceHolderID="ContenidoBackendMasterPage" runat="server">
     <div class="form-group clearfix">
         <a href="AdminUsuariosLista.aspx" class="btn btn-info pull-left">Volver al Listado</a>
         <a href="AdminUsuariosEditar.aspx" class="btn btn-warning pull-left">Nuevo</a>

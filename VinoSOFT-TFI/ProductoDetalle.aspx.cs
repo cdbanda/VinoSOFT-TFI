@@ -11,7 +11,8 @@ namespace VinoSOFT_TFI
     {
         BLL.BLL_Producto gestorProducto = new BLL.BLL_Producto();
         BE.BE_Producto producto = new BE.BE_Producto();
-       
+        ACL gestorPermisos = new ACL();
+        BLL.BLL_Venta gestorVenta = new BLL.BLL_Venta();
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -41,6 +42,7 @@ namespace VinoSOFT_TFI
             ltlPrecio.Text = producto.PRECIO.ToString();
             ltlTitulo.Text = producto.NOMBRE;
             ltlDescripcionCorta.Text = producto.DESCRIPCIONCORTA;
+            iptCodigo.Value = producto.IDPRODUCTO.ToString();
             completarComentarios();
         }
 
@@ -97,6 +99,28 @@ namespace VinoSOFT_TFI
             }
 
 
+        }
+
+        protected void btnAgregarCarrito_Click(object sender, EventArgs e)
+        {
+            BE.BE_Usuario usuario = gestorPermisos.GetUsuarioLogueado();
+            BE.BE_Venta venta = gestorVenta.GetCarrito(gestorPermisos.GetIdCliente());
+            int idVenta = venta.IDVENTA;
+
+            BE.BE_Producto producto = new BE.BE_Producto();
+            producto.IDPRODUCTO = int.Parse(iptCodigo.Value);
+
+            BE.BE_Venta_Detalle ventaDetalle = new BE.BE_Venta_Detalle();
+            ventaDetalle.IDVENTA = idVenta;
+            ventaDetalle.PRODUCTO = producto;
+            ventaDetalle.CANTIDAD = 1;
+
+            bool agregado = gestorVenta.AgregarProducto(idVenta, ventaDetalle);
+            if (!agregado)
+            {
+                Response.Redirect("Inicio.aspx");
+            }
+           
         }
     }
     }

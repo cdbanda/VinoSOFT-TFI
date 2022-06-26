@@ -36,10 +36,122 @@
 </head>
 <body>
     <form id="form1" runat="server">
-        <div>
-            <asp:ContentPlaceHolder ID="ContenidoBackendMasterPage" runat="server">
-            </asp:ContentPlaceHolder>
-        </div>
+       <asp:ScriptManager ID="ScriptManager1" EnablePartialRendering="true" runat="server"></asp:ScriptManager>
+
+<div class="container">
+ <nav class="navbar navbar-expand-md navbar-dark navbar-fixed-top bg-secondary">
+  <a class="navbar-brand" href="AdminDefault.aspx">VinoSOFT S.A.</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+	<span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+	<ul class="navbar-nav mr-auto">
+	  <li class="nav-item active">
+		<a class="nav-link" href="AdminDefault.aspx">Inicio <span class="sr-only">(current)</span></a>
+	  </li>
+	  
+      <li runat="server" id="ItemVentas" class="nav-item dropdown">
+          <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button">Ventas</a>
+          <ul class="dropdown-menu">
+              <li class="<%# isActive(new string[]{"AdminVentasLista.aspx","AdminVentasEditar.aspx"}) %>  dropdown-item"><a href="AdminVentasLista.aspx">Administrar Ventas</a></li>
+          </ul>
+      </li>
+
+      <li runat="server" id="ItemMkt" class="nav-item dropdown">
+          <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button">Marketing</a>
+          <ul class="dropdown-menu">
+              <li class="<%# isActive(new string[]{"AdminProductosLista.aspx","AdminProductosEdicion.aspx"}) %>  dropdown-item"><a href="AdminProductosLista.aspx">Administrar Productos</a></li>
+          </ul>
+      </li>
+
+	
+      <li runat="server" id="ItemAdmFzas" class="nav-item dropdown">
+          <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button">Adm y Finanzas</a>
+          <ul class="dropdown-menu">
+              <li class="<%# isActive(new string[]{"AdminReportes.aspx"}) %>  dropdown-item"><a href="AdminProductosLista.aspx">Reportes</a></li>
+          </ul>
+      </li>
+
+       <li runat="server" id="ItemSeguridad" class="nav-item dropdown">
+          <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button">Seguridad</a>
+          <ul class="dropdown-menu">
+              <li class="<%# isActive(new string[]{"AdminUsuariosLista.aspx","AdminUsuariosEditar.aspx"}) %>  dropdown-item"><a href="AdminUsuariosLista.aspx">Administrar Usuarios</a></li>
+              <li class="<%# isActive(new string[]{"AdminFamiliasLista.aspx","AdminFamiliasEdicion.aspx"}) %>  dropdown-item"><a href="AdminUsuariosLista.aspx">Administrar Roles</a></li>
+              <li class="<%# isActive(new string[]{"AdminBitacora.aspx"}) %>  dropdown-item"><a href="AdminUsuariosLista.aspx">Administrar Bitácora</a></li>
+
+          </ul>
+      </li>
+	  
+	  <li><!-- Boton de Google para traducir -->
+		  <div id="google_translate_element"></div>
+	  </li>
+
+	</ul>
+
+
+	  <ul class="nav navbar-nav nav-right">
+<%--          <%
+			  if(Session["UsuarioLogueado"] != null)
+			  {
+				  BE.BE_Usuario usuarioLogueado = (BE.BE_Usuario)Session["UsuarioLogueado"];
+			  }
+		  %>--%>
+
+<%--          <li class="dropdown" visible="false" runat="server" id="liEcommerce">
+			  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><span>*</span>
+				  <asp:Literal ID="ltlCantItems" runat="server"></asp:Literal>
+				  - Items<span class="caret"></span>
+			  </a>
+			  <ul class="dropdown-menu dropdown-cart" role="menu">
+				  <asp:Repeater ID="rptCarrito" runat="server">
+					  <ItemTemplate>
+						  <li>
+							  <span class="item">
+								  <span class="item-left">
+									  <img src="<%# (Container.DataItem as BE.BE_Producto).LINKIMAGEN %>" class="img-responsive" width="50" height="50" alt="" />
+									  <span class="item-info">
+										  <span><strong><%# (Container.DataItem as BE.BE_Producto).LINKIMAGEN %> <%# (Container.DataItem as BE.BE_Producto).LINKIMAGEN %></strong></span>
+									  </span>
+								  </span>
+							  </span>
+						  </li>
+					  </ItemTemplate>
+				  </asp:Repeater>
+				  <li class="divider"
+			  </ul>
+		  </li>--%>
+
+
+	<li class="nav-item dropdown">
+		<a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Mi Cuenta</a>
+		<div class="dropdown-menu" aria-labelledby="dropdown01">
+		  <a class="dropdown-item" href="Login.aspx">Iniciar Sesion</a>
+			<a class="dropdown-item" href="RegistrarNuevoCliente.aspx">Registrarse</a>
+		</div>
+	  </li>
+	</ul>
+  </div>
+</nav>
+
+		
+	<div>
+		<asp:ContentPlaceHolder ID="ContenidoBackendMasterPage" runat="server">
+		
+		</asp:ContentPlaceHolder>
+	</div>
+</div>
+        <div class="container">
+            <hr />
+        <footer>  
+            <p>
+                    <span><a href="TerminosYCondiciones.aspx">T&eacute;rminos y Condiciones</a></span>
+                    &nbsp;|&nbsp;
+                    <span><a href="PoliticasPrivacidad.aspx">Pol&iacute;ticas de Privacidad</a></span>
+                    <span class="pull-right">&copy; VinoSOFT 2022.</span>
+            </p>
+        </footer>
+            </div>
     </form>
 </body>
 </html>

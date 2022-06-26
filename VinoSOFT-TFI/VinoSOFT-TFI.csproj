@@ -83,6 +83,7 @@
   <ItemGroup>
     <Content Include="AdminBackup.aspx" />
     <Content Include="AdminBitacora.aspx" />
+    <Content Include="AdminDefault.aspx" />
     <Content Include="AdminFamiliasEdicion.aspx" />
     <Content Include="AdminFamiliasLista.aspx" />
     <Content Include="AdminProductosEdicion.aspx" />
@@ -116,6 +117,7 @@
     <Content Include="MisionYVision.aspx" />
     <Content Include="Noticias.aspx" />
     <Content Include="packages.config" />
+    <Content Include="Pagar.aspx" />
     <Content Include="PlantillasMails\Email_CambiarContrasena.html" />
     <Content Include="PlantillasMails\Email_Confirmacion.html" />
     <Content Include="PlantillasMails\Email_Consulta.html" />
@@ -200,6 +202,13 @@
     </Compile>
     <Compile Include="AdminBitacora.aspx.designer.cs">
       <DependentUpon>AdminBitacora.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AdminDefault.aspx.cs">
+      <DependentUpon>AdminDefault.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdminDefault.aspx.designer.cs">
+      <DependentUpon>AdminDefault.aspx</DependentUpon>
     </Compile>
     <Compile Include="AdminFamiliasEdicion.aspx.cs">
       <DependentUpon>AdminFamiliasEdicion.aspx</DependentUpon>
@@ -354,6 +363,13 @@
     </Compile>
     <Compile Include="Noticias.aspx.designer.cs">
       <DependentUpon>Noticias.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pagar.aspx.cs">
+      <DependentUpon>Pagar.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pagar.aspx.designer.cs">
+      <DependentUpon>Pagar.aspx</DependentUpon>
     </Compile>
     <Compile Include="PoliticasPrivacidad.aspx.cs">
       <DependentUpon>PoliticasPrivacidad.aspx</DependentUpon>

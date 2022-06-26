@@ -24,6 +24,8 @@ namespace VinoSOFT_TFI
         protected void btnLoginPage_Click(object sender, EventArgs e)
         {
 
+
+
             //if (VerificarSesionIniciada() == false)
             //{
             //    //tomo los datos del control de usuario 

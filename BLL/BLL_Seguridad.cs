@@ -11,6 +11,18 @@ namespace BLL
         TripleDESCryptoServiceProvider des = new TripleDESCryptoServiceProvider();
         MD5CryptoServiceProvider hashmd5 = new MD5CryptoServiceProvider();
         private string myKey = "MD5";
+
+        BE.BE_Usuario usuarioLogueado = new BE.BE_Usuario();
+        BE.BE_Cliente clienteLogueado = new BE.BE_Cliente();
+
+        public object Login(string usuario, string password)
+        {
+            string passwordEncriptado = Encriptar(password);
+            MPP.se
+        }
+
+
+
         public string Encriptar(string texto)
         {
             string encriptado = "";

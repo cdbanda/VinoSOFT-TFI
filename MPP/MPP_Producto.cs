@@ -129,5 +129,36 @@ namespace MPP
 
             return ok;
         }
+
+        public int ValidarStock(BE.BE_Producto producto)
+        {
+            DataSet ds = new DataSet();
+            Hashtable hdatos = new Hashtable();
+            hdatos.Add("@idproducto", producto.IDPRODUCTO);
+
+            ds = sqlHelper.Leer("producto_validarStock", hdatos);
+
+            int stock = 0;
+
+            if (ds.Tables.Count > 0)
+            {
+                DataRow dr = ds.Tables[0].Rows[0];
+                stock = int.Parse(dr["stock"].ToString());
+            }
+
+            return stock;
+        }
+
+        public bool DescontarStock(int cantidad, BE.BE_Producto producto)
+        {
+            bool guardado;
+            Hashtable hdatos = new Hashtable();
+            hdatos.Add("@idproducto", producto.IDPRODUCTO);
+            hdatos.Add("@cantidad", cantidad);
+
+            guardado = sqlHelper.Escribir("producto_descontarStock", hdatos);
+
+            return guardado;
+        }
     }
 }
