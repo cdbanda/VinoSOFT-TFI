@@ -202,7 +202,7 @@ namespace MPP
                 if (ds.Tables[0].Rows.Count > 0)
                 {
                     DataRow item = ds.Tables[0].Rows[0];
-                    id =  int.Parse(item["id"].ToString());
+                    id =  int.Parse(item["id_usuario"].ToString());
                 }
             }
             return id;

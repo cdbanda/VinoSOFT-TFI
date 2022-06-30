@@ -92,7 +92,7 @@ namespace MPP
                 if (ds.Tables[0].Rows.Count > 0)
                 {
                     DataRow item = ds.Tables[0].Rows[0];
-                    id = int.Parse(item["id"].ToString());
+                    id = int.Parse(item["id_venta_detalle"].ToString());
                 }
             }
             return id;
@@ -115,7 +115,7 @@ namespace MPP
             int idVenta = ultimoIDVenta() + 1;
 
             hdatos.Add("@idventa", idVenta);
-
+            hdatos.Add("@abierta", 1); //venta abierta
             bool guardado = SQLHelper.Escribir("venta_crear", hdatos);
             if (guardado) {
                 venta.IDVENTA = idVenta;
@@ -149,7 +149,7 @@ namespace MPP
                 if (ds.Tables[0].Rows.Count > 0)
                 {
                     DataRow item = ds.Tables[0].Rows[0];
-                    id = int.Parse(item["id"].ToString());
+                    id = int.Parse(item["id_venta"].ToString());
                 }
             }
             return id;
@@ -184,6 +184,8 @@ namespace MPP
         public bool FinalizarVenta(BE.BE_Venta venta) {
             Hashtable hdatos = new Hashtable();
             hdatos.Add("@idventa", venta.IDVENTA);
+            hdatos.Add("@montototal", venta.MONTOTOTAL);
+            hdatos.Add("@idfactura", venta.IDFACTURA);
 
             bool guardado = SQLHelper.Escribir("venta_finalizar", hdatos);
             return guardado;
@@ -298,6 +300,10 @@ namespace MPP
                     venta.ITEMS = detalles;
                 }
                 
+            }
+            else
+            {
+                venta.IDVENTA = -1;
             }
             return venta;
         }

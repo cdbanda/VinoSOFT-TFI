@@ -71,7 +71,7 @@ namespace BLL
         {
             BE.BE_Venta venta = new BE.BE_Venta();
             venta = mapperVenta.VerificarCarritoAbierto(idCliente);
-            if(venta == null)
+            if(venta.IDVENTA < 0)
             {
                 //evento bitacora
                 BE.BE_Cliente cliente = new BE.BE_Cliente();

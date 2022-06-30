@@ -62,9 +62,7 @@
     <!-- /from-group -->
     <div class="form-group botonera clearfix">
         <input type='reset' class="btn btn-default  pull-left" name='guardar' value='Cancelar' />
-        <asp:Button ID="btnGuardar" runat="server" CssClass="btn btn-success" Text="Guardar" />
+        <asp:Button ID="btnGuardar" runat="server" CssClass="btn btn-success" Text="Guardar" OnClick="btnGuardar_Click"/>
     </div>
-        </div>
-
 
 </asp:Content>

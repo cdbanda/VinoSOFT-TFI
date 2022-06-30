@@ -53,7 +53,7 @@ namespace MPP
             hdatos.Add("@contrasena", cliente.CONTRASENA);
             hdatos.Add("@email", cliente.EMAIL);
 
-            int idCliente = ObtenerUltimoID();
+            int idCliente = ObtenerUltimoID() + 1;
             if(idCliente < 1)
             {
                 idCliente = 1;
@@ -67,6 +67,7 @@ namespace MPP
             if (guardado)
             {
                 int idUsuario = mapperUsuario.BuscarUltimoIDUsuario() + 1;
+                
                 bool clienteGuardado = CrearUsuario(cliente);
                 bool asigFamilia = AsignarFamilia(idUsuario);
                 return clienteGuardado;
@@ -92,10 +93,11 @@ namespace MPP
             hdatos.Add("@contrasena", cliente.CONTRASENA);
             hdatos.Add("@email", cliente.EMAIL);
             hdatos.Add("@idCliente", cliente.IDCLIENTE);
-            hdatos.Add("@activo", 0); //el cliente no tiene acceso a la parte admin, se habilita desde la gestion del usuario.
+            hdatos.Add("@activo", 1); //el cliente no tiene acceso a la parte admin, se habilita desde la gestion del usuario.
             hdatos.Add("@esempleado", 0);
             int idUsuario = mapperUsuario.BuscarUltimoIDUsuario() + 1;
             hdatos.Add("@id", idUsuario);
+
 
             bool guardado = SQLHelper.Escribir("usuario_crear", hdatos);
             return guardado;
@@ -112,7 +114,7 @@ namespace MPP
             {
                 DataRow dr = ds.Tables[0].Rows[0];
 
-                id = int.Parse(dr["id"].ToString());
+                id = int.Parse(dr["id_cliente"].ToString());
             }
 
             return id;
@@ -161,6 +163,17 @@ namespace MPP
             {
                 return false;
             }
+        }
+
+        public bool eliminar(BE.BE_Cliente cliente)
+        {
+            return false; //hacerlo en caso de ser necesario.
+        }
+
+        public List<BE.BE_Cliente> listar()
+        { //crear si es necesario
+            List<BE.BE_Cliente> listado = new List<BE.BE_Cliente>();
+            return listado;
         }
     }
 }

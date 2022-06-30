@@ -15,14 +15,15 @@
         <div>
             <div style="border-top: 1px solid black;"></div>
             <asp:GridView ID="dgvVentas" runat="server" AllowSorting="True" AutoGenerateColumns="False" BorderStyle="None" CssClass="table table-striped table-hover" 
-                AllowPaging="True" GridLines="None" PagerStyle-HorizontalAlign="Right" OnPageIndexChanging="dgvVentas_PageIndexChanging" OnPageIndexChanged="dgvVentas_PageIndexChanged" PageSize="15">
+                AllowPaging="True" GridLines="None" PagerStyle-HorizontalAlign="Right" OnPageIndexChanging="dgvVentas_PageIndexChanging" OnPageIndexChanged="dgvVentas_PageIndexChanged"
+                OnRowEditing="dgvVentas_RowEditing" PageSize="15">
                 <Columns>
                     <asp:BoundField DataField="IdVenta" HeaderText="Codigo" />
                     <asp:BoundField DataField="NombreCliente" HeaderText="Cliente" />
                     <asp:BoundField DataField="MontoTotal" HeaderText="Monto" />
                     <asp:BoundField DataField="Fecha" HeaderText="Fecha" />
                     <asp:BoundField DataField="Estado" HeaderText="Estado" ControlStyle-CssClass="label label-default" />
-                    <asp:CommandField ShowEditButton="True" EditText="<i class='glyphicon glyphicon-edit'></i>" ControlStyle-CssClass="btn btn-xs btn-default" HeaderText="Editar" />
+                    <asp:CommandField ShowEditButton="True" EditText="Editar" ControlStyle-CssClass="btn btn-xs btn-secondary" HeaderText="Editar"  />
 
                 </Columns>
             </asp:GridView>

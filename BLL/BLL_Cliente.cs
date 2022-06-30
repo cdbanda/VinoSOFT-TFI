@@ -32,15 +32,15 @@ namespace BLL
             return mapperCliente.Editar(cliente);
         }
 
-        //public bool eliminar(BE.BE_Cliente cliente)
-        //{
-        //    //return mapperCliente.eliminar(cliente);
-        //}
+        public bool eliminar(BE.BE_Cliente cliente)
+        {
+            return mapperCliente.eliminar(cliente);
+        }
 
-        //public List<BE.BE_Cliente> listar()
-        //{
-
-        //}
+        public List<BE.BE_Cliente> listar()
+        {
+            return mapperCliente.listar();
+        }
 
         public BE.BE_Cliente getPorID (int idCliente)
         {

@@ -103,8 +103,24 @@ namespace VinoSOFT_TFI
 
         protected void btnAgregarCarrito_Click(object sender, EventArgs e)
         {
-            BE.BE_Usuario usuario = gestorPermisos.GetUsuarioLogueado();
-            BE.BE_Venta venta = gestorVenta.GetCarrito(gestorPermisos.GetIdCliente());
+            //BE.BE_Usuario usuario = gestorPermisos.GetUsuarioLogueado(); si el usuario esta logueado
+            BE.BE_Cliente clientePrueba;
+
+            if (Session["UsuarioLogueado"] == null)
+            {
+                BLL.BLL_Cliente gestorCliente = new BLL.BLL_Cliente();
+                clientePrueba = gestorCliente.getPorID(3);
+                Session["UsuarioLogueado"] = clientePrueba;
+            }
+            else
+            {
+                clientePrueba = new BE.BE_Cliente();
+                clientePrueba = (BE.BE_Cliente)Session["UsuarioLogueado"];
+            }
+
+
+            //BE.BE_Venta venta = gestorVenta.GetCarrito(gestorPermisos.GetIdCliente());
+            BE.BE_Venta venta = gestorVenta.GetCarrito(clientePrueba.IDCLIENTE);
             int idVenta = venta.IDVENTA;
 
             BE.BE_Producto producto = new BE.BE_Producto();

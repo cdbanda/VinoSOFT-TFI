@@ -100,7 +100,9 @@
                   <li class="divider"
               </ul>
           </li>--%>
-
+       <li class="nav-item">
+        <a class="nav-link" href="CarritoCliente.aspx">Carrito</a>
+      </li>
 
           <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="ddIniciarSesion" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Mi Cuenta</a>
