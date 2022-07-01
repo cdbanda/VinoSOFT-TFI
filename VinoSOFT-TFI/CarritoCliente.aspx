@@ -14,10 +14,12 @@
                 </tr>
             </thead>
             <tbody>
-                <asp:Repeater ID="rptItemsCarrito" runat="server">
+                <asp:Repeater ID="rptItemsCarrito" runat="server" OnItemDataBound="rptItemsCarrito_ItemDataBound">
                     <ItemTemplate>
                      <tr>
                          <td>
+                             <input type="hidden" id="ventaDetalle" 
+                                 value="<%# (Container.DataItem as BE.BE_Venta_Detalle).IDVENTADETALLE %>">
                              <div class="row">
                                  <div class="col-sm-2">
                                      <img src="<%# (Container.DataItem as BE.BE_Venta_Detalle).PRODUCTO.LINKIMAGEN %>" width="100" height="100" />
@@ -38,8 +40,8 @@
                              </span>
                          </td>
                          <td>
-                             <asp:Button ID="btnEditar" CssClass="btn btn-primary btn-sm" Text="Actualizar" runat="server" />
-                             <asp:Button ID="btnEliminar" CssClass="btn btn-danger btn-sm" Text="Eliminar" runat="server" />
+                             <asp:Button ID="btnEditar" CssClass="btn btn-primary btn-sm" Text="Actualizar" runat="server" OnClick="btnEditar_Click"/>
+                             <asp:Button ID="btnEliminar" CssClass="btn btn-danger btn-sm" Text="Eliminar" runat="server" OnClick="btnEliminar_Click" />
                          </td>
                      </tr>
                     </ItemTemplate>

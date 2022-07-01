@@ -64,6 +64,37 @@ namespace VinoSOFT_TFI
             }
         }
 
+        protected void btnEditar_Click(object sender, EventArgs e)
+        {
+            //
+            BLL.BLL_Venta gestorVenta = new BLL.BLL_Venta();
+            BLL.BLL_Cliente gestorCliente = new BLL.BLL_Cliente();
 
+            RepeaterItem item = (sender as Button).NamingContainer as RepeaterItem;
+
+            if (Session["UsuarioLogueado"] == null)
+            {
+                
+                clientePrueba = gestorCliente.getPorID(3);
+                Session["UsuarioLogueado"] = clientePrueba;
+            }
+
+            //bool guardado = gestorVenta.EditarItem();
+
+        }
+
+        protected void btnEliminar_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void rptItemsCarrito_ItemDataBound(object sender, RepeaterItemEventArgs e)
+        {
+            if (e.Item.ItemType == ListItemType.AlternatingItem ||
+                                e.Item.ItemType == ListItemType.Item)
+            {
+
+            }
+        }
     }
 }
