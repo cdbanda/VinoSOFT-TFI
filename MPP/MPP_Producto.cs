@@ -29,7 +29,7 @@ namespace MPP
                         BE.BE_Producto unProducto = new BE.BE_Producto();
                         unProducto.ACTIVO = int.Parse(item["activo"].ToString());
                         unProducto.DESCRIPCION = item["descripcion"].ToString();
-                        unProducto.LINKIMAGEN = item["link_imagen"].ToString();
+                        unProducto.IMAGEN = item["link_imagen"].ToString();
                         categoria = mapperCategoria.BuscarCategoriaPorID(int.Parse(item["id_categoria"].ToString()));
                         unProducto.CATEGORIA = categoria;
                         unProducto.NOMBRE = item["nombre"].ToString();
@@ -65,7 +65,7 @@ namespace MPP
 
                         unProducto.ACTIVO = int.Parse(item["activo"].ToString());
                         unProducto.DESCRIPCION = item["descripcion"].ToString();
-                        unProducto.LINKIMAGEN = item["link_imagen"].ToString();
+                        unProducto.IMAGEN = item["link_imagen"].ToString();
                         categoria = mapperCategoria.BuscarCategoriaPorID(int.Parse(item["id_categoria"].ToString()));
                         unProducto.CATEGORIA = categoria;
                         unProducto.DESCRIPCIONCORTA = item["descripcion_corta"].ToString();
@@ -90,7 +90,7 @@ namespace MPP
             datos.Add("@id_categoria", unProducto.CATEGORIA.ID);
             datos.Add("@descripcion", unProducto.DESCRIPCION);
             datos.Add("@descripcionCorta", unProducto.DESCRIPCIONCORTA);
-            datos.Add("@link_imagen", unProducto.LINKIMAGEN);
+            datos.Add("@link_imagen", unProducto.IMAGEN);
             datos.Add("@nombre", unProducto.NOMBRE);
             datos.Add("@precio", unProducto.PRECIO);
             datos.Add("@stock", unProducto.STOCK);
@@ -108,7 +108,7 @@ namespace MPP
             datos.Add("@id_categoria", unProducto.CATEGORIA.ID);
             datos.Add("@descripcion", unProducto.DESCRIPCION);
             datos.Add("@descripcionCorta", unProducto.DESCRIPCIONCORTA);
-            datos.Add("@link_imagen", unProducto.LINKIMAGEN);
+            datos.Add("@link_imagen", unProducto.IMAGEN);
             datos.Add("@nombre", unProducto.NOMBRE);
             datos.Add("@precio", unProducto.PRECIO);
             datos.Add("@stock", unProducto.STOCK);

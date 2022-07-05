@@ -9,7 +9,8 @@ namespace VinoSOFT_TFI
 {
     public partial class Backend : System.Web.UI.MasterPage
     {
-        ACL gestorPermisos = new ACL();
+        AdminACL gestorPermisos = new AdminACL();
+
         protected void Page_Load(object sender, EventArgs e)
         {
             ItemAdmFzas.Visible = gestorPermisos.TienePermiso("MOD_ADM_FZAS");

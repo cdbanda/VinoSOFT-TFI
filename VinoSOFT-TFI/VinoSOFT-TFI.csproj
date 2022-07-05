@@ -86,6 +86,7 @@
     <Content Include="AdminDefault.aspx" />
     <Content Include="AdminFamiliasEdicion.aspx" />
     <Content Include="AdminFamiliasLista.aspx" />
+    <Content Include="AdminLogin.aspx" />
     <Content Include="AdminProductosEdicion.aspx" />
     <Content Include="AdminProductosLista.aspx" />
     <Content Include="AdminUsuariosEditar.aspx" />
@@ -187,7 +188,10 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ACL.cs">
+    <Compile Include="AdminACL.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ClienteACL.cs">
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="AdminBackup.aspx.cs">
@@ -224,6 +228,13 @@
     </Compile>
     <Compile Include="AdminFamiliasLista.aspx.designer.cs">
       <DependentUpon>AdminFamiliasLista.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AdminLogin.aspx.cs">
+      <DependentUpon>AdminLogin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdminLogin.aspx.designer.cs">
+      <DependentUpon>AdminLogin.aspx</DependentUpon>
     </Compile>
     <Compile Include="AdminProductosEdicion.aspx.cs">
       <DependentUpon>AdminProductosEdicion.aspx</DependentUpon>

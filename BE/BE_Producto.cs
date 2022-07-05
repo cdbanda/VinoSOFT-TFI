@@ -39,12 +39,12 @@ namespace BE
             set { descripcion = value; }
         }
 
-        private string linkImagen;
+        private string imagen;
 
-        public string LINKIMAGEN
+        public string IMAGEN
         {
-            get { return linkImagen; }
-            set { linkImagen = value; }
+            get { return imagen; }
+            set { imagen = value; }
         }
 
         private string nombre;

@@ -110,6 +110,47 @@ namespace MPP
         
         }
 
+        public BE.BE_Cliente LoginCliente(string usuario, string password)
+        {
+            DataSet ds = new DataSet();
+            Hashtable hdatos = new Hashtable();
+            hdatos.Add("@cliente", usuario);
+
+            ds = SQLHelper.Leer("LoginCliente", hdatos);
+            if (ds.Tables[0].Rows.Count == 0)
+            {
+                return null;
+            }
+            else
+            {
+                DataRow dr = ds.Tables[0].Rows[0];
+
+                this.clienteLogeado.IDCLIENTE = int.Parse(dr["id_usuario"].ToString());
+                this.clienteLogeado.NOMBRE = dr["nombre"].ToString();
+                this.clienteLogeado.APELLIDO = dr["apellido"].ToString();
+                this.clienteLogeado.CONTRASENA = dr["contrasenia"].ToString();
+                this.clienteLogeado.EMAIL = dr["email"].ToString();
+                this.clienteLogeado.TELEFONO = dr["telefono"].ToString();
+                //this.clienteLogeado.ACTIVO = bool.Parse(dr["activo"].ToString());
+                this.clienteLogeado.DNI = int.Parse(dr["dni"].ToString());
+                this.clienteLogeado.DOMICILIO = dr["domicilio"].ToString();
+
+                string passDB = this.clienteLogeado.CONTRASENA;
+
+                if (passDB == password)
+                {
+                    //CargarDatosCliente(dr);
+                    return clienteLogeado;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+
+        }
+
+
         private void CargarPermisosDeFamilia(int idUsuario) {
             CargarFamilias(idUsuario);
             if(usuarioLogueado.LISTAFAMILIA.Count > 0)

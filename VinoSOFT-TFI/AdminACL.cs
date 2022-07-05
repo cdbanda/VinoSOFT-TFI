@@ -5,7 +5,7 @@ using System.Web;
 
 namespace VinoSOFT_TFI
 {
-    public class ACL : System.Web.UI.Page
+    public class AdminACL : System.Web.UI.Page
     {
         BE.BE_Usuario usuarioLogeado = new BE.BE_Usuario();
 
@@ -67,12 +67,12 @@ namespace VinoSOFT_TFI
         {
             if (EstaLogueado()==false)
             {
-                Response.Redirect("Login.aspx");
+                Response.Redirect("AdminLogin.aspx");
             }
             if(codPermiso != null)
             {
                 if (ValidarPermiso(codPermiso) == false){
-                    Response.Redirect("Inicio.aspx");
+                    Response.Redirect("AdminDefault.aspx");
                 }
             }
         }
@@ -82,7 +82,7 @@ namespace VinoSOFT_TFI
             {
             if(EstaLogueado() == false)
             {
-                Response.Redirect("Login.aspx");
+                Response.Redirect("AdminLogin.aspx");
             }
             int idCliente = GetIdCliente();
 
@@ -90,7 +90,7 @@ namespace VinoSOFT_TFI
             {
                 Session.Clear();
                 Session.Abandon();
-                Response.Redirect("Login.aspx");
+                Response.Redirect("AdminLogin.aspx");
             }
             } 
 

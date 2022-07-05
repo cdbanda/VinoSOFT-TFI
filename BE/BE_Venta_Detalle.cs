@@ -47,5 +47,13 @@ namespace BE
             set { producto = value; }
         }
 
+        private float subtotal;
+
+        public float SUBTOTAL
+        {
+            get { return subtotal; }
+            set { subtotal = value; }
+        }
+
     }
 }

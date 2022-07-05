@@ -4,7 +4,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
      <div class="jumbotron">
     <div class="container">
-      <h1>Bienvenidos a VinoSOFT</h1>
+      <h1>Bienvenido<asp:label ID="lblNombreCliente" runat="server" Text=""></asp:label> a VinoSOFT</h1>
       <p>Somos una empresa que se dedica a la comercialización de soluciones para el viñedo.</p>
       <p>A través de los productos para el riego, sensores de temperatura y humedad, y de imagenes aereas, permite mejorar la calidad de la uva.</p>
       <p>Nuestras soluciones de alta calidad y enfocados a estas necesidades de negocio, permitira a cada productor tener un control de la plantación y poder ser mas competitivo.</p>

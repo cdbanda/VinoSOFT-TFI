@@ -26,9 +26,9 @@
            <ItemTemplate>
                <div class="col-sm-4 col-lg-4 col-md-4">
                    <div class="">
-                       <asp:Image ID="imgProd" ImageUrl="/Publicidad/img/thumb/drone_thumb.jpg" runat="server" />
+                       <asp:Image ID="imgProd" Width="200" Height="200" ImageUrl="<%# (Container.DataItem as BE.BE_Producto).IMAGEN %>" runat="server" />
                        <h4 class="pull-right">$ <%# (Container.DataItem as BE.BE_Producto).PRECIO %></h4>
-                       <label>"<%# (Container.DataItem as BE.BE_Producto).IDPRODUCTO %>"</label>
+                       <asp:label ID="lblIDProducto" runat="server" visible="false">"<%# (Container.DataItem as BE.BE_Producto).IDPRODUCTO %>"</asp:label>
                        <h4><a href="/ProductoDetalle.aspx?id=<%# (Container.DataItem as BE.BE_Producto).IDPRODUCTO %>">
                            <asp:Literal ID="ltlNombre" runat="server" Text="<%# (Container.DataItem as BE.BE_Producto).NOMBRE %>"> </asp:Literal>
                            </a>

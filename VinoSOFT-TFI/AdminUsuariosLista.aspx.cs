@@ -10,7 +10,7 @@ namespace VinoSOFT_TFI
     public partial class AdminUsuariosLista : System.Web.UI.Page
     {
         BLL.BLL_Usuario gestorUsuarios = new BLL.BLL_Usuario();
-        ACL gestorPermisos = new ACL();
+        AdminACL gestorPermisos = new AdminACL();
 
         protected void Page_Load(object sender, EventArgs e)
         {

@@ -268,10 +268,13 @@ namespace MPP
                     ventadetalle.IDVENTA = int.Parse(dr["id_venta"].ToString());
                     ventadetalle.MONTO = float.Parse(dr["precio_unitario"].ToString());
                     ventadetalle.CANTIDAD = int.Parse(dr["cantidad"].ToString());
+                    //Se crea la property Subtotal para el datagridview
+                    ventadetalle.SUBTOTAL = ventadetalle.CANTIDAD * ventadetalle.MONTO;
+
                     producto.IDPRODUCTO = int.Parse(dr["id_producto"].ToString());
                     producto.NOMBRE = dr["producto_nombre"].ToString();
                     producto.DESCRIPCIONCORTA = dr["producto_descripcioncorta"].ToString();
-                    producto.LINKIMAGEN = dr["producto_linkimagen"].ToString();
+                    producto.IMAGEN = dr["producto_linkimagen"].ToString();
                     ventadetalle.PRODUCTO = producto;
                     listado.Add(ventadetalle);
                 }

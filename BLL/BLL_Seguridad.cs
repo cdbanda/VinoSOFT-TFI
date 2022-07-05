@@ -42,6 +42,17 @@ namespace BLL
             return -1;
         }
 
+        public BE.BE_Cliente LoginCliente(string usuario, string password)
+        {
+            string passwordEncriptado = Encriptar(password);
+            MPP.MPP_Seguridad mapperSeguridad = new MPP.MPP_Seguridad();
+
+            BE.BE_Cliente respuestaLoginCliente = mapperSeguridad.LoginCliente(usuario, passwordEncriptado);
+
+            return respuestaLoginCliente;
+        }
+
+
         public void Logout()
         {
 

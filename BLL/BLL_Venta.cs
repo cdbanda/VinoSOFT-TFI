@@ -57,6 +57,11 @@ namespace BLL
             return false;
         }
 
+        public bool EliminarItem(BE.BE_Venta_Detalle detalleVenta)
+        {
+            return mapperVenta.EliminarItem(detalleVenta);
+        }
+
         public bool EditarItem(BE.BE_Venta_Detalle detalleVenta)
         {
             return mapperVenta.EditarItem(detalleVenta);

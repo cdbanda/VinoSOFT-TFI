@@ -11,29 +11,48 @@ namespace VinoSOFT_TFI
     {
 
         BE.BE_Venta venta = new BE.BE_Venta();
-        ACL gestorPermisos = new ACL();
+        ClienteACL gestorPermisos = new ClienteACL();
         BLL.BLL_Venta gestorVentas = new BLL.BLL_Venta();
 
-        BE.BE_Cliente clientePrueba;
+        BE.BE_Cliente cliente;
         BE.BE_Venta carrito;
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            try
+            if (!IsPostBack)
             {
-                //gestorPermisos.validarAccesoCliente();
-                pruebaCliente();
-                CargarDataCarrito();
-            }
-            catch
-            {
-                Response.Redirect("Inicio.aspx");
+                if (gestorPermisos.EstaLogueado())
+                {
+                    //gestorPermisos.validarAccesoCliente();
+                    //pruebaCliente();
+                    CargarDataCarrito();
+                    ActualizarBarraNavegacionLogin();
+                }
+                else
+                {
+                    Response.Redirect("Inicio.aspx", false);
+                    Context.ApplicationInstance.CompleteRequest();
 
+                }
             }
+        }
+
+        public void ActualizarBarraNavegacionLogin()
+        {
+            BE.BE_Cliente usuario = (BE.BE_Cliente)Session["ClienteLogueado"];
+
+            ((MasterPage)Master).carritoVisible = true;
+            ((MasterPage)Master).perfilUsuarioLogeado = true;
+            ((MasterPage)Master).lblNombreUsuario = "Hola, " + usuario.NOMBRE;
+
+            ((MasterPage)Master).perfilUsuarioNoLogeado = false;
         }
 
         protected void btnConfirmar_Click(object sender, EventArgs e)
         {
+            cliente = (BE.BE_Cliente)Session["ClienteLogueado"];
+            carrito = gestorVentas.GetCarrito(cliente.IDCLIENTE);
+
             if (carrito != null)
             {
                 BE.BE_Venta ventaActual = carrito;
@@ -52,29 +71,29 @@ namespace VinoSOFT_TFI
                 bool finalizada = gestorVentas.FinalizarVenta(ventaActual);
                 if (finalizada)
                 {
-                    Response.Redirect("Inicio.aspx");
+                    Response.Redirect("Inicio.aspx", false);
+                    Context.ApplicationInstance.CompleteRequest();
                 }
             }
         }
 
         protected void btnSeguirComprando_Click(object sender, EventArgs e)
         {
-           
-        
-        
-        
+            Response.Redirect("Productos.aspx", false);
+            Context.ApplicationInstance.CompleteRequest();
         }
 
         private void CargarDataCarrito()
         {
-            if (true) //gestorPermisos.GetIdCliente() > 0
-            {   
-                //BE.BE_Venta carrito = gestorVentas.GetCarrito(gestorPermisos.GetIdCliente());
-                carrito = gestorVentas.GetCarrito(clientePrueba.IDCLIENTE);
+            cliente = (BE.BE_Cliente)Session["ClienteLogueado"];
+
+            if (cliente != null)
+            {
+                carrito = gestorVentas.GetCarrito(cliente.IDCLIENTE);
                 float total = 0;
                 if (carrito != null)
                 {
-                    foreach(BE.BE_Venta_Detalle item in carrito.ITEMS)
+                    foreach (BE.BE_Venta_Detalle item in carrito.ITEMS)
                     {
                         total = total + (item.CANTIDAD * item.MONTO);
                     }
@@ -84,21 +103,21 @@ namespace VinoSOFT_TFI
             }
         }
 
-        private void pruebaCliente()
-        {
+        //private void pruebaCliente()
+        //{
 
 
-            if (Session["UsuarioLogueado"] == null)
-            {
-                BLL.BLL_Cliente gestorCliente = new BLL.BLL_Cliente();
-                clientePrueba = gestorCliente.getPorID(3);
-                Session["UsuarioLogueado"] = clientePrueba;
-            }
-            else
-            {
-                clientePrueba = new BE.BE_Cliente();
-                clientePrueba = (BE.BE_Cliente)Session["UsuarioLogueado"];
-            }
-        }
+        //    if (Session["UsuarioLogueado"] == null)
+        //    {
+        //        BLL.BLL_Cliente gestorCliente = new BLL.BLL_Cliente();
+        //        clientePrueba = gestorCliente.getPorID(3);
+        //        Session["UsuarioLogueado"] = clientePrueba;
+        //    }
+        //    else
+        //    {
+        //        clientePrueba = new BE.BE_Cliente();
+        //        clientePrueba = (BE.BE_Cliente)Session["UsuarioLogueado"];
+        //    }
+        //}
     }
 }

@@ -114,8 +114,9 @@
                 <label>Foto: </label>
             </div>
             <div class="col-md-11">
-                <asp:FileUpload ID="iptFoto" CssClass="form-control" runat="server" />
-                <asp:Image ID="imgFotoSubida" width="200" Height="200" Visible="false" runat="server" />
+                <asp:FileUpload ID="iptFoto" runat="server"  />
+                <br />
+                <asp:Image ID="imgFotoSubida" width="200" Height="200" runat="server" />
             </div>
         </div>
     </div>

@@ -3,62 +3,59 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="container">
-        <table>
-            <thead>
-                <tr>
-                    <th>Producto</th>
-                    <th>Precio</th>
-                    <th>Cantidad</th>
-                    <th>Subtotal</th>
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody>
-                <asp:Repeater ID="rptItemsCarrito" runat="server" OnItemDataBound="rptItemsCarrito_ItemDataBound">
-                    <ItemTemplate>
-                     <tr>
-                         <td>
-                             <input type="hidden" id="ventaDetalle" 
-                                 value="<%# (Container.DataItem as BE.BE_Venta_Detalle).IDVENTADETALLE %>">
-                             <div class="row">
-                                 <div class="col-sm-2">
-                                     <img src="<%# (Container.DataItem as BE.BE_Venta_Detalle).PRODUCTO.LINKIMAGEN %>" width="100" height="100" />
-                                 </div>
-                                 <div class="col-sm-10">
-                                     <h4> <%# (Container.DataItem as BE.BE_Venta_Detalle).PRODUCTO.NOMBRE %></h4>
-                                     <p><%# (Container.DataItem as BE.BE_Venta_Detalle).PRODUCTO.DESCRIPCIONCORTA %></p>
-                                 </div>
-                             </div>
-                         </td>
-                         <td>$ <%# (Container.DataItem as BE.BE_Venta_Detalle).MONTO %></td>
-                         <td>
-                             <input type="number" min="1" max="5" id="cant_<%# (Container.DataItem as BE.BE_Venta_Detalle).IDVENTADETALLE %>"
-                                 class="form-control text-center" value="<%# (Container.DataItem as BE.BE_Venta_Detalle).CANTIDAD %>" />
-                         </td>
-                         <td class="text-center">
-                             <span data-value="<%# (Container.DataItem as BE.BE_Venta_Detalle).MONTO * (Container.DataItem as BE.BE_Venta_Detalle).CANTIDAD %>">
-                             </span>
-                         </td>
-                         <td>
-                             <asp:Button ID="btnEditar" CssClass="btn btn-primary btn-sm" Text="Actualizar" runat="server" OnClick="btnEditar_Click"/>
-                             <asp:Button ID="btnEliminar" CssClass="btn btn-danger btn-sm" Text="Eliminar" runat="server" OnClick="btnEliminar_Click" />
-                         </td>
-                     </tr>
-                    </ItemTemplate>
-                </asp:Repeater>
-            </tbody>
-            <tfoot>
-                <tr>
-                    <td class="text-center"><strong>Total </strong></td>
-                </tr>
-                <tr>
-                    <td><a href="Productos.aspx" class="btn btn-primary"><i class="fa fa-angle-left"></i> Continuar comprando</a></td>
-                    <td colspan="2"></td>
-                    <td class="text-center"><strong>Total $<span id="total"></span></strong></td>
-                    <td><a href="Pagar.aspx" class="btn btn-success btn-block">Comprar <i class="fa fa-angle-right"></i></a></td>
-                </tr>
-            </tfoot>
-        </table>
+        <div class="block full">
+        <div class="table-responsive">
+            <div style="border-top: 1px solid black;"></div>
+            <asp:GridView ID="dgvCarrito" runat="server" AutoGenerateColumns="false" BorderStyle="None"
+                CssClass="table table-striped table-hover" GridLines="None" PagerStyle-HorizontalAlign="Right"
+                OnRowEditing="dgvCarrito_RowEditing" OnRowDeleting="dgvCarrito_RowDeleting">
+                <Columns>
+                    <asp:TemplateField>
+                        <ItemTemplate>
+                            <asp:HiddenField ID="idVentaDetalle" runat="server" Value='<%# (Container.DataItem as BE.BE_Venta_Detalle).IDVENTADETALLE %>' />
+                     </ItemTemplate>
+                    </asp:TemplateField>
+                     <asp:TemplateField HeaderText="Imagen">
+                        <ItemTemplate>
+                            <asp:Image ID="Imagen" runat="server" width="150" Height="150" ImageUrl='<%# (Container.DataItem as BE.BE_Venta_Detalle).PRODUCTO.IMAGEN %>' />
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                    <asp:TemplateField HeaderText="Producto">
+                        <ItemTemplate>
+                            <h4><asp:Label ID="lblNombreProducto" runat="server" Text='<%# (Container.DataItem as BE.BE_Venta_Detalle).PRODUCTO.NOMBRE %>'></asp:Label></h4>
+                            <p><asp:Label ID="lblDescProcducto" runat="server" Text='<%# (Container.DataItem as BE.BE_Venta_Detalle).PRODUCTO.DESCRIPCIONCORTA %>'></asp:Label></p>
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                    <asp:TemplateField HeaderText="Precio">
+                        <ItemTemplate>
+                            <asp:Label id="lblSignoPesosPrecio" runat="server" Text="$ "></asp:Label> <asp:Label ID="lblPrecio" runat="server" Text='<%# (Container.DataItem as BE.BE_Venta_Detalle).MONTO %>'></asp:Label>
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                    <asp:TemplateField HeaderText="Cantidad">
+                        <ItemTemplate>
+                            <asp:TextBox ID="txtCantidad" runat="server" Width="50" Text='<%# (Container.DataItem as BE.BE_Venta_Detalle).CANTIDAD %>' />
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                    <asp:TemplateField HeaderText="Subtotal">
+                        <ItemTemplate>
+                            <asp:Label id="lblSignoPesosSubtotal" runat="server" Text="$ "></asp:Label> 
+                            <asp:Label ID="lblSubtotal" runat="server" Text='<%# (Container.DataItem as BE.BE_Venta_Detalle).SUBTOTAL %>'></asp:Label>
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                    <asp:CommandField ShowEditButton="true" EditText="Actualizar" ControlStyle-CssClass="btn btn-xs btn-warning" HeaderText=""/>
+                    <asp:CommandField ShowDeleteButton="true" EditText="Eliminar" ControlStyle-CssClass="btn btn-xs btn-danger" HeaderText="" />
 
+                </Columns>
+            </asp:GridView>
+        </div>
+            <div class="text-right h4">
+                    <asp:label ID="lblTotal" runat="server" CssClass="font-weight-bold" Text="Total: $"></asp:label>
+                    <asp:Label ID="lblTotalMonto" runat="server" CssClass="font-weight-bold" Text="-"></asp:Label>
+            </div>
+            <div>
+                <asp:Button ID="btnSeguirComprando" runat="server" Text="Continuar Comprando" CssClass="btn btn-secondary text-left" OnClick="btnSeguirComprando_Click" />
+                <asp:Button ID="btnPagar" runat="server" Text="Pagar" CssClass="btn btn-success pull-right" OnClick="btnPagar_Click" />
+            </div>
     </div>
+</div>
 </asp:Content>

@@ -12,7 +12,7 @@ namespace VinoSOFT_TFI
         BLL.BLL_Usuario gestorUsuario = new BLL.BLL_Usuario();
         BLL.BLL_Seguridad gestorSeguridad = new BLL.BLL_Seguridad();
         BE.BE_Usuario infoUsuario = new BE.BE_Usuario();
-        ACL gestorPermisos = new ACL();
+        AdminACL gestorPermisos = new AdminACL();
 
         protected void Page_Load(object sender, EventArgs e)
         {

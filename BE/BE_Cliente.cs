@@ -103,6 +103,14 @@ namespace BE
             set { origen = value; }
         }
 
+        private List<BE.BE_Permiso> listaPermisos;
+
+        public List<BE.BE_Permiso> LISTAPERMISOS
+        {
+            get { return LISTAPERMISOS; }
+            set { LISTAPERMISOS = value; }
+        }
+
 
     }
 }

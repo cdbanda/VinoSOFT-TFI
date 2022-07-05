@@ -11,7 +11,7 @@
             <div class="item-container">
                 <div class="container">
                     <div class="">
-                        <asp:Image ID="imgProducto" CssClass="img-thumbnail" ImageUrl="/Publicidad/img/thumb/drone_thumb.jpg" runat="server" />
+                        <asp:Image ID="imgProducto" Width="300" Height="300" runat="server" />
                     </div>
                     <div class="col-md-7">
                         <a href="Productos.aspx" class="pull-right">Volver al Catalogo</a>
@@ -28,7 +28,7 @@
                         <div class="" runat="server" id="divSinStock" visible="false">Sin Stock</div>
                         <hr />
                         <div class="">
-                            <asp:Button ID="btnAgregarCarrito" runat="server" CssClass="btn btn-success" Text="Agregar al Carrito" OnClick="btnAgregarCarrito_Click"/>
+                            <asp:Button ID="btnAgregarCarrito" runat="server" CssClass="btn btn-success" Visible="false" Text="Agregar al Carrito" OnClick="btnAgregarCarrito_Click"/>
                         </div>
                         <div class="">
 
@@ -51,7 +51,7 @@
                                         <label>Comentario:</label>
                                         <asp:TextBox ID="txtComentario" TextMode="MultiLine" CssClass="form-control" runat="server"></asp:TextBox>
                                     </div>
-                                    <asp:Button ID="btnGuardarComentario" CssClass="btn btn-primary" runat="server" Text="Enviar" OnClick="btnGuardarComentario_Click" />
+                                    <asp:Button ID="btnGuardarComentario" CssClass="btn btn-primary" runat="server" Text="Enviar" Visible="false" OnClick="btnGuardarComentario_Click" />
                                 </form>
                             </div>
                     </section>

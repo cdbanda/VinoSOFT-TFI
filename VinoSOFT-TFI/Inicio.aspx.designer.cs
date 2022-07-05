@@ -7,11 +7,22 @@
 // </generado automáticamente>
 //------------------------------------------------------------------------------
 
-namespace VinoSOFT_TFI {
-    
-    
-    public partial class Inicio {
-        
+namespace VinoSOFT_TFI
+{
+
+
+    public partial class Inicio
+    {
+
+        /// <summary>
+        /// Control lblNombreCliente.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblNombreCliente;
+
         /// <summary>
         /// Control updatePanelAds.
         /// </summary>
@@ -20,7 +31,7 @@ namespace VinoSOFT_TFI {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.UpdatePanel updatePanelAds;
-        
+
         /// <summary>
         /// Control AdRotatorDefault.
         /// </summary>
@@ -29,7 +40,7 @@ namespace VinoSOFT_TFI {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.AdRotator AdRotatorDefault;
-        
+
         /// <summary>
         /// Control Timer1.
         /// </summary>
