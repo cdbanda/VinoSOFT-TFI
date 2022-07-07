@@ -10,5 +10,6 @@
         <asp:Button ID="btnConfirmar" runat="server" CssClass="btn btn-primary" Text="Pagar" OnClick="btnConfirmar_Click"/>
         <hr />
         <asp:Button ID="btnSeguirComprando" runat="server" CssClass="btn btn-secondary" text="Seguir Comprando" OnClick="btnSeguirComprando_Click"/>
+        <asp:Literal ID="ltlErrorStock" runat="server" Visible="false"></asp:Literal>
     </div>
 </asp:Content>

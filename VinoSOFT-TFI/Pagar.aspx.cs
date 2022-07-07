@@ -13,6 +13,7 @@ namespace VinoSOFT_TFI
         BE.BE_Venta venta = new BE.BE_Venta();
         ClienteACL gestorPermisos = new ClienteACL();
         BLL.BLL_Venta gestorVentas = new BLL.BLL_Venta();
+        BLL.BLL_Producto gestorProductos = new BLL.BLL_Producto();
 
         BE.BE_Cliente cliente;
         BE.BE_Venta carrito;
@@ -58,11 +59,19 @@ namespace VinoSOFT_TFI
                 BE.BE_Venta ventaActual = carrito;
 
                 float total = 0;
-                if (carrito != null)
+
+                foreach (BE.BE_Venta_Detalle item in carrito.ITEMS)
                 {
-                    foreach (BE.BE_Venta_Detalle item in carrito.ITEMS)
+
+                    if (gestorProductos.ValidarStock(item.PRODUCTO) - gestorProductos.ObtenerStockMinimo(item.PRODUCTO) >= item.CANTIDAD)
                     {
                         total = total + (item.CANTIDAD * item.MONTO);
+                    }
+                    else
+                    {
+                        ltlErrorStock.Text = "No hay stock para el producto " + item.PRODUCTO.NOMBRE;
+                        ltlErrorStock.Visible = true;
+                        return;
                     }
                 }
                 ventaActual.MONTOTOTAL = total;
@@ -74,6 +83,7 @@ namespace VinoSOFT_TFI
                     Response.Redirect("Inicio.aspx", false);
                     Context.ApplicationInstance.CompleteRequest();
                 }
+                
             }
         }
 

@@ -106,22 +106,6 @@ namespace VinoSOFT_TFI
             return lista;
         }
 
-        //private void pruebaCliente()
-        //{
-
-        //    if (Session["UsuarioLogueado"] == null)
-        //    {
-        //        BLL.BLL_Cliente gestorCliente = new BLL.BLL_Cliente();
-        //        clientePrueba = gestorCliente.getPorID(3);
-        //        Session["UsuarioLogueado"] = clientePrueba;
-        //    }
-        //    else
-        //    {
-        //        clientePrueba = new BE.BE_Cliente();
-        //        clientePrueba = (BE.BE_Cliente)Session["UsuarioLogueado"];
-        //    }
-        //}
-
         protected void dgvCarrito_RowEditing(object sender, GridViewEditEventArgs e)
         {
             BLL.BLL_Venta gestorVenta = new BLL.BLL_Venta();
@@ -183,8 +167,13 @@ namespace VinoSOFT_TFI
                         //pruebaCliente();
                         CargarDataCarrito();
                     }
-                }
             }
+            else
+            {
+                Response.Redirect(Request.RawUrl, false);
+                Context.ApplicationInstance.CompleteRequest();
+            }
+        }
 
         protected void btnSeguirComprando_Click(object sender, EventArgs e)
         {

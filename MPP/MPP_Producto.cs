@@ -160,5 +160,25 @@ namespace MPP
 
             return guardado;
         }
+
+        public int ObtenerStockMinimo(BE.BE_Producto producto)
+        {
+            DataSet ds = new DataSet();
+            Hashtable hdatos = new Hashtable();
+            hdatos.Add("@idproducto", producto.IDPRODUCTO);
+
+            ds = sqlHelper.Leer("producto_obtenerStockMinimo", hdatos);
+
+            int stock = 0;
+
+            if (ds.Tables.Count > 0)
+            {
+                DataRow dr = ds.Tables[0].Rows[0];
+                stock = int.Parse(dr["stock_minimo"].ToString());
+            }
+
+            return stock;
+        }
+
     }
 }

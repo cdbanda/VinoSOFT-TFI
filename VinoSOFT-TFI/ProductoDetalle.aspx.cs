@@ -132,15 +132,6 @@ namespace VinoSOFT_TFI
 
             if (Session["ClienteLogueado"] != null)
             {
-                //    BLL.BLL_Cliente gestorCliente = new BLL.BLL_Cliente();
-                //    clientePrueba = gestorCliente.getPorID(3);
-                //    Session["ClienteLogueado"] = clientePrueba;
-                //}
-                //else
-                //{
-                //    clientePrueba = new BE.BE_Cliente();
-                //    clientePrueba = (BE.BE_Cliente)Session["ClienteLogueado"];
-                //}
 
                 BE.BE_Venta venta = gestorVenta.GetCarrito(cliente.IDCLIENTE);
                 int idVenta = venta.IDVENTA;

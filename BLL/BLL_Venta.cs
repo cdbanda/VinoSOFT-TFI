@@ -9,6 +9,7 @@ namespace BLL
     public class BLL_Venta
     {
         MPP.MPP_Venta mapperVenta = new MPP.MPP_Venta();
+        BLL.BLL_Producto gestorProductos = new BLL_Producto();
 
         public BE.BE_Venta GetPorID(int idVenta) {
             return mapperVenta.GetPorID(idVenta);
@@ -69,7 +70,15 @@ namespace BLL
 
         public bool FinalizarVenta(BE.BE_Venta venta)
         {
-            return mapperVenta.FinalizarVenta(venta);
+            bool ok = mapperVenta.FinalizarVenta(venta);
+            if (ok)
+            {
+                foreach (BE.BE_Venta_Detalle detalle in venta.ITEMS)
+                {
+                    gestorProductos.DescontarStock(detalle.CANTIDAD,detalle.PRODUCTO);
+                }
+            }
+            return ok;
         }
 
         public BE.BE_Venta GetCarrito(int idCliente)

@@ -66,5 +66,20 @@ namespace BLL
         
         }
 
+        public int ValidarStock(BE.BE_Producto producto)
+        {
+            return mapperProducto.ValidarStock(producto);
+        }
+
+        public bool DescontarStock(int cantidad, BE.BE_Producto producto)
+        {
+            return mapperProducto.DescontarStock(cantidad,producto);
+        }
+
+        public int ObtenerStockMinimo(BE.BE_Producto producto)
+        {
+            return mapperProducto.ObtenerStockMinimo(producto);
+        }
+
    }
 }
