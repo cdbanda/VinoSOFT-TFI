@@ -9,36 +9,68 @@ namespace VinoSOFT_TFI
 {
     public partial class Backend : System.Web.UI.MasterPage
     {
-        AdminACL gestorPermisos = new AdminACL();
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            ItemAdmFzas.Visible = gestorPermisos.TienePermiso("MOD_ADM_FZAS");
-            ItemMkt.Visible = gestorPermisos.TienePermiso("MOD_MKT");
-            ItemVentas.Visible = gestorPermisos.TienePermiso("MOD_VENTAS");
-            ItemSeguridad.Visible = gestorPermisos.TienePermiso("MOD_SEGURIDAD");
+
         }
 
-        public string isActive(string pag)
+        public bool MenuMkt
         {
-            string urlActual = HttpContext.Current.Request.Url.AbsoluteUri;
-            string pagActual = urlActual.Substring(urlActual.LastIndexOf("/")+1);
-            if(pag == pagActual)
-            {
-                return "active";
-            }
-            return "";
+            get { return ItemMkt.Visible; }
+            set { ItemMkt.Visible = value; }
         }
 
-        public string isActive(string[] pags)
+        public bool MenuSeguridad
         {
-            string urlActual = HttpContext.Current.Request.Url.AbsoluteUri;
-            string pagActual = urlActual.Substring(urlActual.LastIndexOf("/") + 1);
-            if (pags.Contains(pagActual))
-            {
-                return "active";
-            }
-            return "";
+            get { return ItemSeguridad.Visible; }
+            set { ItemSeguridad.Visible = value; }
+        }
+
+        public bool MenuAdmFzas
+        {
+            get { return ItemAdmFzas.Visible; }
+            set { ItemAdmFzas.Visible = value; }
+        }
+
+        public bool MenuVentas
+        {
+            get { return ItemVentas.Visible; }
+            set { ItemVentas.Visible = value; }
+        }
+
+        public bool MenuInicio
+        {
+            get { return ItemInicio.Visible; }
+            set { ItemInicio.Visible = value; }
+        }
+
+        public string NombreUsuario
+        {
+            get { return lblUsuario.Text; }
+            set { lblUsuario.Text = value; }
+        }
+
+        public bool MenuUsuarioLogeado
+        {
+            get { return ddUsuarioLogueado.Visible; }
+            set { ddUsuarioLogueado.Visible = value; }
+        }
+
+        public bool MenuUsuarioNoLogeado
+        {
+            get { return ddUsuarioNoLogueado.Visible; }
+            set { ddUsuarioNoLogueado.Visible = value; }
+        }
+
+        protected void btnLogout_Click(object sender, EventArgs e)
+        {
+            BLL.BLL_Seguridad gestorSeguridad = new BLL.BLL_Seguridad();
+            gestorSeguridad.Logout();
+            Session.Clear();
+            Session.Abandon();
+            Response.Redirect("AdminLogin.aspx", false);
+            Context.ApplicationInstance.CompleteRequest();
         }
     }
 }

@@ -33,14 +33,14 @@ namespace VinoSOFT_TFI
             return false;
         }
 
-        public bool ValidarPermiso(string codPermiso)
-        {
-            if(codPermiso != null)
-            {
-                return TienePermiso(codPermiso);
-            }
-            return false;
-        }
+        //public bool ValidarPermiso(string codPermiso)
+        //{
+        //    if(codPermiso != null)
+        //    {
+        //        return TienePermiso(codPermiso);
+        //    }
+        //    return false;
+        //}
 
         public BE.BE_Usuario GetUsuarioLogueado()
         {
@@ -63,19 +63,19 @@ namespace VinoSOFT_TFI
             return infoUsuario.IDUSUARIO;
         }
 
-        public void ValidarAcceso(string codPermiso = null)
-        {
-            if (EstaLogueado()==false)
-            {
-                Response.Redirect("AdminLogin.aspx");
-            }
-            if(codPermiso != null)
-            {
-                if (ValidarPermiso(codPermiso) == false){
-                    Response.Redirect("AdminDefault.aspx");
-                }
-            }
-        }
+        //public void ValidarAcceso(string codPermiso = null)
+        //{
+        //    if (EstaLogueado()==false)
+        //    {
+        //        Response.Redirect("AdminLogin.aspx");
+        //    }
+        //    if(codPermiso != null)
+        //    {
+        //        if (ValidarPermiso(codPermiso) == false){
+        //            Response.Redirect("AdminDefault.aspx");
+        //        }
+        //    }
+        //}
 
 
         public void validarAccesoCliente() 
@@ -94,24 +94,35 @@ namespace VinoSOFT_TFI
             }
             } 
 
-        public bool TienePermiso(string CodPermisoValidar)
-        {
-            if(HttpContext.Current.Session["UsuarioLogeado"] == null)
-            {
-                return false;
-            }
-            usuarioLogeado = (BE.BE_Usuario)Session["UsuarioLogueado"];
+        //public bool TienePermiso(string CodPermisoValidar)
+        //{
+        //    if(HttpContext.Current.Session["UsuarioLogeado"] == null)
+        //    {
+        //        return false;
+        //    }
+        //    usuarioLogeado = (BE.BE_Usuario)Session["UsuarioLogueado"];
 
-            foreach(BE.BE_Permiso permiso in usuarioLogeado.LISTAPERMISO)
+        //    foreach(BE.BE_Permiso permiso in usuarioLogeado.LISTAPERMISO)
+        //    {
+        //        if(permiso.CODIGO == CodPermisoValidar)
+        //        {
+        //            return true;
+        //        }
+        //    }
+        //    return false;
+        //}
+
+        public bool TienePermiso(string CodPermisoValidar, BE.BE_Usuario usuario)
+        {
+            foreach (BE.BE_Permiso permiso in usuarioLogeado.LISTAPERMISO)
             {
-                if(permiso.CODIGO == CodPermisoValidar)
+                if (permiso.CODIGO == CodPermisoValidar)
                 {
                     return true;
                 }
             }
             return false;
         }
-
 
     }
 }

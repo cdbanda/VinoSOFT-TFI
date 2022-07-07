@@ -10,12 +10,32 @@ namespace VinoSOFT_TFI
     public partial class AdminVentasEditar : System.Web.UI.Page
     {
         BLL.BLL_Venta gestorVentas = new BLL.BLL_Venta();
+        AdminACL gestorPermisos = new AdminACL();
+
+        const string COD_PERMISO = "MOD_VENTAS";
 
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
-                CargarInfo();
+                if (gestorPermisos.EstaLogueado())
+                {
+                    if (gestorPermisos.TienePermiso(COD_PERMISO, (BE.BE_Usuario)Session["UsuarioLogueado"]))
+                    {
+                        CargarInfo();
+                        ActualizarBarraNavegacionLogin();
+                    }
+                    else
+                    {
+                        Response.Redirect("AdminLogin.aspx", false);
+                        Context.ApplicationInstance.CompleteRequest();
+                    }
+                }
+                else
+                {
+                    Response.Redirect("AdminLogin.aspx", false);
+                    Context.ApplicationInstance.CompleteRequest();
+                }
             }
         }
 
@@ -54,8 +74,31 @@ namespace VinoSOFT_TFI
             bool guardado = gestorVentas.ActualizarEstado(idVenta, ddEstado.SelectedValue);
             if (guardado)
             {
-                Response.Redirect("AdminVentasLista.aspx");
+                Response.Redirect("AdminVentasLista.aspx",false);
+                Context.ApplicationInstance.CompleteRequest();
             }
+        }
+
+        public void ActualizarBarraNavegacionLogin()
+        {
+            BE.BE_Usuario usuario = (BE.BE_Usuario)Session["UsuarioLogueado"];
+
+            ((Backend)Master).MenuUsuarioNoLogeado = false;
+            ((Backend)Master).MenuUsuarioLogeado = true;
+            ((Backend)Master).NombreUsuario = "Hola, " + usuario.NOMBRE;
+            ((Backend)Master).MenuInicio = true;
+
+            ActualizarMenuesPorPermisos();
+        }
+
+        public void ActualizarMenuesPorPermisos()
+        {
+            BE.BE_Usuario usuario = (BE.BE_Usuario)Session["UsuarioLogueado"];
+
+            ((Backend)Master).MenuAdmFzas = gestorPermisos.TienePermiso("MOD_ADM_FZAS", usuario);
+            ((Backend)Master).MenuSeguridad = gestorPermisos.TienePermiso("MOD_SEGURIDAD", usuario);
+            ((Backend)Master).MenuVentas = gestorPermisos.TienePermiso("MOD_VENTAS", usuario);
+            ((Backend)Master).MenuMkt = gestorPermisos.TienePermiso("MOD_MKT", usuario);
         }
     }
 }

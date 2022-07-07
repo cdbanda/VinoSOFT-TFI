@@ -6,7 +6,7 @@
         <div class="header-section">
             <h3>
                 <strong>Ventas</strong>
-                <a href="AdminVentasEditar.aspx" class="btn btn-primary pull-right">Nuevo</a><br />
+                <!-- <a href="AdminVentasEditar.aspx" class="btn btn-primary pull-right">Nuevo</a><br /> -->
             </h3>
         </div>
     </div>
@@ -16,7 +16,8 @@
             <div style="border-top: 1px solid black;"></div>
             <asp:GridView ID="dgvVentas" runat="server" AllowSorting="True" AutoGenerateColumns="False" BorderStyle="None" CssClass="table table-striped table-hover" 
                 AllowPaging="True" GridLines="None" PagerStyle-HorizontalAlign="Right" OnPageIndexChanging="dgvVentas_PageIndexChanging" OnPageIndexChanged="dgvVentas_PageIndexChanged"
-                OnRowEditing="dgvVentas_RowEditing" PageSize="15">
+                OnRowEditing="dgvVentas_RowEditing" 
+                ize="15">
                 <Columns>
                     <asp:BoundField DataField="IdVenta" HeaderText="Codigo" />
                     <asp:BoundField DataField="NombreCliente" HeaderText="Cliente" />

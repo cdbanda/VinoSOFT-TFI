@@ -13,48 +13,44 @@ namespace VinoSOFT_TFI
         BLL.BLL_Usuario gestorUsuario = new BLL.BLL_Usuario();
         BLL.BLL_Seguridad gestorSeguridad = new BLL.BLL_Seguridad();
 
+        AdminACL gestorPermisos = new AdminACL();
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["UsuarioLogeado"] != null)
+            if (gestorPermisos.EstaLogueado())
             {
-                Response.Redirect("AdminDefault.aspx");
+                Response.Redirect("AdminDefault.aspx", false);
+                Context.ApplicationInstance.CompleteRequest();
             }
         }
 
         protected void btnLoginPage_Click(object sender, EventArgs e)
         {
-            object respuesta = gestorSeguridad.Login(UCUsuarioPass.usuario, UCUsuarioPass.contrasena);
-            if (respuesta is BE.BE_Usuario)
+            BE.BE_Usuario respuesta = gestorSeguridad.LoginUsuario(UCUsuarioPass.usuario, UCUsuarioPass.contrasena);
+            if (respuesta != null)
             {
-                BE.BE_Usuario dataUsuario = (BE.BE_Usuario)respuesta;
-                if (dataUsuario.ESEMPLEADO)
+                if (respuesta.ESEMPLEADO)
                 {
-                    Response.Redirect("AdminDefault.aspx");
+                    Session["UsuarioLogueado"] = respuesta;
+                    Response.Redirect("AdminDefault.aspx", false);
+                    Context.ApplicationInstance.CompleteRequest();
 
+                    if (respuesta.ESADMIN)
+                    {
+
+                    }
+                    else
+                    {
+                        Response.Redirect("AdminLogin.aspx", false);
+                        Context.ApplicationInstance.CompleteRequest();
+                    }
                 }
                 else
                 {
-                    BLL.BLL_Venta gestorVentas = new BLL.BLL_Venta();
-                    dataUsuario.CLIENTE.VENTA = gestorVentas.GetCarrito(dataUsuario.CLIENTE.IDCLIENTE);
-                    Session["venta"] = dataUsuario.CLIENTE.VENTA;
-                    Response.Redirect("Inicio.aspx");
+                    Response.Redirect("AdminLogin.aspx", false);
+                    Context.ApplicationInstance.CompleteRequest();
                 }
             }
 
-
-            //if (VerificarSesionIniciada() == false)
-            //{
-            //    //tomo los datos del control de usuario 
-            //    string contrasena = UCUsuarioPass.contrasena;
-            //    string usuario = UCUsuarioPass.usuario;
-
-            //    bool resultado = gestorUsuario.verificarUsuario(usuario, contrasena);
-
-
-            //}
-            //else { 
-
-            //}
         }
 
     }

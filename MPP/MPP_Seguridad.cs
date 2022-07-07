@@ -31,10 +31,13 @@ namespace MPP
             return false;
         }
 
-        public void CargarPermisos(int idUsuario)
+        public BE.BE_Usuario CargarPermisos(BE.BE_Usuario usuario)
         {
-            CargarPermisosPersonales(idUsuario);
-            CargarPermisosDeFamilia(idUsuario);
+
+            CargarPermisosPersonales(usuario);
+            CargarPermisosDeFamilia(usuario);
+
+            return usuario;
         }
 
         public BE.BE_Usuario GetUsuarioLogueado()
@@ -70,16 +73,16 @@ namespace MPP
             }
         }
 
-        public object Login(string usuario, string password)
+        public BE.BE_Usuario LoginUsuario(string usuario, string password)
         {
             DataSet ds = new DataSet();
             Hashtable hdatos = new Hashtable();
             hdatos.Add("@usuario", usuario);
 
-            ds = SQLHelper.Leer("Login", hdatos);
+            ds = SQLHelper.Leer("LoginUsuario", hdatos);
             if (ds.Tables[0].Rows.Count == 0)
             {
-                return false;
+                return null;
             }
             else
             {
@@ -94,12 +97,13 @@ namespace MPP
                 this.usuarioLogueado.ACTIVO = bool.Parse(dr["activo"].ToString());
                 this.usuarioLogueado.ESEMPLEADO = bool.Parse(dr["es_empleado"].ToString());
                 this.usuarioLogueado.DNI = int.Parse(dr["dni"].ToString());
+           
 
                 string passDB = this.usuarioLogueado.CONTRASENA;
 
                 if (passDB == password)
                 {
-                    CargarDatosCliente(dr);
+                    //CargarDatosCliente(dr);
                     return usuarioLogueado;
                 }
                 else
@@ -151,12 +155,13 @@ namespace MPP
         }
 
 
-        private void CargarPermisosDeFamilia(int idUsuario) {
-            CargarFamilias(idUsuario);
-            if(usuarioLogueado.LISTAFAMILIA.Count > 0)
+        private BE.BE_Usuario CargarPermisosDeFamilia(BE.BE_Usuario usuario) {
+            
+            CargarFamilias(usuario);
+            if(usuario.LISTAFAMILIA.Count > 0)
             {
                 ArrayList idsFamilias = new ArrayList();
-                foreach(BE.BE_Familia familia in usuarioLogueado.LISTAFAMILIA)
+                foreach(BE.BE_Familia familia in usuario.LISTAFAMILIA)
                 {
                     idsFamilias.Add(familia.IDFAMILIA);
                 }
@@ -178,19 +183,24 @@ namespace MPP
                             permiso.DESCRIPCION = dr["descripcion"].ToString();
                             permiso.CODIGO = dr["codigo"].ToString();
                             permiso.TIPO = 1;
-                            if(PermisoYaCargado(permiso.IDPERMISO) == false)
+                            if(PermisoYaCargado(permiso.IDPERMISO, usuario) == false)
                             {
-                                usuarioLogueado.LISTAPERMISO.Add(permiso);
+                                usuario.LISTAPERMISO.Add(permiso);
                             }
                         }
                     }
                 }
+                return usuario;
+            }
+            else
+            {
+                return usuario;
             }
         }
 
-        private bool PermisoYaCargado(int idPermiso)
+        private bool PermisoYaCargado(int idPermiso, BE.BE_Usuario usuario)
         {
-            foreach(BE.BE_Permiso permiso in usuarioLogueado.LISTAPERMISO)
+            foreach(BE.BE_Permiso permiso in usuario.LISTAPERMISO)
             {
                 if(permiso.IDPERMISO == idPermiso)
                 {
@@ -200,34 +210,44 @@ namespace MPP
             return false;
         }
 
-        private void CargarPermisosPersonales(int idUsuario)
+        private BE.BE_Usuario CargarPermisosPersonales(BE.BE_Usuario usuario)
         {
             DataSet ds = new DataSet();
             Hashtable hdatos = new Hashtable();
 
-            hdatos.Add("@idusuario", idUsuario);
+            hdatos.Add("@idusuario", usuario.IDUSUARIO);
             ds = SQLHelper.Leer("seguridad_getpermisosheredadosporusuario", hdatos);
-            usuarioLogueado.LISTAPERMISO = new List<BE.BE_Permiso>();
-            foreach(DataRow dr in ds.Tables[0].Rows) {
-                BE.BE_Permiso permiso = new BE.BE_Permiso();
-                permiso.IDPERMISO = int.Parse(dr["id_permiso"].ToString());
-                permiso.DESCRIPCION = dr["descripcion"].ToString();
-                permiso.TIPO = int.Parse(dr["tipo"].ToString());
-                permiso.CODIGO = dr["codigo"].ToString();
 
-                usuarioLogueado.LISTAPERMISO.Add(permiso);
-            } 
+            usuario.LISTAPERMISO = new List<BE.BE_Permiso>();
 
+            if (ds.Tables[0].Rows.Count > 0)
+            {
+                foreach (DataRow dr in ds.Tables[0].Rows)
+                {
+                    BE.BE_Permiso permiso = new BE.BE_Permiso();
+                    permiso.IDPERMISO = int.Parse(dr["id_permiso"].ToString());
+                    permiso.DESCRIPCION = dr["descripcion"].ToString();
+                    permiso.TIPO = int.Parse(dr["tipo"].ToString());
+                    permiso.CODIGO = dr["codigo"].ToString();
+
+                    usuario.LISTAPERMISO.Add(permiso);
+                }
+                return usuario;
+            }
+            else
+            {
+                return usuario;
+            }
         }
 
-        private void CargarFamilias(int idUsuario)
+        private BE.BE_Usuario CargarFamilias(BE.BE_Usuario usuario)
         {
             DataSet ds = new DataSet();
             Hashtable hdatos = new Hashtable();
 
-            hdatos.Add("@idusuario", idUsuario);
+            hdatos.Add("@idusuario", usuario.IDUSUARIO);
             ds = SQLHelper.Leer("seguridad_getfamiliasporusuario", hdatos);
-            usuarioLogueado.LISTAFAMILIA = new List<BE.BE_Familia>();
+            usuario.LISTAFAMILIA = new List<BE.BE_Familia>();
 
             if(ds.Tables[0].Rows.Count > 0) {
                 foreach(DataRow dr in ds.Tables[0].Rows)
@@ -235,10 +255,14 @@ namespace MPP
                     BE.BE_Familia familia = new BE.BE_Familia();
                     familia.IDFAMILIA = int.Parse(dr["id_familia"].ToString());
                     familia.NOMBRE = dr["nombre"].ToString();
-                    usuarioLogueado.LISTAFAMILIA.Add(familia);
+                    usuario.LISTAFAMILIA.Add(familia);
                 }
-
-                } 
+                return usuario;
+            }
+            else
+            {
+                return usuario;
+            } 
         }
     }
 }

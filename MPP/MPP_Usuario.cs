@@ -150,7 +150,7 @@ namespace MPP
 
             hdatos.Add("@nombre", usuario.NOMBRE);
             hdatos.Add("@apellido", usuario.APELLIDO);
-            hdatos.Add("@contrasenia", usuario.CONTRASENA);
+            hdatos.Add("@contrasena", usuario.CONTRASENA);
             hdatos.Add("@email", usuario.EMAIL);
             hdatos.Add("@telefono", usuario.TELEFONO);
             hdatos.Add("@dni", usuario.DNI);

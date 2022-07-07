@@ -15,31 +15,25 @@ namespace BLL
         BE.BE_Usuario usuarioLogueado = new BE.BE_Usuario();
         BE.BE_Cliente clienteLogueado = new BE.BE_Cliente();
 
-        public object Login(string usuario, string password)
+        public BE.BE_Usuario LoginUsuario(string usuario, string password)
         {
             string passwordEncriptado = Encriptar(password);
             MPP.MPP_Seguridad mapperSeguridad = new MPP.MPP_Seguridad();
-            object respuestaLogin = mapperSeguridad.Login(usuario, passwordEncriptado);
+            usuarioLogueado = mapperSeguridad.LoginUsuario(usuario, passwordEncriptado);
 
-            if(respuestaLogin is BE.BE_Usuario)
+            if (usuarioLogueado != null)
             {
-                usuarioLogueado = mapperSeguridad.GetUsuarioLogueado();
+                int idUsuario = usuarioLogueado.IDUSUARIO;
+                usuarioLogueado.ESADMIN = mapperSeguridad.EsAdministrador(idUsuario);
+                mapperSeguridad.CargarPermisos(usuarioLogueado);
+
+                return usuarioLogueado;
             }
-            int idUsuario = usuarioLogueado.IDUSUARIO;
-
-            usuarioLogueado.ESADMIN = mapperSeguridad.EsAdministrador(idUsuario);
-
-
-            if(respuestaLogin is BE.BE_Usuario)
+            else
             {
-                BE.BE_Usuario usuarioRespuesta = (BE.BE_Usuario)respuestaLogin;
-                idUsuario = usuarioRespuesta.IDUSUARIO;
-
-                mapperSeguridad.CargarPermisos(idUsuario);
-                return respuestaLogin;
+                return null;
             }
 
-            return -1;
         }
 
         public BE.BE_Cliente LoginCliente(string usuario, string password)
