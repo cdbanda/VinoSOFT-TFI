@@ -23,6 +23,16 @@ namespace BLL
             return mapperUsuario.agregarPermiso(idUsuario, permiso);
         }
 
+        public bool VerificarSiFamiliaExisteEnUsuario(int idFamilia, int idUsuario)
+        {
+            return mapperUsuario.VerificarSiFamiliaExisteEnUsuario(idFamilia,idUsuario);
+        }
+
+        public bool VerificarSiPermisoExisteEnUsuario(int idPermiso,int idUsuario)
+        {
+            return mapperUsuario.VerificarSiPermisoExisteEnUsuario(idPermiso, idUsuario);
+        }
+
         public bool crear(BE.BE_Usuario usuario) {
             if (mapperUsuario.validarExistente(usuario)) {
                 return false;

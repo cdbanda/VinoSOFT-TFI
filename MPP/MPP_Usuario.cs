@@ -90,6 +90,47 @@ namespace MPP
             }
             return listado;
         }
+
+        public bool VerificarSiFamiliaExisteEnUsuario(int idFamilia, int idUsuario)
+        {
+
+            DataSet ds = new DataSet();
+            Hashtable hdatos = new Hashtable();
+            hdatos.Add("@idUsuario", idUsuario);
+            hdatos.Add("@idFamilia", idFamilia);
+
+            ds = sqlHelper.Leer("usuario_VerificarSiFamiliaExisteEnUsuario", hdatos);
+            if (ds.Tables.Count > 0)
+            {
+                if (ds.Tables[0].Rows.Count > 0)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        public bool VerificarSiPermisoExisteEnUsuario(int idPermiso, int idUsuario)
+        {
+
+            DataSet ds = new DataSet();
+            Hashtable hdatos = new Hashtable();
+            hdatos.Add("@idUsuario", idUsuario);
+            hdatos.Add("@idPermiso", idPermiso);
+
+            ds = sqlHelper.Leer("usuario_VerificarSiPermisoExisteEnUsuario", hdatos);
+            if (ds.Tables.Count > 0)
+            {
+                if (ds.Tables[0].Rows.Count > 0)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+
+
         public bool agregarFamilia(int idFamilia, int idUsuario)
         {
             Hashtable hdatos = new Hashtable();

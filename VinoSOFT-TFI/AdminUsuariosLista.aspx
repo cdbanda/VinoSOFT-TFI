@@ -27,7 +27,7 @@
                     <asp:BoundField DataField="Email" HeaderText="Email" />
                     <asp:BoundField DataField="Activo" HeaderText="Activo" />
                     <asp:CommandField ShowEditButton="true" EditText="Editar" ControlStyle-CssClass="btn btn-xs btn-warning" HeaderText="Editar" />
-                    <asp:CommandField ShowDeleteButton="true" EditText="Eliminar" ControlStyle-CssClass="btn btn-xs btn-danger" HeaderText="Eliminar" />
+<%--                    <asp:CommandField ShowDeleteButton="true" EditText="Eliminar" ControlStyle-CssClass="btn btn-xs btn-danger" HeaderText="Eliminar" />--%>
 
                 </Columns>
             </asp:GridView>

@@ -105,6 +105,24 @@ namespace VinoSOFT_TFI
         protected global::System.Web.UI.WebControls.TextBox iptStock;
 
         /// <summary>
+        /// Control RequiredFieldValidator_iptStock.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator_iptStock;
+
+        /// <summary>
+        /// Control rangeValidator_iptStock.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RangeValidator rangeValidator_iptStock;
+
+        /// <summary>
         /// Control iptStockMinimo.
         /// </summary>
         /// <remarks>
@@ -123,6 +141,15 @@ namespace VinoSOFT_TFI
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator_iptStockMinimo;
 
         /// <summary>
+        /// Control rangeValidator_iptStockMinimo.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RangeValidator rangeValidator_iptStockMinimo;
+
+        /// <summary>
         /// Control iptPrecio.
         /// </summary>
         /// <remarks>
@@ -139,6 +166,15 @@ namespace VinoSOFT_TFI
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator_iptPrecio;
+
+        /// <summary>
+        /// Control rangeValidator_iptPrecio.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RangeValidator rangeValidator_iptPrecio;
 
         /// <summary>
         /// Control iptFoto.
@@ -175,5 +211,59 @@ namespace VinoSOFT_TFI
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnGuardar;
+
+        /// <summary>
+        /// Control hidForModel.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hidForModel;
+
+        /// <summary>
+        /// Control mp1.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::AjaxControlToolkit.ModalPopupExtender mp1;
+
+        /// <summary>
+        /// Control ModalPanel.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel ModalPanel;
+
+        /// <summary>
+        /// Control UpdateModalPopUp.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel UpdateModalPopUp;
+
+        /// <summary>
+        /// Control mjsBodyMP.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label mjsBodyMP;
+
+        /// <summary>
+        /// Control btnOK.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnOK;
     }
 }

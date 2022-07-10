@@ -6,8 +6,12 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContenidoBackendMasterPage" runat="server">
     <div class="container">
         <div>
-            <h3>Reporte de Ventas</h3>
+            <h3>
+                <strong>Reporte de Ventas</strong>
+
+            </h3>
         </div>
+        <hr />
         <div>
             <div>
                 <h4>Cantidad de Ventas Por Estado</h4>

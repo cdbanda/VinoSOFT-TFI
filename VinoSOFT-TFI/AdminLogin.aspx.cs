@@ -46,9 +46,16 @@ namespace VinoSOFT_TFI
                 }
                 else
                 {
-                    Response.Redirect("AdminLogin.aspx", false);
-                    Context.ApplicationInstance.CompleteRequest();
+                    ltlError.Text = "El usuario no esta habilitado para ingresar.";
+                    ltlError.Visible = true;
+                    return;
                 }
+            }
+            else
+            {
+                ltlError.Text = "El usuario y/o contraseña son incorrectos.";
+                ltlError.Visible = true;
+                return;
             }
 
         }

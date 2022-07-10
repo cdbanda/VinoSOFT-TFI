@@ -14,7 +14,10 @@
                 </div>
 
                 <uc:UsuarioPass ID="UCUsuarioPass" runat="server"></uc:UsuarioPass>
-
+                 <div class="text-center">
+                    <strong style="color:red;"><asp:literal ID="ltlError" runat="server" text="ERROR" Visible="false"></asp:literal></strong>
+                </div>
+                <br />
                 <div class="form-group">
                     <div class="row">
                         <div class="col-md-12">

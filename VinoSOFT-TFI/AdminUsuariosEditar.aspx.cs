@@ -70,13 +70,34 @@ namespace VinoSOFT_TFI
             int idFamilia = int.Parse(ddFamilias.SelectedValue);
             int idUsuario = int.Parse(iptCodigo.Value);
 
+            
             if(idUsuario > 0 && idFamilia > 0)
             {
-                bool agregado = gestorUsuario.agregarFamilia(idFamilia, idUsuario);
-                if (agregado) {
-                    CargarInfo();
-                    CargarDvgFamilias(infoUsuario.LISTAFAMILIA);
+                if (gestorUsuario.VerificarSiFamiliaExisteEnUsuario(idFamilia, idUsuario))
+                {
+                    ltlErrorFamilia.Visible = true;
+                    ltlErrorFamilia.Text = "Rol ya asignado.";
+                }
+                else
+                {
+                    bool agregado = gestorUsuario.agregarFamilia(idFamilia, idUsuario);
+                    if (agregado)
+                    {
+                        ltlErrorFamilia.Visible = false;
+                        CargarInfo();
+                        CargarDvgFamilias(infoUsuario.LISTAFAMILIA);
                     }
+                    else
+                    {
+                        mp1.Show();
+                        mjsBodyMP.Text = "Error al agregar rol.";
+                    }
+                }
+            }
+            else
+            {
+                mp1.Show();
+                mjsBodyMP.Text = "Error al agregar rol.";
             }
         }
 
@@ -92,12 +113,11 @@ namespace VinoSOFT_TFI
 
                 if (eliminado)
                 {
+                    ltlErrorFamilia.Visible = false;
                     CargarInfo();
                     CargarDvgFamilias(infoUsuario.LISTAFAMILIA);
                 }
             }
-
-
         }
 
         protected void btnAgregarPermiso_Click(object sender, EventArgs e)
@@ -105,17 +125,39 @@ namespace VinoSOFT_TFI
             int idPermiso = int.Parse(ddPermisos.SelectedValue);
             int tipo = int.Parse(ddTipoPermiso.SelectedValue);
             int idUsuario = int.Parse(iptCodigo.Value);
+
+
             if (idUsuario > 0 && idPermiso > 0)
             {
-                BE.BE_Permiso nuevoPermiso = new BE.BE_Permiso();
-                nuevoPermiso.IDPERMISO = idPermiso;
-                nuevoPermiso.TIPO = tipo;
-                bool agregado = gestorUsuario.agregarPermiso(idUsuario, nuevoPermiso);
-                if (agregado)
+                if (gestorUsuario.VerificarSiPermisoExisteEnUsuario(idPermiso, idUsuario))
                 {
-                    CargarInfo();
-                    CargarDvgPermisos(infoUsuario.LISTAPERMISO);
+                    ltlErrorPermiso.Visible = true;
+                    ltlErrorPermiso.Text = "Permiso ya asignado.";
                 }
+                else
+                {
+
+                    BE.BE_Permiso nuevoPermiso = new BE.BE_Permiso();
+                    nuevoPermiso.IDPERMISO = idPermiso;
+                    nuevoPermiso.TIPO = tipo;
+                    bool agregado = gestorUsuario.agregarPermiso(idUsuario, nuevoPermiso);
+                    if (agregado)
+                    {
+                        ltlErrorPermiso.Visible = false;
+                        CargarInfo();
+                        CargarDvgPermisos(infoUsuario.LISTAPERMISO);
+                    }
+                    else
+                    {
+                        mp1.Show();
+                        mjsBodyMP.Text = "Error al agregar el permiso.";
+                    }
+                }
+            }
+            else
+            {
+                mp1.Show();
+                mjsBodyMP.Text = "Error al agregar el permiso.";
             }
         }
 
@@ -130,6 +172,8 @@ namespace VinoSOFT_TFI
 
                     if (infoUsuario != null)
                     {
+                        phAsignarFamiliaPermisos.Visible = true;
+
                         iptUsuario.Text = infoUsuario.EMAIL;
                         iptCodigo.Value = infoUsuario.IDUSUARIO.ToString();
                         iptNombre.Text = infoUsuario.NOMBRE;
@@ -147,9 +191,17 @@ namespace VinoSOFT_TFI
                         CargarDvgFamilias(infoUsuario.LISTAFAMILIA);
                         CargarDvgPermisos(infoUsuario.LISTAPERMISO);
 
-                        phAsignarFamiliaPermisos.Visible = true;
+                        
                     }
+                }else
+                {
+                    mp1.Show();
+                    mjsBodyMP.Text = "El usuario no existe.";
                 }
+            }
+            else
+            {
+                phAsignarFamiliaPermisos.Visible = false;
             }
         }
 
@@ -200,7 +252,8 @@ namespace VinoSOFT_TFI
                 int idUsuario = int.Parse(iptCodigo.Value);
                 if(idUsuario == gestorPermisos.GetIdUsuario() )
                 {
-                    return;
+                    mp1.Show();
+                    mjsBodyMP.Text = "Denegado. El usuario a eliminar es el mismo que inició sesión.";
                 }
                 else
                 {
@@ -209,8 +262,15 @@ namespace VinoSOFT_TFI
                     bool eliminado = gestorUsuario.eliminar(usuario);
                     if (eliminado)
                     {
-                        Response.Redirect("AdminUsuariosLista.aspx",false);
-                        Context.ApplicationInstance.CompleteRequest();
+                        mp1.Show();
+                        mjsBodyMP.Text = "Usuario eliminado con éxito.";
+                        //Response.Redirect("AdminUsuariosLista.aspx",false);
+                        //Context.ApplicationInstance.CompleteRequest();
+                    }
+                    else
+                    {
+                        mp1.Show();
+                        mjsBodyMP.Text = "Error al eliminar el usuario.";
                     }
 
                 }
@@ -243,13 +303,33 @@ namespace VinoSOFT_TFI
             bool existe = gestorUsuario.ValidarEmail(usuario.EMAIL);
             if (existe)
             {
-                gestorUsuario.editar(usuario);
+                if (gestorUsuario.editar(usuario))
+                {
+                    mp1.Show();
+                    mjsBodyMP.Text = "Usuario editado con éxito.";
+                }
+                else
+                {
+                    mp1.Show();
+                    mjsBodyMP.Text = "Error al editar el usuario.";
+                }
+
             }
             else
             {
-                gestorUsuario.crear(usuario);
-                Response.Redirect("AdminUsuariosLista.aspx", false);
-                Context.ApplicationInstance.CompleteRequest();
+                if (gestorUsuario.crear(usuario))
+                {
+                    mp1.Show();
+                    mjsBodyMP.Text = "Usuario creado con éxito.";
+                }
+                else
+                {
+
+                }
+                mp1.Show();
+                mjsBodyMP.Text = "Error al crear el usuario.";
+                //Response.Redirect("AdminUsuariosLista.aspx", false);
+                //Context.ApplicationInstance.CompleteRequest();
             }
 
         }
@@ -284,10 +364,18 @@ namespace VinoSOFT_TFI
 
                 if (eliminado)
                 {
+                    ltlErrorPermiso.Visible = false;
                     CargarInfo();
                     CargarDvgPermisos(infoUsuario.LISTAPERMISO);
                 }
             }
+        }
+
+        protected void BtnOk_Click(object sender, EventArgs e)
+        {
+            mp1.Hide();
+            Server.Transfer("AdminUsuariosLista.aspx", false);
+            Context.ApplicationInstance.CompleteRequest();
         }
     }
 }

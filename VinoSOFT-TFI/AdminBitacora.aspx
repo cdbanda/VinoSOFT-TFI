@@ -3,6 +3,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContenidoBackendMasterPage" runat="server">
        <div class="block full">
+           <br />
         <div class="row">
             <div id="filter-panel" class="filter-panel">
                 <div class="panel panel-default bg-panel">
@@ -37,11 +38,12 @@
                                 </div>
                             </div>
                         </div>
+                        <br />
                         <div class="row botones-buscador">
                             <div class="col-md-3 col-md-offset-10">
                                 <!-- form group [rows] -->
-                                <asp:Button ID="btnBuscar" runat="server" Text="Buscar" CssClass="btn btn-info" OnClick="btnBuscar_Click" />
-                                <a href="/AdminBitacora.aspx" class="btn btn-default"><span class="glyphicon glyphicon-trash"></span>&nbsp;Limpiar</a>
+                                <asp:Button ID="btnBuscar" runat="server" Text="Buscar" CssClass="btn btn-success" OnClick="btnBuscar_Click" />
+                                <a href="/AdminBitacora.aspx" class="btn btn-info">Limpiar Filtros</a>
                             </div>
                         </div>
 
@@ -51,7 +53,7 @@
         </div>
     </div>
 
-    
+    <br />
     
     
     <div class="block full">

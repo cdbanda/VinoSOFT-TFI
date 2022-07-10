@@ -28,6 +28,7 @@ namespace VinoSOFT_TFI
                     //pruebaCliente();
                     CargarDataCarrito();
                     ActualizarBarraNavegacionLogin();
+                    CargarDataCliente();
                 }
                 else
                 {
@@ -80,8 +81,11 @@ namespace VinoSOFT_TFI
                 bool finalizada = gestorVentas.FinalizarVenta(ventaActual);
                 if (finalizada)
                 {
-                    Response.Redirect("Inicio.aspx", false);
-                    Context.ApplicationInstance.CompleteRequest();
+                    mp1.Show();
+                    //Response.Redirect("Inicio.aspx", false);
+                    //Context.ApplicationInstance.CompleteRequest();
+                    mjsBodyMP.Text = "Gracias por su Compra, su pago fue confirmado.";
+                    mjsRedireccion.Text = "Será redirigido a la página de inicio.";
                 }
                 
             }
@@ -93,41 +97,84 @@ namespace VinoSOFT_TFI
             Context.ApplicationInstance.CompleteRequest();
         }
 
+        private void CargarDataCliente()
+        {
+            cliente = (BE.BE_Cliente)Session["ClienteLogueado"];
+            ltlNombreCliente.Text = cliente.NOMBRE + " " + cliente.APELLIDO;
+            ltlDNICliente.Text = cliente.DNI.ToString();
+            ltlDireccionCliente.Text = cliente.DOMICILIO;
+            ltlTelefonoCliente.Text = cliente.TELEFONO;
+
+        }
+
         private void CargarDataCarrito()
         {
             cliente = (BE.BE_Cliente)Session["ClienteLogueado"];
 
             if (cliente != null)
             {
+                BLL.BLL_Venta gestorVentas = new BLL.BLL_Venta();
                 carrito = gestorVentas.GetCarrito(cliente.IDCLIENTE);
-                float total = 0;
-                if (carrito != null)
+                if (carrito.ITEMS.Count > 0)
                 {
-                    foreach (BE.BE_Venta_Detalle item in carrito.ITEMS)
-                    {
-                        total = total + (item.CANTIDAD * item.MONTO);
-                    }
-                }
 
-                ltlTotal.Text = total.ToString();
+                    carrito.ITEMS = AgregarFormatoImagenes(carrito.ITEMS);
+                    dgvCarrito.DataSource = null;
+                    dgvCarrito.DataMember = "BE_Venta_Detalle";
+                    dgvCarrito.DataSource = carrito.ITEMS;
+                    dgvCarrito.DataBind();
+                    ltlTotal.Text = CalcularTotal(carrito.ITEMS).ToString();
+                }
             }
         }
 
-        //private void pruebaCliente()
-        //{
 
+        private float CalcularTotal(List<BE.BE_Venta_Detalle> lista)
+        {
+            float total = 0;
+            if (lista != null)
+            {
+                if (lista.Count > 0)
+                {
+                    foreach (BE.BE_Venta_Detalle vtaDetalle in lista)
+                    {
+                        total = total + vtaDetalle.SUBTOTAL;
+                    }
+                    return total;
+                }
+                else
+                {
+                    return total;
+                }
+            }
+            else
+            {
+                return total;
+            }
+        }
 
-        //    if (Session["UsuarioLogueado"] == null)
-        //    {
-        //        BLL.BLL_Cliente gestorCliente = new BLL.BLL_Cliente();
-        //        clientePrueba = gestorCliente.getPorID(3);
-        //        Session["UsuarioLogueado"] = clientePrueba;
-        //    }
-        //    else
-        //    {
-        //        clientePrueba = new BE.BE_Cliente();
-        //        clientePrueba = (BE.BE_Cliente)Session["UsuarioLogueado"];
-        //    }
-        //}
+        private List<BE.BE_Venta_Detalle> AgregarFormatoImagenes(List<BE.BE_Venta_Detalle> lista)
+        {
+            string formato = "data:image/jpeg;base64,";
+            if (lista != null)
+            {
+                if (lista.Count > 0)
+                {
+                    foreach (BE.BE_Venta_Detalle vtaDetalle in lista)
+                    {
+                        vtaDetalle.PRODUCTO.IMAGEN = formato + vtaDetalle.PRODUCTO.IMAGEN;
+                    }
+                    return lista;
+                }
+            }
+            return lista;
+        }
+
+        protected void BtnOk_Click(object sender, EventArgs e)
+        {
+            mp1.Hide();
+            Server.Transfer("Inicio.aspx",false);
+            Context.ApplicationInstance.CompleteRequest();
+        }
     }
 }

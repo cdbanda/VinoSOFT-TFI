@@ -3,9 +3,9 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContenidoBackendMasterPage" runat="server">
     <div class="form-group clearfix">
-        <a href="AdminUsuariosLista.aspx" class="btn btn-info pull-left">Volver al Listado</a>
-        <a href="AdminUsuariosEditar.aspx" class="btn btn-warning pull-left">Nuevo</a>
-        <asp:Button id="btnEliminar" runat="server" CssClass="btn btn-danger pull-right" UseSubmitBehavior="false" Visible="false" Text="Eliminar" OnClick="btnEliminar_Click"/>
+        <a href="AdminUsuariosLista.aspx" class="btn btn-info">Volver al Listado</a>
+        <a href="AdminUsuariosEditar.aspx" class="btn btn-primary">Nuevo Usuario</a>
+        <asp:Button id="btnEliminar" runat="server" CssClass="btn btn-danger pull-right" UseSubmitBehavior="false" Visible="false" Text="Eliminar Usuario" OnClick="btnEliminar_Click"/>
     </div>
     <asp:HiddenField ID="iptCodigo" runat="server" />
 
@@ -19,7 +19,7 @@
                 <asp:RequiredFieldValidator ForeColor="Red" runat="server" ErrorMessage="Campo Requerido" ControlToValidate="iptUsuario"></asp:RequiredFieldValidator>
             </div>
             <div class="col-md-1">
-                <label>Contrseña:</label>
+                <label>Contraseña:</label>
             </div>
             <div class="col-md-5">
                 <asp:TextBox ID="iptContrasena" runat="server" ClientIDMode="Static" required="required" MaxLength="15" CssClass="form-control" TextMode="Password"></asp:TextBox>
@@ -105,9 +105,10 @@
                         </asp:DropDownList>
                         <asp:RequiredFieldValidator ForeColor="Red" ID="RequiredFieldValidator_ddFamilias" runat="server" ErrorMessage="Campo Requerido" ControlToValidate="ddFamilias"
                             ValidationGroup="vgAgregarFamilia"></asp:RequiredFieldValidator>
+                        <label style="color:red"><asp:Literal id="ltlErrorFamilia" runat="server" Visible="false"></asp:Literal></label>
                     </div>
                     <div class="col-md-2">
-                        <asp:Button id="btnAgregarfamilia" OnClick="btnAgregarfamilia_Click" runat="server" CssClass="btn btn-sm btn-warning" Text="Agregar" ValidationGroup="vgAgregarFamilia" />
+                        <asp:Button id="btnAgregarfamilia" OnClick="btnAgregarfamilia_Click" runat="server" CssClass="btn btn-warning" Text="Agregar" ValidationGroup="vgAgregarFamilia" />
                     </div>
                     <div class="col-md-12">
                         <asp:GridView ID="dgvFamilias" runat="server" CssClass="table table-hover table-bordered" BorderStyle="None" 
@@ -139,8 +140,9 @@
                          ValidationGroup="vgAgregarPermiso"></asp:RequiredFieldValidator>
                 </div>
                 <div class="col-md-2">
-                    <asp:Button ID="btnAgregarPermiso" OnClick="btnAgregarPermiso_Click" runat="server" CssClass="btn btn.sm btn-warning" Text="Agregar" 
+                    <asp:Button ID="btnAgregarPermiso" OnClick="btnAgregarPermiso_Click" runat="server" CssClass="btn btn-warning" Text="Agregar" 
                         ValidationGroup="vgAgregarPermiso"/>
+                    <label style="color:red"><asp:Literal id="ltlErrorPermiso" runat="server" Visible="false"></asp:Literal></label>
                 </div>
                 <div class="col-md-12">
                     <asp:gridview ID="dgvPermisos" CssClass="table table-hover table-bordered" BorderStyle="None" itemtype="BE_Permiso" 
@@ -158,10 +160,40 @@
     </asp:PlaceHolder>
 
     <div class="form-group clearfix">
-        <a href="AdminUsuariosLista.aspx" class="btn btn-info pull-left">Volver al Listado</a>
-        <input type="reset" class="btn btn-secondary pull-left" name="cancelar" value="Cancelar" />
-        <asp:Button ID="btnGuardar" runat="server" CssClass="btn btn-success" Text="Guardar" OnClick="btnGuardar_Click"/>
+        <a href="AdminUsuariosLista.aspx" class="btn btn-info">Volver al Listado</a>
+        <asp:Button ID="btnGuardar" runat="server" CssClass="btn btn-success" Text="Guardar Cambios" OnClick="btnGuardar_Click"/>
     </div>
+
+
+<asp:HiddenField ID="hidForModel" runat="server" />
+
+<!-- ModalPopUpRestore -->
+<ajaxtoolkit:ModalPopupExtender ID="mp1" runat="server" 
+    PopupControlID="ModalPanel" 
+    TargetControlID="hidForModel"
+    BackgroundCssClass="modalBackground"
+    BehaviorID="PopUp"
+    >
+</ajaxtoolkit:ModalPopupExtender>
+
+<asp:Panel ID="ModalPanel" runat="server" CssClass="modal-content modal-sm" Style="display:none">
+    <asp:UpdatePanel ID="UpdateModalPopUp" runat="server">
+        <ContentTemplate>
+            <div id="body" class="modal-body">
+                 <asp:label runat="server" ID="mjsBodyMP"></asp:label>
+            </div>
+            <div id="footer" class="modal-footer">
+                <asp:Button ID="btnOK" runat="server" Text="OK" CssClass="btn-success" onclick="BtnOk_Click"
+                    />
+            </div>
+        </ContentTemplate>
+    <Triggers>
+        <asp:PostBackTrigger ControlID="btnOK" />
+    </Triggers>
+    </asp:UpdatePanel>
+</asp:Panel>
+
+<!-- ModalPopupRestore -->
 
 </asp:Content>
 

@@ -24,6 +24,15 @@ namespace VinoSOFT_TFI
         protected global::System.Web.UI.WebControls.Button btnEliminar;
 
         /// <summary>
+        /// Control ltlNombrePagina.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal ltlNombrePagina;
+
+        /// <summary>
         /// Control iptCodigo.
         /// </summary>
         /// <remarks>
@@ -76,6 +85,15 @@ namespace VinoSOFT_TFI
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnAgregarPermiso;
+
+        /// <summary>
+        /// Control ltlErrorFamilia.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal ltlErrorFamilia;
 
         /// <summary>
         /// Control dgvPermisos.

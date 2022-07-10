@@ -53,15 +53,30 @@ namespace VinoSOFT_TFI
             {
                 BLL.BLL_Venta gestorVentas = new BLL.BLL_Venta();
                 BE.BE_Venta carrito = gestorVentas.GetCarrito(cliente.IDCLIENTE);
-                
-                if (carrito.ITEMS.Count > 0)
+
+                if (carrito != null)
                 {
-                    carrito.ITEMS = AgregarFormatoImagenes(carrito.ITEMS);
-                    dgvCarrito.DataSource = null;
-                    dgvCarrito.DataMember = "BE_Venta_Detalle";
-                    dgvCarrito.DataSource = carrito.ITEMS;
-                    dgvCarrito.DataBind();
-                    lblTotalMonto.Text = CalcularTotal(carrito.ITEMS).ToString();
+                    if(carrito.ITEMS != null) { 
+                        if (carrito.ITEMS.Count > 0)
+                        {
+                            carrito.ITEMS = AgregarFormatoImagenes(carrito.ITEMS);
+                            dgvCarrito.DataSource = null;
+                            dgvCarrito.DataMember = "BE_Venta_Detalle";
+                            dgvCarrito.DataSource = carrito.ITEMS;
+                            dgvCarrito.DataBind();
+                            lblTotalMonto.Text = CalcularTotal(carrito.ITEMS).ToString();
+                        }
+                        else
+                        {
+                            seccionNoHayProductos.Visible = true;
+                            seccionHayProductos.Visible = false;
+                        }
+                    }
+                    else
+                    {
+                        seccionNoHayProductos.Visible = true;
+                        seccionHayProductos.Visible = false;
+                    }
                 }
                 else
                 {

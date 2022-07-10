@@ -74,8 +74,10 @@ namespace VinoSOFT_TFI
             bool guardado = gestorVentas.ActualizarEstado(idVenta, ddEstado.SelectedValue);
             if (guardado)
             {
-                Response.Redirect("AdminVentasLista.aspx",false);
-                Context.ApplicationInstance.CompleteRequest();
+                mp1.Show();
+                mjsBodyMP.Text = "Guardado con éxito.";
+                //Response.Redirect("AdminVentasLista.aspx",false);
+                //Context.ApplicationInstance.CompleteRequest();
             }
         }
 
@@ -99,6 +101,19 @@ namespace VinoSOFT_TFI
             ((Backend)Master).MenuSeguridad = gestorPermisos.TienePermiso("MOD_SEGURIDAD", usuario);
             ((Backend)Master).MenuVentas = gestorPermisos.TienePermiso("MOD_VENTAS", usuario);
             ((Backend)Master).MenuMkt = gestorPermisos.TienePermiso("MOD_MKT", usuario);
+        }
+
+        protected void BtnVolver_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("AdminVentasLista.aspx", false);
+            Context.ApplicationInstance.CompleteRequest();
+        }
+
+        protected void BtnOk_Click(object sender, EventArgs e)
+        {
+            mp1.Hide();
+            Server.Transfer("AdminVentasLista.aspx", false);
+            Context.ApplicationInstance.CompleteRequest();
         }
     }
 }

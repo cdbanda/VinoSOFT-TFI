@@ -24,7 +24,7 @@
                     <asp:BoundField DataField="MontoTotal" HeaderText="Monto" />
                     <asp:BoundField DataField="Fecha" HeaderText="Fecha" />
                     <asp:BoundField DataField="Estado" HeaderText="Estado" ControlStyle-CssClass="label label-default" />
-                    <asp:CommandField ShowEditButton="True" EditText="Editar" ControlStyle-CssClass="btn btn-xs btn-secondary" HeaderText="Editar"  />
+                    <asp:CommandField ShowEditButton="True" EditText="Editar" ControlStyle-CssClass="btn btn-xs btn-warning" HeaderText="Editar"  />
 
                 </Columns>
             </asp:GridView>

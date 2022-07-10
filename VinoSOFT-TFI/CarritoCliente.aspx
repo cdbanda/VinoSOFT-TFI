@@ -67,7 +67,7 @@
                     <asp:Label ID="lblTotalMonto" runat="server" CssClass="font-weight-bold" Text="-"></asp:Label>
                 </div>
                 <div>
-                    <asp:Button ID="btnSeguirComprando" runat="server" Text="Continuar Comprando" CssClass="btn btn-secondary text-left" OnClick="btnSeguirComprando_Click" />
+                    <asp:Button ID="btnSeguirComprando" runat="server" Text="Continuar Comprando" CssClass="btn btn-primary text-left" OnClick="btnSeguirComprando_Click" />
                     <asp:Button ID="btnPagar" runat="server" Text="Pagar" CssClass="btn btn-success pull-right" OnClick="btnPagar_Click" />
                 </div>
             </div>

@@ -73,7 +73,7 @@ namespace VinoSOFT_TFI
                         iptDescripcionCorta.Text = producto.DESCRIPCIONCORTA;
                         iptPrecio.Text = producto.PRECIO.ToString();
                         iptStock.Text = producto.STOCK.ToString();
-                        iptStock.Enabled = false; //si se esta editando no se puede cambiar el stock porque se actualiza al vender o recibir.
+                        iptStock.Enabled = true; //si se esta editando no se puede cambiar el stock porque se actualiza al vender o recibir.
                         iptStockMinimo.Text = producto.STOCKMINIMO.ToString();
 
                         ddActivo.SelectedValue = producto.ACTIVO.ToString();
@@ -112,8 +112,15 @@ namespace VinoSOFT_TFI
                 bool eliminado = gestorProducto.eliminarProducto(producto);
                 if (eliminado)
                 {
-                    Response.Redirect("AdminProductosListas.aspx",false);
-                    Context.ApplicationInstance.CompleteRequest();
+                    //Response.Redirect("AdminProductosListas.aspx",false);
+                    //Context.ApplicationInstance.CompleteRequest();
+                    mp1.Show();
+                    mjsBodyMP.Text = "Producto eliminado con éxito.";
+                }
+                else
+                {
+                    mp1.Show();
+                    mjsBodyMP.Text = "Error al eliminar el producto.";
                 }
             }
         }
@@ -158,19 +165,33 @@ namespace VinoSOFT_TFI
             {
                 producto.IDPRODUCTO = int.Parse(iptCodigo.Value);
                 guardado = gestorProducto.actualizarProducto(producto);
+
+                if (guardado)
+                {
+                    mp1.Show();
+                    mjsBodyMP.Text = "Cambios Guardados con éxito";
+                }
+                else
+                {
+                    mp1.Show();
+                    mjsBodyMP.Text = "Error al guardar los cambios.";
+                }
             }
             else
             {
                 producto.IDPRODUCTO = 0;
                 guardado = gestorProducto.insertarProducto(producto);
+                if (guardado)
+                {
+                    mp1.Show();
+                    mjsBodyMP.Text = "Producto creado con éxito";
+                }
+                else
+                {
+                    mp1.Show();
+                    mjsBodyMP.Text = "Error al crear el producto.";
+                }
             }
-
-            if (guardado)
-            {
-                Response.Redirect("AdminProductosLista.aspx",false);
-                Context.ApplicationInstance.CompleteRequest();
-            }
-
         }
 
         public void ActualizarBarraNavegacionLogin()
@@ -196,6 +217,13 @@ namespace VinoSOFT_TFI
             ((Backend)Master).MenuMkt = gestorPermisos.TienePermiso("MOD_MKT", usuario);
             //((Backend)Master).MenuAdmFzas = gestorPermisos.TienePermiso("MOD_ADM_FZAS", usuario);
             //((Backend)Master).MenuAdmFzas = gestorPermisos.TienePermiso("MOD_ADM_FZAS", usuario);
+        }
+
+        protected void BtnOk_Click(object sender, EventArgs e)
+        {
+            mp1.Hide();
+            Server.Transfer("AdminProductosLista.aspx", false);
+            Context.ApplicationInstance.CompleteRequest();
         }
 
     }

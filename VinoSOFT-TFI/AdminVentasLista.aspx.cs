@@ -72,7 +72,8 @@ namespace VinoSOFT_TFI
 
         protected void dgvVentas_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
-
+            dgvVentas.PageIndex = e.NewPageIndex;
+            this.llenarDgv();
         }
 
         protected void dgvVentas_PageIndexChanged(object sender, EventArgs e)
