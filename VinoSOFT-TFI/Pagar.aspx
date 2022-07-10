@@ -5,6 +5,17 @@
     <div>
         <h2>Confirmar Compra</h2>
         <hr />
+
+        <div>
+            <h3>Datos de cliente: </h3>
+
+        </div>
+        <br />
+        <div>
+            <h3>Datos de la compra: </h3>
+        </div>
+
+        <hr />
         <h3>Total $: </h3><asp:Literal ID="ltlTotal" runat="server" Text=""></asp:Literal>
         <hr />
         <asp:Button ID="btnConfirmar" runat="server" CssClass="btn btn-primary" Text="Pagar" OnClick="btnConfirmar_Click"/>

@@ -4,25 +4,12 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
     <div class="row">
-
-<%--            <asp:UpdatePanel ID="updatePanelAds" runat="server">
-                <ContentTemplate>
-                    <asp:AdRotator ID="AdRotatorDefault" runat="server"
-                        AdvertisementFile="~/Publicidad/publicidad.xml"
-                        Height="200px"
-                        Width="300px" />
-                    <asp:Timer ID="Timer1" Interval="3000" runat="server" />
-                </ContentTemplate>
-                <Triggers>
-                    <asp:AsyncPostBackTrigger ControlID="Timer1" EventName="Tick" />
-                </Triggers>
-            </asp:UpdatePanel>--%>
         <h3>Nuestros Productos</h3>
-       
- </div>
+    </div>
     <hr />
+    <br />
     <div class="row">
-        <asp:Repeater ID="repeaterProducto" runat="server">
+        <asp:Repeater ID="repeaterProducto" runat="server" Visible="true">
            <ItemTemplate>
                <div class="col-sm-4 col-lg-4 col-md-4">
                    <div class="">
@@ -44,6 +31,9 @@
            </ItemTemplate>
 
         </asp:Repeater>
+    </div>
+    <div class="row">
+        <strong class="h4" style="text-align:center;"><asp:Literal ID="ltlNoHayProductos" runat="server" Visible="false" Text="No hay productos para mostrar."></asp:Literal></strong>
     </div>
 
 

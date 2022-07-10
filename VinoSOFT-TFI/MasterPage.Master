@@ -13,6 +13,7 @@
     <link href="css/estilos.css" rel="stylesheet" />
     <link href="css/footer.css" rel="stylesheet" />
     <link href="css/modalPopup.css" rel="stylesheet" />
+    <link href="css/ProductoDetalle.css" rel="stylesheet" />
 
     <script src='https://www.google.com/recaptcha/api.js'></script>
     <script src="js/validaciones.js"></script>

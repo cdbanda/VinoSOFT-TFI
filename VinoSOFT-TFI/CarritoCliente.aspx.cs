@@ -11,12 +11,13 @@ namespace VinoSOFT_TFI
     {
         BE.BE_Venta venta = new BE.BE_Venta();
         ClienteACL gestorPermisos = new ClienteACL();
+        
 
         BE.BE_Cliente cliente;
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!IsPostBack)
+            if (!Page.IsPostBack)
             {
                 if(gestorPermisos.EstaLogueado())
                 {
@@ -53,7 +54,7 @@ namespace VinoSOFT_TFI
                 BLL.BLL_Venta gestorVentas = new BLL.BLL_Venta();
                 BE.BE_Venta carrito = gestorVentas.GetCarrito(cliente.IDCLIENTE);
                 
-                if (carrito != null)
+                if (carrito.ITEMS.Count > 0)
                 {
                     carrito.ITEMS = AgregarFormatoImagenes(carrito.ITEMS);
                     dgvCarrito.DataSource = null;
@@ -61,6 +62,11 @@ namespace VinoSOFT_TFI
                     dgvCarrito.DataSource = carrito.ITEMS;
                     dgvCarrito.DataBind();
                     lblTotalMonto.Text = CalcularTotal(carrito.ITEMS).ToString();
+                }
+                else
+                {
+                    seccionNoHayProductos.Visible = true;
+                    seccionHayProductos.Visible = false;
                 }
             }
         }
@@ -106,43 +112,65 @@ namespace VinoSOFT_TFI
             return lista;
         }
 
-        protected void dgvCarrito_RowEditing(object sender, GridViewEditEventArgs e)
-        {
-            BLL.BLL_Venta gestorVenta = new BLL.BLL_Venta();
+        //protected void dgvCarrito_RowEditing(object sender, GridViewEditEventArgs e)
+        //{
+        //    BLL.BLL_Venta gestorVenta = new BLL.BLL_Venta();
+        //    BLL.BLL_Producto gestorProductos = new BLL.BLL_Producto();
 
-            GridViewRow row = dgvCarrito.Rows[e.NewEditIndex];
-            TextBox txtCantidad = (TextBox)row.FindControl("txtCantidad");
-            HiddenField fieldVtaDetalle = (HiddenField)row.FindControl("idVentaDetalle");
+        //    GridViewRow row = dgvCarrito.Rows[e.NewEditIndex];
+        //    TextBox txtCantidad = (TextBox)row.FindControl("txtCantidad");
+        //    HiddenField fieldVtaDetalle = (HiddenField)row.FindControl("idVentaDetalle");
 
+        //    //buscar el id producto desde el registro de la base.
+        //    int idProducto = gestorVenta.GetIDProductoDesdeDetVta(int.Parse(fieldVtaDetalle.Value));
+        //    BE.BE_Producto producto = new BE.BE_Producto();
+        //    producto.IDPRODUCTO = idProducto;
 
-            //do something with details 
-            string cantidad = txtCantidad.Text;
-            if(int.TryParse(cantidad, out _) && !string.IsNullOrEmpty(cantidad) && !string.IsNullOrEmpty(cantidad))
-            {
-                int cant = int.Parse(cantidad);
-                if (cant > 0 && cant < 6)
-                {
-                    string strVtaDetalle = fieldVtaDetalle.Value;
-                    int idVtaDetalle = int.Parse(strVtaDetalle);
-                    BE.BE_Venta_Detalle vtaDetalle = new BE.BE_Venta_Detalle();
-                    vtaDetalle.IDVENTADETALLE = idVtaDetalle;
-                    vtaDetalle.CANTIDAD = cant;
+        //    //do something with details 
+        //    string cantidad = txtCantidad.Text;
+        //    seccionMjsCliente.Visible = false;
+        //    if (int.TryParse(cantidad, out _) && !string.IsNullOrEmpty(cantidad) && !string.IsNullOrEmpty(cantidad))
+        //    {
+        //        int cant = int.Parse(cantidad);
 
-                    bool guardado = gestorVenta.EditarItem(vtaDetalle);
-                    if (guardado)
-                    {
-                        //pruebaCliente();
-                        CargarDataCarrito();
-                    }
-                }
-            }
-            else
-            {
-                Response.Redirect(Request.RawUrl,false);
-                Context.ApplicationInstance.CompleteRequest();
-            }
+        //        if (cant > 0 && cant < 6)
+        //        {
+        //            if (gestorProductos.ValidarStock(producto) - gestorProductos.ObtenerStockMinimo(producto) >= cant)
+        //            {
+        //                string strVtaDetalle = fieldVtaDetalle.Value;
+        //                int idVtaDetalle = int.Parse(strVtaDetalle);
+        //                BE.BE_Venta_Detalle vtaDetalle = new BE.BE_Venta_Detalle();
+        //                vtaDetalle.IDVENTADETALLE = idVtaDetalle;
+        //                vtaDetalle.CANTIDAD = cant;
 
-        }
+        //                bool guardado = gestorVenta.EditarItem(vtaDetalle);
+        //                if (guardado)
+        //                {
+        //                    //pruebaCliente();
+        //                    CargarDataCarrito();
+        //                }
+        //            }
+        //            else
+        //            {
+        //                seccionMjsCliente.Visible = true;
+        //                ltlMjsCliente.Text = "No hay suficiente stock del producto.";
+        //            }
+        //        }
+        //        else
+        //        {
+        //            seccionMjsCliente.Visible = true;
+        //            ltlMjsCliente.Text = "Máximo de 5 unidades por producto.";
+        //        }
+        //    }
+        //    else
+        //    {
+        //        seccionMjsCliente.Visible = true;
+        //        ltlMjsCliente.Text = "Ingrese un número entero.";
+        //        //Response.Redirect(Request.RawUrl,false);
+        //        //Context.ApplicationInstance.CompleteRequest();
+        //    }
+
+        //}
 
         protected void dgvCarrito_RowDeleting(object sender, GridViewDeleteEventArgs e)
         {
@@ -185,6 +213,65 @@ namespace VinoSOFT_TFI
         {
             Response.Redirect("Pagar.aspx",false);
             Context.ApplicationInstance.CompleteRequest();
+        }
+
+        protected void dgvCarrito_RowUpdating(object sender, GridViewUpdateEventArgs e)
+        {
+            BLL.BLL_Venta gestorVenta = new BLL.BLL_Venta();
+            BLL.BLL_Producto gestorProductos = new BLL.BLL_Producto();
+
+            GridViewRow row = dgvCarrito.Rows[e.RowIndex];
+            TextBox txtCantidad = (TextBox)row.FindControl("txtCantidad");
+            HiddenField fieldVtaDetalle = (HiddenField)row.FindControl("idVentaDetalle");
+
+            //buscar el id producto desde el registro de la base.
+            int idProducto = gestorVenta.GetIDProductoDesdeDetVta(int.Parse(fieldVtaDetalle.Value));
+            BE.BE_Producto producto = new BE.BE_Producto();
+            producto.IDPRODUCTO = idProducto;
+
+            //do something with details 
+            string cantidad = txtCantidad.Text;
+            seccionMjsCliente.Visible = false;
+            if (int.TryParse(cantidad, out _) && !string.IsNullOrEmpty(cantidad) && !string.IsNullOrEmpty(cantidad))
+            {
+                int cant = int.Parse(cantidad);
+
+                if (cant > 0 && cant < 6)
+                {
+                    if (gestorProductos.ValidarStock(producto) - gestorProductos.ObtenerStockMinimo(producto) >= cant)
+                    {
+                        string strVtaDetalle = fieldVtaDetalle.Value;
+                        int idVtaDetalle = int.Parse(strVtaDetalle);
+                        BE.BE_Venta_Detalle vtaDetalle = new BE.BE_Venta_Detalle();
+                        vtaDetalle.IDVENTADETALLE = idVtaDetalle;
+                        vtaDetalle.CANTIDAD = cant;
+
+                        bool guardado = gestorVenta.EditarItem(vtaDetalle);
+                        if (guardado)
+                        {
+                            //pruebaCliente();
+                            CargarDataCarrito();
+                        }
+                    }
+                    else
+                    {
+                        seccionMjsCliente.Visible = true;
+                        ltlMjsCliente.Text = "No hay suficiente stock del producto.";
+                    }
+                }
+                else
+                {
+                    seccionMjsCliente.Visible = true;
+                    ltlMjsCliente.Text = "Máximo de 5 unidades por producto.";
+                }
+            }
+            else
+            {
+                seccionMjsCliente.Visible = true;
+                ltlMjsCliente.Text = "Ingrese un número entero.";
+                //Response.Redirect(Request.RawUrl,false);
+                //Context.ApplicationInstance.CompleteRequest();
+            }
         }
     }
 

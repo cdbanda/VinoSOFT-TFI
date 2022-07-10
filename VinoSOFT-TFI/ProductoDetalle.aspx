@@ -10,28 +10,33 @@
             <!-- parte de detalle producto -->
             <div class="item-container">
                 <div class="container">
-                    <div class="">
-                        <asp:Image ID="imgProducto" Width="300" Height="300" runat="server" />
+                    <div class="col-md-5">
+                    <asp:Button ID="btnVolver" runat="server" text="Volver al Catálogo" CssClass="btn btn-info" OnClick="btnVolver_Click"/>
+                    </div>
+                   <br />
+                    <div class="col-md-5">
+                        <div class="text-center">
+                            <asp:Image ID="imgProducto" Width="300" Height="300" runat="server" />
+                        </div>
                     </div>
                     <div class="col-md-7">
-                        <a href="Productos.aspx" class="pull-right">Volver al Catalogo</a>
-                        <div class="">
-                            <asp:Literal ID="ltlTitulo" runat="server"></asp:Literal>
+                        
+                        <div>
+                            <h3><asp:Literal ID="ltlTitulo" runat="server"></asp:Literal></h3>
                         </div>
-                        <div class="">
+                        <div>
                             <asp:Literal ID="ltlDescripcionCorta" runat="server"></asp:Literal>
                         </div>
-                        <div class=""> $
-                            <asp:Literal ID="ltlPrecio" runat="server"></asp:Literal>
+                        <div>
+                            <h4>Precio: $ <asp:Literal ID="ltlPrecio" runat="server"></asp:Literal> </h4>
                         </div>
-                        <div class="" runat="server" id="divEnStock" visible="true">En Stock</div>
-                        <div class="" runat="server" id="divSinStock" visible="false">Sin Stock</div>
+                        <div>
+                            <strong style="color: green"><asp:Literal ID="ltlHayStock" runat="server" Visible="false" Text="Hay STOCK"></asp:Literal> </strong>
+                            <strong style="color: red"><asp:Literal ID="ltlNoHayStock" runat="server" Visible="false" Text="Sin STOCK"></asp:Literal></strong>
+                        </div>
                         <hr />
                         <div class="">
                             <asp:Button ID="btnAgregarCarrito" runat="server" CssClass="btn btn-success" Visible="false" Text="Agregar al Carrito" OnClick="btnAgregarCarrito_Click"/>
-                        </div>
-                        <div class="">
-
                         </div>
                     </div>
                 </div>
@@ -39,7 +44,7 @@
             <!--- fin detalle producto -->
             <div class="container">
                 <div class="col-md-12">
-                    <section class="container">
+                    <section class="container"  runat="server" id="seccionInsertarComentarios" visible="true">
                             <div>
                                 <h4>Dejar un Comentario:</h4>
                                 <form role="form">
@@ -51,12 +56,14 @@
                                         <label>Comentario:</label>
                                         <asp:TextBox ID="txtComentario" TextMode="MultiLine" CssClass="form-control" runat="server"></asp:TextBox>
                                     </div>
-                                    <asp:Button ID="btnGuardarComentario" CssClass="btn btn-primary" runat="server" Text="Enviar" Visible="false" OnClick="btnGuardarComentario_Click" />
+                                    <asp:Button ID="btnGuardarComentario" CssClass="btn btn-primary" runat="server" Text="Enviar" Visible="true" OnClick="btnGuardarComentario_Click" />
                                 </form>
                             </div>
                     </section>
-                    <section>
+                    <section runat="server" id="seccionComentariosPosteados" visible="true" >
                           <!-- Comentarios posteados --->
+                        <h3>Comentarios: </h3>
+                        <br />
                             <asp:Repeater id="rptComentarios" runat="server" Visible="false">
                                 <ItemTemplate>
                                     <div class="media">
@@ -74,11 +81,11 @@
                             </asp:Repeater>
                             <!-- fin comentarios posteados -->
                         </section>
+                    <section runat="server" id="seccionNoHayComentarios" visible="false"  >
+                        <h3>Sin Comentarios. </h3>
+                    </section>
                     </div>
                 </div>
         </div>
     </div>
-
-
-
-</asp:Content>
+    </asp:Content>

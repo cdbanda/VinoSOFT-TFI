@@ -24,6 +24,15 @@ namespace VinoSOFT_TFI
         protected global::System.Web.UI.WebControls.HiddenField iptCodigo;
 
         /// <summary>
+        /// Control btnVolver.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnVolver;
+
+        /// <summary>
         /// Control imgProducto.
         /// </summary>
         /// <remarks>
@@ -60,22 +69,22 @@ namespace VinoSOFT_TFI
         protected global::System.Web.UI.WebControls.Literal ltlPrecio;
 
         /// <summary>
-        /// Control divEnStock.
+        /// Control ltlHayStock.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divEnStock;
+        protected global::System.Web.UI.WebControls.Literal ltlHayStock;
 
         /// <summary>
-        /// Control divSinStock.
+        /// Control ltlNoHayStock.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divSinStock;
+        protected global::System.Web.UI.WebControls.Literal ltlNoHayStock;
 
         /// <summary>
         /// Control btnAgregarCarrito.
@@ -85,6 +94,15 @@ namespace VinoSOFT_TFI
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnAgregarCarrito;
+
+        /// <summary>
+        /// Control seccionInsertarComentarios.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl seccionInsertarComentarios;
 
         /// <summary>
         /// Control txtAutor.
@@ -114,6 +132,15 @@ namespace VinoSOFT_TFI
         protected global::System.Web.UI.WebControls.Button btnGuardarComentario;
 
         /// <summary>
+        /// Control seccionComentariosPosteados.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl seccionComentariosPosteados;
+
+        /// <summary>
         /// Control rptComentarios.
         /// </summary>
         /// <remarks>
@@ -121,5 +148,14 @@ namespace VinoSOFT_TFI
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Repeater rptComentarios;
+
+        /// <summary>
+        /// Control seccionNoHayComentarios.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl seccionNoHayComentarios;
     }
 }

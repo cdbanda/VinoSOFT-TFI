@@ -27,6 +27,8 @@ namespace VinoSOFT_TFI
 
             if (respuesta is null)
             {
+                ltlError.Text = "El usuario y/o contraseña son incorrectos.";
+                ltlError.Visible = true;
                 return;
             }
             else

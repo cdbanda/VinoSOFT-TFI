@@ -108,6 +108,7 @@
     <Content Include="css\footer.css" />
     <Content Include="css\login.css" />
     <Content Include="css\modalPopup.css" />
+    <Content Include="css\ProductoDetalle.css" />
     <Content Include="CU_Mail.ascx" />
     <Content Include="CU_UsuarioPass.ascx" />
     <Content Include="DesregistracionNewsletter.aspx" />
@@ -170,10 +171,7 @@
     <Content Include="database\backups\BK25-10-2019_20-37-27.bak" />
     <Content Include="database\backups\BK31-10-2019_20-26-19.bak" />
     <Content Include="database\restore\BK25-10-2019_20-37-27.bak" />
-    <Content Include="database\VINOSOFT_160622_v2.bak" />
     <Content Include="Backend.Master" />
-    <Content Include="database\VinoSOFT_30062022.bak" />
-    <Content Include="database\vinosoft_07072022.bak" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />

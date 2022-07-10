@@ -7,11 +7,13 @@
 // </generado automáticamente>
 //------------------------------------------------------------------------------
 
-namespace VinoSOFT_TFI {
-    
-    
-    public partial class Login {
-        
+namespace VinoSOFT_TFI
+{
+
+
+    public partial class Login
+    {
+
         /// <summary>
         /// Control UCUsuarioPass.
         /// </summary>
@@ -20,7 +22,16 @@ namespace VinoSOFT_TFI {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::VinoSOFT_TFI.CU_UsuarioPass UCUsuarioPass;
-        
+
+        /// <summary>
+        /// Control ltlError.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal ltlError;
+
         /// <summary>
         /// Control btnLoginPage.
         /// </summary>

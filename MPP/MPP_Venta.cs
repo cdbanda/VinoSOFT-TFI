@@ -310,5 +310,24 @@ namespace MPP
             }
             return venta;
         }
+
+        public int GetIDProductoDesdeDetVta(int idDetVta)
+        {
+            int id = 0;
+
+            DataSet ds = new DataSet();
+            Hashtable hdatos = new Hashtable();
+            hdatos.Add("@iddetalle",idDetVta);
+            ds = SQLHelper.Leer("venta_GetIDProductoDesdeDetVta", hdatos);
+            if (ds.Tables.Count > 0)
+            {
+                if (ds.Tables[0].Rows.Count > 0)
+                {
+                    DataRow item = ds.Tables[0].Rows[0];
+                    id = int.Parse(item["id_producto"].ToString());
+                }
+            }
+            return id;
+        }
     }
 }

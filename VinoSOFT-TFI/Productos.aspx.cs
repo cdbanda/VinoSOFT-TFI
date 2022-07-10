@@ -28,15 +28,22 @@ namespace VinoSOFT_TFI
         protected void listarProductos() {
             List<BE.BE_Producto> lista = new List<BE.BE_Producto>();
             lista = gestorProducto.listarProducto();
-            lista = AgregarFormatoImagenes(lista);
+            if(lista != null)
+            {
+                lista = AgregarFormatoImagenes(lista);
 
-            repeaterProducto.DataSource = null;
-            repeaterProducto.DataBind();
+                repeaterProducto.DataSource = null;
+                repeaterProducto.DataBind();
 
-            repeaterProducto.DataSource = lista;
-            repeaterProducto.DataBind();
-            
-        
+                repeaterProducto.DataSource = lista;
+                repeaterProducto.DataBind();
+
+            }
+            else
+            {
+                ltlNoHayProductos.Visible = true;
+            }
+
         }
 
         private List<BE.BE_Producto> AgregarFormatoImagenes(List<BE.BE_Producto> lista)

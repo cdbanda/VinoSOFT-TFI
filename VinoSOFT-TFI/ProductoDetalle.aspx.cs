@@ -30,17 +30,22 @@ namespace VinoSOFT_TFI
                     else
                     {
                         completarPaginaConProducto();
-
+                        seccionInsertarComentarios.Visible = false;
+                        VerificarStock();
+                        
 
                         if (gestorPermisos.EstaLogueado())
                         {
                             ActualizarBarraNavegacionLogin();
-                            btnAgregarCarrito.Visible = true;
+                            if (VerificarStock())
+                            {
+                                btnAgregarCarrito.Visible = true;
+                            }
+                            
                             btnGuardarComentario.Visible = true;
+                            HabilitarComentarios();
                         }
-
                     }
-
                 }
                 else
                 {
@@ -48,6 +53,25 @@ namespace VinoSOFT_TFI
                     Context.ApplicationInstance.CompleteRequest();
                 }
             }
+        }
+
+        private bool VerificarStock()
+        {
+            int idProd = int.Parse(Request.QueryString["id"]);
+            BE.BE_Producto producto = new BE.BE_Producto();
+            producto.IDPRODUCTO = idProd;
+
+            if (gestorProducto.ValidarStock(producto) - gestorProducto.ObtenerStockMinimo(producto) > 0)
+            {
+                ltlHayStock.Visible = true;
+                return true;
+            }
+            else
+            {
+                ltlNoHayStock.Visible = true;
+                return false;
+            }
+
         }
 
         protected void completarPaginaConProducto() {
@@ -71,6 +95,10 @@ namespace VinoSOFT_TFI
             txtComentario.Text = null;
 
         }
+        private void HabilitarComentarios()
+        {
+            seccionInsertarComentarios.Visible = true;
+        }
 
         protected void completarComentarios()
         {
@@ -81,11 +109,11 @@ namespace VinoSOFT_TFI
                 rptComentarios.DataSource = producto.COMENTARIOS;
                 rptComentarios.DataBind();
 
-
             }
             else
             {
-                //ocultar div de comentarios.
+                seccionComentariosPosteados.Visible = false;
+                seccionNoHayComentarios.Visible = true;
             }
         }
 
@@ -96,14 +124,14 @@ namespace VinoSOFT_TFI
                 comentario.COMENTARIO = txtComentario.Text;
                 comentario.FECHAHORA = DateTime.Now;
                 comentario.ACTIVO = 1;
-                comentario.IDPRODUCTO = producto.IDPRODUCTO;
+                comentario.IDPRODUCTO = int.Parse(iptCodigo.Value);
                 comentario.AUTOR = txtAutor.Text;
 
                 gestorProducto.insertarComentario(comentario);
 
                 //actualizarRepeaterComentarios();
                 limpiarTxt();
-                Response.Redirect("/ProductoDetalle.aspx?id=" + producto.IDPRODUCTO.ToString(),false);
+                Response.Redirect("/ProductoDetalle.aspx?id=" + comentario.IDPRODUCTO.ToString(), false);
                 Context.ApplicationInstance.CompleteRequest();
 
             }
@@ -147,20 +175,28 @@ namespace VinoSOFT_TFI
                 bool agregado = gestorVenta.AgregarProducto(idVenta, ventaDetalle);
                 if (agregado)
                 {
-                    Response.Redirect("Productos.aspx", false);
+                    Response.Redirect("CarritoCliente.aspx", false);
                     Context.ApplicationInstance.CompleteRequest();
                 }
                 else
                 {
+                    ///
                     Response.Redirect("Inicio.aspx", false);
                     Context.ApplicationInstance.CompleteRequest();
                 }
             }
             else
             {
+                ///
                 Response.Redirect("Inicio.aspx", false);
                 Context.ApplicationInstance.CompleteRequest();
             }
+        }
+
+        protected void btnVolver_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("Productos.aspx", false);
+            Context.ApplicationInstance.CompleteRequest();
         }
     }
     }

@@ -12,7 +12,10 @@
                 </div>
 
                 <uc:UsuarioPass ID="UCUsuarioPass" runat="server"></uc:UsuarioPass>
-
+                <div class="text-center">
+                    <strong style="color:red;"><asp:literal ID="ltlError" runat="server" text="ERROR" Visible="false"></asp:literal></strong>
+                </div>
+                <br />
                 <div class="form-group">
                     <div class="row">
                         <div class="col-md-12">
@@ -23,13 +26,13 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <div class="col-lg-6">
+<%--                    <div class="col-lg-6">
                         <div class="text-center">
-                            <a href="RecuperarContrasena.aspx" tabindex="4">&iquest;Olvid&oacute; su contrase&ntilde;a?</a>
+                            <a href="#" tabindex="4">&iquest;Olvid&oacute; su contrase&ntilde;a?</a>
                         </div>
-                    </div>
+                    </div>--%>
                 </div>
-                <div>
+                <div class="text-center">
                     <a href="RegistrarNuevoCliente.aspx">Registrarse</a>
                 </div>
 

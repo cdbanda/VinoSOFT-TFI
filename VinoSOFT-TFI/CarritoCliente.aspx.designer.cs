@@ -15,6 +15,15 @@ namespace VinoSOFT_TFI
     {
 
         /// <summary>
+        /// Control seccionHayProductos.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl seccionHayProductos;
+
+        /// <summary>
         /// Control dgvCarrito.
         /// </summary>
         /// <remarks>
@@ -22,6 +31,24 @@ namespace VinoSOFT_TFI
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView dgvCarrito;
+
+        /// <summary>
+        /// Control seccionMjsCliente.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl seccionMjsCliente;
+
+        /// <summary>
+        /// Control ltlMjsCliente.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal ltlMjsCliente;
 
         /// <summary>
         /// Control lblTotal.
@@ -58,5 +85,14 @@ namespace VinoSOFT_TFI
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnPagar;
+
+        /// <summary>
+        /// Control seccionNoHayProductos.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl seccionNoHayProductos;
     }
 }

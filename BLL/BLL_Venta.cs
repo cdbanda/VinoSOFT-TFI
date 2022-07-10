@@ -104,5 +104,10 @@ namespace BLL
         {
             return mapperVenta.Listar(filtros);
         }
+
+        public int GetIDProductoDesdeDetVta(int idDetVta)
+        {
+            return mapperVenta.GetIDProductoDesdeDetVta(idDetVta);
+        }
     }
 }
