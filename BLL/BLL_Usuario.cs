@@ -47,9 +47,9 @@ namespace BLL
         }
 
         public bool editar(BE.BE_Usuario usuario) {
-            if (mapperUsuario.validarExistente(usuario)) {
-                return false;
-            }
+            //if (mapperUsuario.validarExistente(usuario)) {
+            //    return false;
+            //}
             return mapperUsuario.editar(usuario);
         }
 

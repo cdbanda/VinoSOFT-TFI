@@ -34,6 +34,7 @@ namespace MPP
                 cliente.DNI = int.Parse(dr["dni"].ToString());
                 cliente.DOMICILIO = dr["domicilio"].ToString();
                 cliente.CIUDAD = dr["ciudad"].ToString();
+                cliente.TELEFONO = dr["telefono"].ToString();
 
 
             }

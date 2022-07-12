@@ -14,6 +14,7 @@ namespace VinoSOFT_TFI
         ClienteACL gestorPermisos = new ClienteACL();
         BLL.BLL_Venta gestorVentas = new BLL.BLL_Venta();
         BLL.BLL_Producto gestorProductos = new BLL.BLL_Producto();
+        BLL.BLL_Bitacora gestorBitacora = new BLL.BLL_Bitacora();
 
         BE.BE_Cliente cliente;
         BE.BE_Venta carrito;
@@ -81,6 +82,10 @@ namespace VinoSOFT_TFI
                 bool finalizada = gestorVentas.FinalizarVenta(ventaActual);
                 if (finalizada)
                 {
+                    BE.BE_Evento evt = new BE.BE_Evento();
+                    evt.IDEVENTO = BE.BE_Evento.VENTA_FINALIZADA;
+                    gestorBitacora.registrarEvento(evt, "fecha: " + DateTime.Now.ToString(), -1);
+
                     mp1.Show();
                     //Response.Redirect("Inicio.aspx", false);
                     //Context.ApplicationInstance.CompleteRequest();

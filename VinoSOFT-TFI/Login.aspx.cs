@@ -12,6 +12,7 @@ namespace VinoSOFT_TFI
         BLL.BLL_Seguridad gestorSeguridad = new BLL.BLL_Seguridad();
         ClienteACL gestorPermisos = new ClienteACL();
 
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if(gestorPermisos.EstaLogueado())
@@ -27,12 +28,15 @@ namespace VinoSOFT_TFI
 
             if (respuesta is null)
             {
+
                 ltlError.Text = "El usuario y/o contraseña son incorrectos.";
                 ltlError.Visible = true;
                 return;
             }
             else
             {
+
+
                 Session["ClienteLogueado"] = respuesta;
                 Response.Redirect("Inicio.aspx",false);
                 Context.ApplicationInstance.CompleteRequest();

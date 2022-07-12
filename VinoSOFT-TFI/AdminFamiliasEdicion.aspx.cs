@@ -71,15 +71,34 @@ namespace VinoSOFT_TFI
 
             if (idFamilia > 0 && idPermiso > 0)
             {
-                BE.BE_Permiso nuevoPermiso = new BE.BE_Permiso();
-                nuevoPermiso.IDPERMISO = idPermiso;
-                bool agregado = gestorFamilia.agregarPermiso(nuevoPermiso, idFamilia);
-                if (agregado)
+                if (gestorFamilia.VerificarSiEstaFamiliaPermiso(idPermiso, idFamilia))
                 {
-                    CargarData();
-                    CargarDvgPermisos(infoFamilia.LISTAPERMISO);
+                    ltlErrorPermiso.Visible = true;
+                    ltlErrorPermiso.Text = "Rol ya asignado.";
                 }
+                else
+                {
+                    BE.BE_Permiso nuevoPermiso = new BE.BE_Permiso();
+                    nuevoPermiso.IDPERMISO = idPermiso;
+                    bool agregado = gestorFamilia.agregarPermiso(nuevoPermiso, idFamilia);
+                    if (agregado)
+                    {
+                        ltlErrorPermiso.Visible = false;
+                        CargarData();
+                        CargarDvgPermisos(infoFamilia.LISTAPERMISO);
+                    }
+                    else
+                    {
+                        mp1.Show();
+                        mjsBodyMP.Text = "Error al agregar al permiso.";
+                    }
 
+                }
+            }
+            else
+            {
+                mp1.Show();
+                mjsBodyMP.Text = "Error al agregar el permiso.";
             }
 
         }
@@ -141,12 +160,14 @@ namespace VinoSOFT_TFI
                 bool eliminado = gestorFamilia.quitarPermiso(idFamilia, idPermiso);
                 if (eliminado)
                 {
+                    ltlErrorPermiso.Visible = true;
                     CargarData();
                     CargarDvgPermisos(infoFamilia.LISTAPERMISO);
                 }
                 else
                 {
-
+                    mp1.Show();
+                    mjsBodyMP.Text = "Error al eliminar el permiso.";
                 }
 
             }
@@ -165,11 +186,13 @@ namespace VinoSOFT_TFI
                 bool eliminado = gestorFamilia.eliminar(familia);
                 if (eliminado)
                 {
-                    Response.Redirect("AdminFamiliasLista.aspx");
+                    mp1.Show();
+                    mjsBodyMP.Text = "Rol eliminado Correctamente.";
                 }
                 else
                 {
-
+                    mp1.Show();
+                    mjsBodyMP.Text = "Error al eliminar el rol.";
                 }
             }
         }
@@ -181,16 +204,42 @@ namespace VinoSOFT_TFI
             familia.IDFAMILIA = (iptCodigo.Value != "") ? int.Parse(iptCodigo.Value) : 0;
             familia.NOMBRE = iptNombre.Text;
 
-            if(familia.IDFAMILIA > 0)
+            if (familia.IDFAMILIA > 0)
             {
                 bool guardado = gestorFamilia.editar(familia);
+                if (guardado)
+                {
+                    mp1.Show();
+                    mjsBodyMP.Text = "Cambios guardados correctamente.";
+                }
+                else
+                {
+                    mp1.Show();
+                    mjsBodyMP.Text = "Error al guardar los cambios.";
+                }
 
             }
             else
             {
                 bool guardado = gestorFamilia.crear(familia);
-
+                if (guardado)
+                {
+                    mp1.Show();
+                    mjsBodyMP.Text = "Rol creado correctamente";
+                }
+                else
+                {
+                    mp1.Show();
+                    mjsBodyMP.Text = "Error al crear el rol.";
+                }
             }
+        }
+
+        protected void BtnOk_Click(object sender, EventArgs e)
+        {
+            mp1.Hide();
+            Server.Transfer("AdminFamiliasLista.aspx", false);
+            Context.ApplicationInstance.CompleteRequest();
         }
     }
 }

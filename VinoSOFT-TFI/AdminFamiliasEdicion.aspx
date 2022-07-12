@@ -39,7 +39,7 @@
                         <div class="col-md-3">
                             <asp:Button ID="btnAgregarPermiso" OnClick="BtnAgregarPermiso_Click" runat="server" CssClass=" btn btn-warning" Text="Agregar" ValidationGroup="vgAgregarPermiso" />
                         </div>
-                        <label style="color:red"><asp:Literal id="ltlErrorFamilia" runat="server" Visible="false"></asp:Literal></label>
+                        <label style="color:red"><asp:Literal id="ltlErrorPermiso" runat="server" Visible="false"></asp:Literal></label>
                         <div class="col-md-12">
                             <asp:GridView ID="dgvPermisos" OnRowDeleting="dgvPermisos_RowDeleting" CssClass="table table-hover table-bordered" BorderStyle="None" Itemtype="BE_Permiso" runat="server" AutoGenerateColumns="false">
                                 <Columns>
@@ -61,4 +61,34 @@
         <asp:Button ID="btnGuardar" runat="server" CssClass="btn btn-success" Text="Guardar Cambios" OnClick="btnGuardar_Click" />
     </div>
 
+
+<asp:HiddenField ID="hidForModel" runat="server" />
+
+<!-- ModalPopUpRestore -->
+<ajaxtoolkit:ModalPopupExtender ID="mp1" runat="server" 
+    PopupControlID="ModalPanel" 
+    TargetControlID="hidForModel"
+    BackgroundCssClass="modalBackground"
+    BehaviorID="PopUp"
+    >
+</ajaxtoolkit:ModalPopupExtender>
+
+<asp:Panel ID="ModalPanel" runat="server" CssClass="modal-content modal-sm" Style="display:none">
+    <asp:UpdatePanel ID="UpdateModalPopUp" runat="server">
+        <ContentTemplate>
+            <div id="body" class="modal-body">
+                 <asp:label runat="server" ID="mjsBodyMP"></asp:label>
+            </div>
+            <div id="footer" class="modal-footer">
+                <asp:Button ID="btnOK" runat="server" Text="OK" CssClass="btn-success" onclick="BtnOk_Click"
+                    />
+            </div>
+        </ContentTemplate>
+    <Triggers>
+        <asp:PostBackTrigger ControlID="btnOK" />
+    </Triggers>
+    </asp:UpdatePanel>
+</asp:Panel>
+
+<!-- ModalPopupRestore -->
 </asp:Content>

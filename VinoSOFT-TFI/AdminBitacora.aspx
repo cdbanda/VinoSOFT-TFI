@@ -2,7 +2,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="headBackend" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContenidoBackendMasterPage" runat="server">
-       <div class="block full">
+       <div class="block full" visible="false">
            <br />
         <div class="row">
             <div id="filter-panel" class="filter-panel">

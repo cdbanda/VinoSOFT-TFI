@@ -9,7 +9,7 @@ namespace VinoSOFT_TFI
 {
     public partial class MasterPage : System.Web.UI.MasterPage
     {
-        
+
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -43,6 +43,7 @@ namespace VinoSOFT_TFI
 
         protected void btnLogout_Click(object sender, EventArgs e)
         {
+
             BLL.BLL_Seguridad gestorSeguridad = new BLL.BLL_Seguridad();
             gestorSeguridad.Logout();
             Session.Clear();

@@ -85,7 +85,7 @@
         <li class="nav-item dropdown" id="ddUsuarioLogueado" runat="server" visible="false">
          <a class="nav-link dropdown-toggle" href="#" id="ddPerfilUsuario" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><asp:Label ID="lblUsuario" runat="server" Text="Prueba"></asp:Label></a>
            <div class="dropdown-menu" aria-labelledby="dropdown01">
-            <a class="dropdown-item" href="#">Mi Perfil</a>
+            <a class="dropdown-item" href="PerfilCliente.aspx">Mi Perfil</a>
             <a class="dropdown-item" href="#">Mis Compras</a>
             <div class="dropdown-divider"></div>
             <a><asp:LinkButton ID="btnLogout" CausesValidation="false" runat="server" CssClass="dropdown-item" OnClick="btnLogout_Click">Cerrar Sesion</asp:LinkButton></a>

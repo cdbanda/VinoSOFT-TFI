@@ -8,19 +8,16 @@ namespace BE
     public class BE_Evento
     {
         public static int CAMBIO_CONTRASENIA_CLIENTE = 1;
-        public static int CONFIRMAR_REGISTRACION = 2;
-        public static int RESET_CONTRASENIA_CLIENTE = 3;
-        public static int EDITAR_CLIENTE = 4;
-        public static int CREAR_CLIENTE = 5;
-        public static int LOGIN_OK = 6;
-        public static int NICKNAME_INCORRECTO = 7;
-        public static int PASSWORD_INCORRECTO = 8;
-        public static int USUARIO_BLOQUEADO = 9;
-        public static int LOGOUT_OK = 10;
-        public static int CREAR_VENTA_WEB = 11;
-        public static int CREAR_FACTURA = 12;
-        public static int GENERAR_BACKUP = 13;
-        public static int RESTAURAR_BACKUP = 14;
+        public static int EDITAR_CLIENTE = 2;
+        public static int CREAR_CLIENTE = 3;
+        public static int LOGIN_OK = 4;
+        public static int INGRESO_FALLIDO = 5;
+        public static int LOGOUT_OK = 6;
+        public static int GENERAR_BACKUP = 7;
+        public static int RESTAURAR_BACKUP = 8;
+        public static int VENTA_FINALIZADA = 9;
+        public static int ALTA_PRODUCTO = 10;
+        public static int EDITAR_PRODUCTO = 11;
 
         static public Dictionary<int,string> nombresCriticidad = new Dictionary<int, string>();
 

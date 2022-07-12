@@ -11,35 +11,26 @@ namespace VinoSOFT_TFI
 {
 
 
-    public partial class AdminFamiliasEdicion
+    public partial class AdminMiPerfil
     {
 
         /// <summary>
-        /// Control btnEliminar.
+        /// Control iptIdUsuario.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnEliminar;
+        protected global::System.Web.UI.WebControls.HiddenField iptIdUsuario;
 
         /// <summary>
-        /// Control ltlNombrePagina.
+        /// Control iptUsuario.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal ltlNombrePagina;
-
-        /// <summary>
-        /// Control iptCodigo.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField iptCodigo;
+        protected global::System.Web.UI.WebControls.TextBox iptUsuario;
 
         /// <summary>
         /// Control iptNombre.
@@ -51,67 +42,76 @@ namespace VinoSOFT_TFI
         protected global::System.Web.UI.WebControls.TextBox iptNombre;
 
         /// <summary>
-        /// Control phAsignarFamiliasPermisos.
+        /// Control NombreRequerido.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.PlaceHolder phAsignarFamiliasPermisos;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator NombreRequerido;
 
         /// <summary>
-        /// Control ddPermisos.
+        /// Control iptApellido.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddPermisos;
+        protected global::System.Web.UI.WebControls.TextBox iptApellido;
 
         /// <summary>
-        /// Control RequiredFieldValidator_ddPermisos.
+        /// Control ApellidoRequerido.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator_ddPermisos;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator ApellidoRequerido;
 
         /// <summary>
-        /// Control btnAgregarPermiso.
+        /// Control iptDNI.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnAgregarPermiso;
+        protected global::System.Web.UI.WebControls.TextBox iptDNI;
 
         /// <summary>
-        /// Control ltlErrorPermiso.
+        /// Control RequiredFieldValidator_iptDNI.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal ltlErrorPermiso;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator_iptDNI;
 
         /// <summary>
-        /// Control dgvPermisos.
+        /// Control rangeValidator_iptStock.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView dgvPermisos;
+        protected global::System.Web.UI.WebControls.RangeValidator rangeValidator_iptStock;
 
         /// <summary>
-        /// Control btnGuardar.
+        /// Control iptTelefono.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnGuardar;
+        protected global::System.Web.UI.WebControls.TextBox iptTelefono;
+
+        /// <summary>
+        /// Control btnModificarDatos.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnModificarDatos;
 
         /// <summary>
         /// Control hidForModel.

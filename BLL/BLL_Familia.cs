@@ -51,5 +51,10 @@ namespace BLL
         public List<BE.BE_Familia> listar(Hashtable filtros = null) {
             return mapperFamilia.listar(filtros);
         }
+
+        public bool VerificarSiEstaFamiliaPermiso(int idPermiso, int idFamilia)
+        {
+            return mapperFamilia.VerificarSiEstaFamiliaPermiso(idPermiso, idFamilia);
+        }
     }
 }

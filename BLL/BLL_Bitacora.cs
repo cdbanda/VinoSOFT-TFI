@@ -28,7 +28,7 @@ namespace BLL
 
             objBitacora.EVENTO = evento;
             objBitacora.USUARIO = new BE.BE_Usuario();
-            objBitacora.USUARIO.IDUSUARIO = 0;
+            objBitacora.USUARIO.IDUSUARIO = idUsuario;
             objBitacora.OBSERVACION = obs;
             bool registrado = mapperBitacora.registrarEvento(objBitacora);
             return registrado;

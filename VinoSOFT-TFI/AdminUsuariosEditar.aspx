@@ -72,7 +72,7 @@
                 <label>DNI:</label>
             </div>
             <div class="col-md-5">
-                <asp:TextBox ID="iptDNI" runat="server" CssClass="form-control" MaxLength="8" Max="99999999" TextMode="Number"></asp:TextBox>
+                <asp:TextBox ID="iptDNI" runat="server" CssClass="form-control" MaxLength="8" Max="99999999"></asp:TextBox>
             </div>
         </div>
     </div>

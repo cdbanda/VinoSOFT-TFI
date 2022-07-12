@@ -10,6 +10,8 @@ namespace VinoSOFT_TFI
     public partial class Backend : System.Web.UI.MasterPage
     {
 
+        BLL.BLL_Bitacora gestorBitacora = new BLL.BLL_Bitacora();
+
         protected void Page_Load(object sender, EventArgs e)
         {
 
@@ -65,6 +67,13 @@ namespace VinoSOFT_TFI
 
         protected void btnLogout_Click(object sender, EventArgs e)
         {
+             BE.BE_Usuario usuario = (BE.BE_Usuario)Session["UsuarioLogueado"];
+
+            BE.BE_Evento evt = new BE.BE_Evento();
+            evt.IDEVENTO = BE.BE_Evento.LOGOUT_OK;
+            gestorBitacora.registrarEvento(evt, "fecha: " + DateTime.Now.ToString(), usuario.IDUSUARIO);
+
+
             BLL.BLL_Seguridad gestorSeguridad = new BLL.BLL_Seguridad();
             gestorSeguridad.Logout();
             Session.Clear();

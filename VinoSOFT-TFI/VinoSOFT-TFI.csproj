@@ -88,6 +88,7 @@
     <Content Include="AdminFamiliasEdicion.aspx" />
     <Content Include="AdminFamiliasLista.aspx" />
     <Content Include="AdminLogin.aspx" />
+    <Content Include="AdminMiPerfil.aspx" />
     <Content Include="AdminProductosEdicion.aspx" />
     <Content Include="AdminProductosLista.aspx" />
     <Content Include="AdminReporteVentas.aspx" />
@@ -122,6 +123,7 @@
     <Content Include="Noticias.aspx" />
     <Content Include="packages.config" />
     <Content Include="Pagar.aspx" />
+    <Content Include="PerfilCliente.aspx" />
     <Content Include="PlantillasMails\Email_CambiarContrasena.html" />
     <Content Include="PlantillasMails\Email_Confirmacion.html" />
     <Content Include="PlantillasMails\Email_Consulta.html" />
@@ -191,6 +193,13 @@
   <ItemGroup>
     <Compile Include="AdminACL.cs">
       <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdminMiPerfil.aspx.cs">
+      <DependentUpon>AdminMiPerfil.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdminMiPerfil.aspx.designer.cs">
+      <DependentUpon>AdminMiPerfil.aspx</DependentUpon>
     </Compile>
     <Compile Include="AdminReporteVentas.aspx.cs">
       <DependentUpon>AdminReporteVentas.aspx</DependentUpon>
@@ -390,6 +399,13 @@
     </Compile>
     <Compile Include="Pagar.aspx.designer.cs">
       <DependentUpon>Pagar.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PerfilCliente.aspx.cs">
+      <DependentUpon>PerfilCliente.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PerfilCliente.aspx.designer.cs">
+      <DependentUpon>PerfilCliente.aspx</DependentUpon>
     </Compile>
     <Compile Include="PoliticasPrivacidad.aspx.cs">
       <DependentUpon>PoliticasPrivacidad.aspx</DependentUpon>

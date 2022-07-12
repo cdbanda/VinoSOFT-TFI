@@ -60,6 +60,27 @@ namespace MPP
             return resultado;
         }
 
+        public bool VerificarSiEstaFamiliaPermiso(int idPermiso, int idFamilia)
+        {
+            Hashtable hdatos = new Hashtable();
+            DataSet ds = new DataSet();
+            hdatos.Add("@IdFamilia", idFamilia);
+            hdatos.Add("@IdPermiso", idPermiso);
+
+            ds = sqlHelper.Leer("familia_VerificarSiExistePermisoEnFamilia", hdatos);
+
+            if (ds.Tables.Count > 0)
+            {
+                if (ds.Tables[0].Rows.Count > 0)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+
+
         public bool crear(BE.BE_Familia familia) {
             Hashtable hdatos = new Hashtable();
             hdatos.Add("@nombre",familia.NOMBRE);
