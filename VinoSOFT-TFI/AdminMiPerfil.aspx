@@ -65,7 +65,7 @@
 
                     <div class="form-group">
                         <div class="col-sm-3">
-                            <asp:Button ID="btnModificarDatos" class="btn btn-success" runat="server" Text="Guardar" />
+                            <asp:Button ID="btnModificarDatos" class="btn btn-success" runat="server" Text="Guardar" OnClick="btnModificarDatos_Click" />
                         </div>
                     </div>
             </div>

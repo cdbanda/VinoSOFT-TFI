@@ -12,14 +12,24 @@ namespace VinoSOFT_TFI
         BLL.BLL_Producto gestorProducto = new BLL.BLL_Producto();
         AdminACL gestorPermisos = new AdminACL();
 
+        const string COD_PERMISO = "MOD_MKT";
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
                 if (gestorPermisos.EstaLogueado())
                 {
-                    LlenarDgv();
-                    ActualizarBarraNavegacionLogin();
+                    if (gestorPermisos.TienePermiso(COD_PERMISO, (BE.BE_Usuario)Session["UsuarioLogueado"]))
+                    {
+                        LlenarDgv();
+                        ActualizarBarraNavegacionLogin();
+                    }
+                    else
+                    {
+                        Response.Redirect("AdminLogin.aspx", false);
+                        Context.ApplicationInstance.CompleteRequest();
+                    }
                 }
                 else
                 {

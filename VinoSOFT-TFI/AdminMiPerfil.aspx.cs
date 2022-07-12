@@ -13,7 +13,19 @@ namespace VinoSOFT_TFI
         BLL.BLL_Usuario gestorUsuario = new BLL.BLL_Usuario();
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (!IsPostBack)
+            {
+                if (gestorPermisos.EstaLogueado())
+                {
+                    CargarDatosCliente();
+                    ActualizarBarraNavegacionLogin();
+                }
+                else
+                {
+                    Response.Redirect("AdminLogin.aspx", false);
+                    Context.ApplicationInstance.CompleteRequest();
+                }
+            }
         }
 
 
@@ -54,11 +66,14 @@ namespace VinoSOFT_TFI
             usuarioLogueado.EMAIL = iptUsuario.Text;
             usuarioLogueado.NOMBRE = iptNombre.Text;
             usuarioLogueado.APELLIDO = iptApellido.Text;
+            usuarioLogueado.ESEMPLEADO = true;
+            //usuarioLogueado.ESADMIN = usuarioLogueado.ESADMIN;
             //clienteLogueado.DOMICILIO = iptDomicilio.Text;
             usuarioLogueado.DNI = int.Parse(iptDNI.Text);
             usuarioLogueado.TELEFONO = iptTelefono.Text;
             //clienteLogueado.CIUDAD = iptCiudad.Text;
             usuarioLogueado.CONTRASENA = usuarioLogueado.CONTRASENA;
+            usuarioLogueado.ACTIVO = usuarioLogueado.ACTIVO;
 
             bool guardado = gestorUsuario.editar(usuarioLogueado);
             if (guardado)
@@ -99,7 +114,7 @@ namespace VinoSOFT_TFI
         protected void BtnOk_Click(object sender, EventArgs e)
         {
             mp1.Hide();
-            Server.Transfer("Inicio.aspx", false);
+            Server.Transfer("AdminDefault.aspx", false);
             Context.ApplicationInstance.CompleteRequest();
         }
     }

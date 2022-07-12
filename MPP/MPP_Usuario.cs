@@ -261,16 +261,18 @@ namespace MPP
 
             hdatos.Add("@nombre", usuario.NOMBRE);
             hdatos.Add("@apellido", usuario.APELLIDO);
-            hdatos.Add("@contrasenia", usuario.CONTRASENA);
+            hdatos.Add("@contrasena", usuario.CONTRASENA);
             hdatos.Add("@email", usuario.EMAIL);
             hdatos.Add("@telefono", usuario.TELEFONO);
             hdatos.Add("@dni", usuario.DNI);
+         
+            hdatos.Add("@idUsuario", usuario.IDUSUARIO);
             hdatos.Add("@activo", usuario.ACTIVO);
-            hdatos.Add("idUsuario", usuario.IDUSUARIO);
+            hdatos.Add("@esempleado", usuario.ESEMPLEADO);
 
-            bool resutado = sqlHelper.Escribir("usuario_modificar", hdatos);
+            bool resultado = sqlHelper.Escribir("usuario_modificar", hdatos);
 
-            if (resutado)
+            if (resultado)
             {
                 return true;
             }

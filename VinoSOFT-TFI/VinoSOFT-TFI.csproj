@@ -98,6 +98,7 @@
     <Content Include="AdminVentasLista.aspx" />
     <Content Include="CarritoCliente.aspx" />
     <Content Include="ClienteDatos.aspx" />
+    <Content Include="MisComprasCliente.aspx" />
     <Content Include="Contacto.aspx" />
     <Content Include="Content\bootstrap-grid.css" />
     <Content Include="Content\bootstrap-grid.min.css" />
@@ -174,6 +175,7 @@
     <Content Include="database\backups\BK31-10-2019_20-26-19.bak" />
     <Content Include="database\restore\BK25-10-2019_20-37-27.bak" />
     <Content Include="Backend.Master" />
+    <Content Include="database\Vinosoft_12_07_2022_v2.bak" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -315,6 +317,13 @@
     </Compile>
     <Compile Include="ClienteDatos.aspx.designer.cs">
       <DependentUpon>ClienteDatos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MisComprasCliente.aspx.cs">
+      <DependentUpon>MisComprasCliente.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MisComprasCliente.aspx.designer.cs">
+      <DependentUpon>MisComprasCliente.aspx</DependentUpon>
     </Compile>
     <Compile Include="Contacto.aspx.cs">
       <DependentUpon>Contacto.aspx</DependentUpon>
