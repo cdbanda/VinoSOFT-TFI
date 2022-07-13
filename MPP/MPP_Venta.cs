@@ -58,7 +58,7 @@ namespace MPP
                 {
                     BE.BE_Venta venta = new BE.BE_Venta();
                     venta.IDVENTA = int.Parse(dr["id_venta"].ToString());
-                    venta.IDFACTURA = int.Parse(dr["id_factura"].ToString());
+                    //venta.IDFACTURA = int.Parse(dr["id_factura"].ToString());
                     venta.FECHA = DateTime.Parse(dr["fecha"].ToString());
                     venta.ESTADO = dr["estado"].ToString();
                     venta.MONTOTOTAL = float.Parse(dr["monto_total"].ToString());

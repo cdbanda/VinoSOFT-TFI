@@ -11,11 +11,12 @@ namespace VinoSOFT_TFI
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!IsPostBack)
+            {
+
+            }
 
         }
-
-
-
 
         private bool VerificarContrasena()
         {
@@ -91,9 +92,10 @@ namespace VinoSOFT_TFI
 
             if (gestorCliente.crear(cliente))
             {
-                ModalPopUpMensajes.Show();
-                LabelMensaje.Text = "Usuario Creado Correctamente.";
                 LimpiarTxtBoxes(Page);
+                ModalPopUpMensajes.Show();
+                LabelMensaje.Text = "Usuario Creado correctamente. Inicie sesión con el email y contraseña.";
+
             }
             else {
                 ModalPopUpMensajes.Show();
@@ -113,6 +115,13 @@ namespace VinoSOFT_TFI
                     LimpiarTxtBoxes(c1);
                 }
             }
+        }
+
+        protected void BtnOk_Click(object sender, EventArgs e)
+        {
+            mp1.Hide();
+            Server.Transfer("Login.aspx", false);
+            Context.ApplicationInstance.CompleteRequest();
         }
     }
 }

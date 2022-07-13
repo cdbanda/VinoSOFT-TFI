@@ -30,13 +30,20 @@ namespace VinoSOFT_TFI
             lista = gestorProducto.listarProducto();
             if(lista != null)
             {
-                lista = AgregarFormatoImagenes(lista);
+                if (lista.Count > 0)
+                {
+                    lista = AgregarFormatoImagenes(lista);
 
-                repeaterProducto.DataSource = null;
-                repeaterProducto.DataBind();
+                    repeaterProducto.DataSource = null;
+                    repeaterProducto.DataBind();
 
-                repeaterProducto.DataSource = lista;
-                repeaterProducto.DataBind();
+                    repeaterProducto.DataSource = lista;
+                    repeaterProducto.DataBind();
+                }
+                else
+                {
+                    ltlNoHayProductos.Visible = true;
+                }
 
             }
             else

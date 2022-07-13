@@ -29,7 +29,7 @@
                     <asp:ChartArea Name="ChartArea1"></asp:ChartArea>
                 </ChartAreas>
             </asp:Chart>
-
+            <strong style="color:red"><asp:Literal ID="ltlCharEstadoVenta" runat="server" Visible="false"></asp:Literal></strong>
         </div>
         <hr />
         <div>
@@ -62,7 +62,7 @@
                     </asp:Legend>
                 </Legends>
             </asp:Chart>
-
+            <strong style="color:red"><asp:Literal ID="ltlchartCantVentasPorProducto" runat="server" Visible="false"></asp:Literal></strong>
         </div>
     </div>
 </asp:Content>

@@ -49,33 +49,41 @@ namespace VinoSOFT_TFI
 
             DataTable ChartData = ds.Tables[0];
 
-            //storing total rows count to loop on each Record                          
-            string[] XPoints = new string[ChartData.Rows.Count];
-
-            int[] YPOints = new int[ChartData.Rows.Count];
-
-            for (int count = 0; count < ChartData.Rows.Count; count++)
+            if (ChartData.Rows.Count > 0)
             {
-                // store values for X axis  
-                XPoints[count] = ChartData.Rows[count]["estado"].ToString();
-                //store values for Y Axis  
-                YPOints[count] = Convert.ToInt32(ChartData.Rows[count][1]);
+                //storing total rows count to loop on each Record                          
+                string[] XPoints = new string[ChartData.Rows.Count];
 
+                int[] YPOints = new int[ChartData.Rows.Count];
+
+                for (int count = 0; count < ChartData.Rows.Count; count++)
+                {
+                    // store values for X axis  
+                    XPoints[count] = ChartData.Rows[count]["estado"].ToString();
+                    //store values for Y Axis  
+                    YPOints[count] = Convert.ToInt32(ChartData.Rows[count][1]);
+
+                }
+                //binding chart control  
+                charEstadoVenta.Series[0].Points.DataBindXY(XPoints, YPOints);
+
+                //Setting width of line  
+                charEstadoVenta.Series[0].BorderWidth = 5;
+                //setting Chart type   
+                charEstadoVenta.Series[0].ChartType = SeriesChartType.Pie;
+
+                charEstadoVenta.Series[0].IsValueShownAsLabel = true;
+                //enable to show legend
+                charEstadoVenta.Legends[0].Enabled = true;
+
+                //show pie chart in 3d
+                charEstadoVenta.ChartAreas["ChartArea1"].Area3DStyle.Enable3D = true;
             }
-            //binding chart control  
-            charEstadoVenta.Series[0].Points.DataBindXY(XPoints, YPOints);
-
-            //Setting width of line  
-            charEstadoVenta.Series[0].BorderWidth = 5;
-            //setting Chart type   
-            charEstadoVenta.Series[0].ChartType = SeriesChartType.Pie;
-
-            charEstadoVenta.Series[0].IsValueShownAsLabel = true;
-            //enable to show legend
-            charEstadoVenta.Legends[0].Enabled = true;
-
-            //show pie chart in 3d
-            charEstadoVenta.ChartAreas["ChartArea1"].Area3DStyle.Enable3D = true;
+            else
+            {
+                ltlCharEstadoVenta.Text = "No hay datos para mostrar.";
+                ltlCharEstadoVenta.Visible = true;
+            }
         }
 
         private void CargarCantidadProductosVendidos()
@@ -86,34 +94,42 @@ namespace VinoSOFT_TFI
             ds = gestorReporte.CantidadProductosVendidos();
             DataTable ChartData = ds.Tables[0];
 
-            //storing total rows count to loop on each Record  
-            string[] XPointMember = new string[ChartData.Rows.Count];
-            int[] YPointMember = new int[ChartData.Rows.Count];
-
-            for (int count = 0; count < ChartData.Rows.Count; count++)
+            if (ChartData.Rows.Count > 0)
             {
-                //storing Values for X axis  
-                XPointMember[count] = ChartData.Rows[count]["producto"].ToString();
-                //storing values for Y Axis  
-                YPointMember[count] = Convert.ToInt32(ChartData.Rows[count]["cantidad"]);
+                //storing total rows count to loop on each Record  
+                string[] XPointMember = new string[ChartData.Rows.Count];
+                int[] YPointMember = new int[ChartData.Rows.Count];
+
+                for (int count = 0; count < ChartData.Rows.Count; count++)
+                {
+                    //storing Values for X axis  
+                    XPointMember[count] = ChartData.Rows[count]["producto"].ToString();
+                    //storing values for Y Axis  
+                    YPointMember[count] = Convert.ToInt32(ChartData.Rows[count]["cantidad"]);
 
 
+                }
+                //binding chart control  
+                chartCantVentasPorProducto.Series[0].Points.DataBindXY(XPointMember, YPointMember);
+
+                //Setting width of line  
+                chartCantVentasPorProducto.Series[0].BorderWidth = 10;
+                //setting Chart type   
+                chartCantVentasPorProducto.Series[0].ChartType = SeriesChartType.Bar;
+                // Chart1.Series[0].ChartType = SeriesChartType.StackedBar;  
+
+                //Hide or show chart back GridLines  
+                //Chart1.ChartAreas["ChartArea1"].AxisX.MajorGrid.Enabled = false;  
+                //Chart1.ChartAreas["ChartArea1"].AxisY.MajorGrid.Enabled = false;  
+
+                //Enabled 3D  
+                //chartCantVentasPorProducto.ChartAreas["ChartArea1"].Area3DStyle.Enable3D = true;
             }
-            //binding chart control  
-            chartCantVentasPorProducto.Series[0].Points.DataBindXY(XPointMember, YPointMember);
-
-            //Setting width of line  
-            chartCantVentasPorProducto.Series[0].BorderWidth = 10;
-            //setting Chart type   
-            chartCantVentasPorProducto.Series[0].ChartType = SeriesChartType.Bar;
-            // Chart1.Series[0].ChartType = SeriesChartType.StackedBar;  
-
-            //Hide or show chart back GridLines  
-            //Chart1.ChartAreas["ChartArea1"].AxisX.MajorGrid.Enabled = false;  
-            //Chart1.ChartAreas["ChartArea1"].AxisY.MajorGrid.Enabled = false;  
-
-            //Enabled 3D  
-            //chartCantVentasPorProducto.ChartAreas["ChartArea1"].Area3DStyle.Enable3D = true;
+            else
+            {
+                ltlchartCantVentasPorProducto.Text = "No hay datos para mostrar.";
+                ltlchartCantVentasPorProducto.Visible = true;
+            }
         }
 
         public void ActualizarBarraNavegacionLogin()

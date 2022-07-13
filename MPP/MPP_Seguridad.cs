@@ -129,7 +129,7 @@ namespace MPP
             {
                 DataRow dr = ds.Tables[0].Rows[0];
 
-                this.clienteLogeado.IDCLIENTE = int.Parse(dr["id_usuario"].ToString());
+                this.clienteLogeado.IDCLIENTE = int.Parse(dr["id_cliente"].ToString());
                 this.clienteLogeado.NOMBRE = dr["nombre"].ToString();
                 this.clienteLogeado.APELLIDO = dr["apellido"].ToString();
                 this.clienteLogeado.CONTRASENA = dr["contrasenia"].ToString();
