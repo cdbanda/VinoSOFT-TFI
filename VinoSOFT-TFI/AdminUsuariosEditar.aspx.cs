@@ -324,12 +324,12 @@ namespace VinoSOFT_TFI
                 }
                 else
                 {
-
+                    mp1.Show();
+                    mjsBodyMP.Text = "Error al crear el usuario.";
+                    //Response.Redirect("AdminUsuariosLista.aspx", false);
+                    //Context.ApplicationInstance.CompleteRequest();
                 }
-                mp1.Show();
-                mjsBodyMP.Text = "Error al crear el usuario.";
-                //Response.Redirect("AdminUsuariosLista.aspx", false);
-                //Context.ApplicationInstance.CompleteRequest();
+
             }
 
         }

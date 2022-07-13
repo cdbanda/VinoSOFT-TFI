@@ -9,7 +9,7 @@
     <br />
     <asp:HiddenField ID="iptCodigo" runat="server" />
     <div>
-        <strong><h3>Editar Venta</h3></strong>
+       <h3> <strong>Editar Venta</strong></h3>
     </div>
     <hr />
     <div class='form-group clearfix'>

@@ -184,7 +184,7 @@
             </div>
             <div id="footer" class="modal-footer">
                 <asp:Button ID="btnOK" runat="server" Text="OK" CssClass="btn-success" onclick="BtnOk_Click"
-                    />
+                   OnClientClick="return HidePopControl()" />
             </div>
         </ContentTemplate>
     <Triggers>
@@ -194,6 +194,18 @@
 </asp:Panel>
 
 <!-- ModalPopupRestore -->
+
+<script type="text/javascript">
+        $(function () {
+            $("#btnOK").click(function () {
+                HidePopControl();
+            })
+        });
+        function HidePopControl() {
+            var modalPopup = $find('PopUp');
+            modalPopup.hide();
+        }
+</script>
 
 </asp:Content>
 
