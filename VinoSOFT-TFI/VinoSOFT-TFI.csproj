@@ -176,6 +176,7 @@
     <Content Include="database\restore\BK25-10-2019_20-37-27.bak" />
     <Content Include="Backend.Master" />
     <Content Include="database\Vinosoft_12_07_2022_v2.bak" />
+    <Content Include="database\vinosoft_13_07_2022_vacio.bak" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
