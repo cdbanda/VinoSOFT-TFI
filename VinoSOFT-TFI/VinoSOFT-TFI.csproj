@@ -165,15 +165,6 @@
     <Content Include="Content\bootstrap-grid.min.css.map" />
     <Content Include="Content\bootstrap-grid.css.map" />
     <Content Include="MasterPage.Master" />
-    <Content Include="database\backups\BK2-11-2019_18-38-22.bak" />
-    <Content Include="database\backups\BK2-11-2019_18-41-5.bak" />
-    <Content Include="database\backups\BK2-11-2019_18-43-40.bak" />
-    <Content Include="database\backups\BK2-11-2019_18-53-15.bak" />
-    <Content Include="database\backups\BK2-11-2019_19-0-3.bak" />
-    <Content Include="database\backups\BK25-10-2019_15-36-18.bak" />
-    <Content Include="database\backups\BK25-10-2019_20-37-27.bak" />
-    <Content Include="database\backups\BK31-10-2019_20-26-19.bak" />
-    <Content Include="database\restore\BK25-10-2019_20-37-27.bak" />
     <Content Include="Backend.Master" />
     <Content Include="database\Vinosoft_12_07_2022_v2.bak" />
     <Content Include="database\vinosoft_13_07_2022_vacio.bak" />
@@ -494,6 +485,8 @@
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="database\backups\" />
+    <Folder Include="database\restore\" />
     <Folder Include="img\productos\" />
   </ItemGroup>
   <ItemGroup>

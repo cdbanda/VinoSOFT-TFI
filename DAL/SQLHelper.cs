@@ -5,6 +5,7 @@ using System.Text;
 using System.Data;
 using System.Data.SqlClient;
 using System.Collections;
+using System.Configuration;
 
 namespace DAL
 {
@@ -40,10 +41,13 @@ namespace DAL
         {
             //string db = "VINOSOFT";
             conexion = new SqlConnection();
+            conexion.ConnectionString = ConfigurationManager.ConnectionStrings["VinosoftDB"].ConnectionString;
             //conexion.ConnectionString = connectionstringtxt(db);
             //conexion.ConnectionString = @"Integrated Security=SSPI;Persist Security Info=False;Initial Catalog=VINOSOFT;Data Source=INSPIRON14\SQLEXPRESS";
-            conexion.ConnectionString = @"Integrated Security=SSPI;Persist Security Info=False;Initial Catalog=VINOSOFT;Data Source=HPMINI";
+            //conexion.ConnectionString = @"Integrated Security=SSPI;Persist Security Info=False;Initial Catalog=VINOSOFT;Data Source=HPMINI";
             conexion.Open();
+
+            
         }
 
         public void AbrirMaster()
