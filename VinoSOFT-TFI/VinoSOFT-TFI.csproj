@@ -84,6 +84,7 @@
   <ItemGroup>
     <Content Include="AdminBackup.aspx" />
     <Content Include="AdminBitacora.aspx" />
+    <Content Include="AdminCambiarContrasenia.aspx" />
     <Content Include="AdminDefault.aspx" />
     <Content Include="AdminFamiliasEdicion.aspx" />
     <Content Include="AdminFamiliasLista.aspx" />
@@ -96,6 +97,7 @@
     <Content Include="AdminUsuariosLista.aspx" />
     <Content Include="AdminVentasEditar.aspx" />
     <Content Include="AdminVentasLista.aspx" />
+    <Content Include="CambiarContrasenia.aspx" />
     <Content Include="CarritoCliente.aspx" />
     <Content Include="ClienteDatos.aspx" />
     <Content Include="MisComprasCliente.aspx" />
@@ -188,6 +190,13 @@
     <Compile Include="AdminACL.cs">
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
+    <Compile Include="AdminCambiarContrasenia.aspx.cs">
+      <DependentUpon>AdminCambiarContrasenia.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdminCambiarContrasenia.aspx.designer.cs">
+      <DependentUpon>AdminCambiarContrasenia.aspx</DependentUpon>
+    </Compile>
     <Compile Include="AdminMiPerfil.aspx.cs">
       <DependentUpon>AdminMiPerfil.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -201,6 +210,13 @@
     </Compile>
     <Compile Include="AdminReporteVentas.aspx.designer.cs">
       <DependentUpon>AdminReporteVentas.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CambiarContrasenia.aspx.cs">
+      <DependentUpon>CambiarContrasenia.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CambiarContrasenia.aspx.designer.cs">
+      <DependentUpon>CambiarContrasenia.aspx</DependentUpon>
     </Compile>
     <Compile Include="ClienteACL.cs">
       <SubType>ASPXCodeBehind</SubType>

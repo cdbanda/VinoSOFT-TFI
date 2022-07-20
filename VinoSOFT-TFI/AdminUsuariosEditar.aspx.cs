@@ -292,7 +292,16 @@ namespace VinoSOFT_TFI
 
             usuario.NOMBRE = iptNombre.Text;
             usuario.APELLIDO = iptApellido.Text;
-            usuario.DNI = int.Parse(iptDNI.Text);
+
+            if(int.TryParse(iptDNI.Text,out _))
+            {
+                usuario.DNI = int.Parse(iptDNI.Text);
+            }
+            else {
+                
+                    usuario.DNI = 0;
+                } 
+            
             usuario.EMAIL = iptEmail.Text;
             usuario.USUARIO = iptEmail.Text;
             usuario.ACTIVO = ddActivo.SelectedValue == "1"? true: false;

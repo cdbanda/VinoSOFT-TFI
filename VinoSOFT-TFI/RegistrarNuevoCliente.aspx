@@ -15,36 +15,42 @@
                     <label>Nombre</label>
                     <asp:TextBox ID="txtBoxNombre" runat="server" TabIndex="1" CssClass="form-control" placeholder="Nombre"
                         MaxLength="20" AutoComplete="off"></asp:TextBox>
+                    <asp:RequiredFieldValidator ForeColor="Red" runat="server" ErrorMessage="Campo Requerido" ControlToValidate="txtBoxNombre"></asp:RequiredFieldValidator>
                 </div>
 
                 <div class="form-group">
                     <label>Apellido</label>
                     <asp:TextBox ID="txtBoxApellido" runat="server" TabIndex="2" CssClass="form-control" placeholder="Apellido"
                         MaxLength="20" AutoComplete="off"></asp:TextBox>
+                    <asp:RequiredFieldValidator ForeColor="Red" runat="server" ErrorMessage="Campo Requerido" ControlToValidate="txtBoxApellido"></asp:RequiredFieldValidator>
                 </div>
                 
                 <div class="form-group">
                     <label>DNI</label>
                     <asp:TextBox ID="txtBoxDNI" runat="server" TabIndex="3" CssClass="form-control" placeholder="Documento"
                         MaxLength="20" AutoComplete="off"></asp:TextBox>
+                    <asp:RequiredFieldValidator ForeColor="Red" runat="server" ErrorMessage="Campo Requerido" ControlToValidate="txtBoxDNI"></asp:RequiredFieldValidator>
                 </div>
 
                 <div class="form-group">
                     <label>Teléfono</label>
                     <asp:TextBox ID="txtBoxTelefono" runat="server" TabIndex="4" CssClass="form-control" placeholder="Teléfono"
                         MaxLength="20" AutoComplete="off"></asp:TextBox>
+                    <asp:RequiredFieldValidator ForeColor="Red" runat="server" ErrorMessage="Campo Requerido" ControlToValidate="txtBoxTelefono"></asp:RequiredFieldValidator>
                 </div>
 
                 <div class="form-group">
                     <label>Dirección</label>
                     <asp:TextBox ID="txtBoxDir" runat="server" TabIndex="5" CssClass="form-control" placeholder="Dirección"
                         MaxLength="20" AutoComplete="off"></asp:TextBox>
+                    <asp:RequiredFieldValidator ForeColor="Red" runat="server" ErrorMessage="Campo Requerido" ControlToValidate="txtBoxDir"></asp:RequiredFieldValidator>
                 </div>
 
                 <div class="form-group">
                     <label>Ciudad</label>
                     <asp:TextBox ID="txtBoxCiudad" runat="server" TabIndex="6" CssClass="form-control" placeholder="Ciudad"
                         MaxLength="20" AutoComplete="off"></asp:TextBox>
+                    <asp:RequiredFieldValidator ForeColor="Red" runat="server" ErrorMessage="Campo Requerido" ControlToValidate="txtBoxCiudad"></asp:RequiredFieldValidator>
                 </div>
                 
                 <uc:Mail ID="UC_Mail" runat="server" TabIndex="7"></uc:Mail>
@@ -53,6 +59,7 @@
                     <label>Contrase&ntilde;a</label>
                     <asp:TextBox ID="txtBoxContrasena" runat="server" TabIndex="8" CssClass="form-control" placeholder="Contrase&ntilde;a"
                         MaxLength="20" AutoComplete="off" TextMode="Password"></asp:TextBox>
+                    <asp:RequiredFieldValidator ForeColor="Red" runat="server" ErrorMessage="Campo Requerido" ControlToValidate="txtBoxContrasena"></asp:RequiredFieldValidator>
                 </div>
 
                 <div class="form-group">

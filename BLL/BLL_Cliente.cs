@@ -27,6 +27,10 @@ namespace BLL
 
         }
 
+        public bool CambiarContrasena(BE.BE_Cliente cliente)
+        {
+            return mapperCliente.CambiarContrasenia(cliente);
+        }
         public bool editar(BE.BE_Cliente cliente)
         {
             return mapperCliente.Editar(cliente);

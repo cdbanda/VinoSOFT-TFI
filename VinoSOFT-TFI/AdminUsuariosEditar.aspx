@@ -62,6 +62,7 @@
             </div>
             <div class="col-md-5">
                 <asp:TextBox ID="iptEmail" runat="server" ClientIDMode="Static" MaxLength="230" CssClass="form-control"></asp:TextBox>
+                 <asp:RequiredFieldValidator ForeColor="Red" runat="server" ErrorMessage="Campo Requerido" ControlToValidate="iptEmail"></asp:RequiredFieldValidator>
             </div>
         </div>
     </div>

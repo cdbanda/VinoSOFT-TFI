@@ -29,7 +29,7 @@
                 <div class="form-group">
                         <label for="iptContrasenia" class="col-sm-3">Contrase&ntilde;a *</label>
                         <div class="col-sm-9">
-                           <a href="#" class="btn btn-warning">Cambiar Contrase&ntilde;a</a>
+                           <asp:Button id="btnCambiarContrasenia" ClientIDMode="Static" runat="server" CssClass="btn btn-warning" OnClick="btnCambiarContrasenia_Click" Text="Cambiar Contrase&ntilde;a"/>
                         </div>
                  </div>
                 <div class="form-group">

@@ -175,5 +175,16 @@ namespace MPP
             List<BE.BE_Cliente> listado = new List<BE.BE_Cliente>();
             return listado;
         }
+
+        public bool CambiarContrasenia(BE.BE_Cliente cliente)
+        {
+
+            Hashtable hdatos = new Hashtable();
+            hdatos.Add("@idCliente", cliente.IDCLIENTE);
+            hdatos.Add("@contrasenia", cliente.CONTRASENA);
+
+            return SQLHelper.Escribir("Cliente_CambiarContrasenia", hdatos);
+
+        }
     }
 }

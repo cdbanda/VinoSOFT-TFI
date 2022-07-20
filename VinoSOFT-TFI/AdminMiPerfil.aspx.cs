@@ -117,5 +117,11 @@ namespace VinoSOFT_TFI
             Server.Transfer("AdminDefault.aspx", false);
             Context.ApplicationInstance.CompleteRequest();
         }
+
+        protected void btnCambiarContrasenia_Click(object sender, EventArgs e)
+        {
+            Server.Transfer("AdminCambiarContrasenia.aspx", false);
+            Context.ApplicationInstance.CompleteRequest();
+        }
     }
 }
