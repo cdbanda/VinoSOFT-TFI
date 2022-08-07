@@ -44,6 +44,8 @@ namespace VinoSOFT_TFI
                             
                             btnGuardarComentario.Visible = true;
                             HabilitarComentarios();
+
+                            SetearUsuarioAutor();
                         }
                     }
                 }
@@ -100,6 +102,14 @@ namespace VinoSOFT_TFI
             seccionInsertarComentarios.Visible = true;
         }
 
+        private void SetearUsuarioAutor()
+        {
+            BE.BE_Cliente cliente = (BE.BE_Cliente)Session["ClienteLogueado"];
+
+            txtAutor.Text = cliente.NOMBRE + " " + cliente.APELLIDO;
+            txtAutor.Enabled = false;
+        }
+
         protected void completarComentarios()
         {
             if (producto.COMENTARIOS.Count > 0)
@@ -120,19 +130,29 @@ namespace VinoSOFT_TFI
         protected void btnGuardarComentario_Click(object sender, EventArgs e)
         {
             try {
-                BE.BE_ProductoComentario comentario = new BE.BE_ProductoComentario();
-                comentario.COMENTARIO = txtComentario.Text;
-                comentario.FECHAHORA = DateTime.Now;
-                comentario.ACTIVO = 1;
-                comentario.IDPRODUCTO = int.Parse(iptCodigo.Value);
-                comentario.AUTOR = txtAutor.Text;
 
-                gestorProducto.insertarComentario(comentario);
+                if (string.IsNullOrEmpty(txtComentario.Text) || string.IsNullOrWhiteSpace(txtComentario.Text))
+                {
+                    ltlOK.Visible = false;
+                    ltlError.Visible = true;
+                    ltlError.Text = "Complete la caja de comentarios.";
+                }
+                    else
+                {
+                    BE.BE_ProductoComentario comentario = new BE.BE_ProductoComentario();
+                    comentario.COMENTARIO = txtComentario.Text;
+                    comentario.FECHAHORA = DateTime.Now;
+                    comentario.ACTIVO = 1;
+                    comentario.IDPRODUCTO = int.Parse(iptCodigo.Value);
+                    comentario.AUTOR = txtAutor.Text;
 
-                //actualizarRepeaterComentarios();
-                limpiarTxt();
-                Response.Redirect("/ProductoDetalle.aspx?id=" + comentario.IDPRODUCTO.ToString(), false);
-                Context.ApplicationInstance.CompleteRequest();
+                    gestorProducto.insertarComentario(comentario);
+
+                    //actualizarRepeaterComentarios();
+                    limpiarTxt();
+                    Response.Redirect("/ProductoDetalle.aspx?id=" + comentario.IDPRODUCTO.ToString(), false);
+                    Context.ApplicationInstance.CompleteRequest();
+                }
 
             }
             catch

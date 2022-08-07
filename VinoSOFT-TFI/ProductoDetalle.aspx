@@ -57,6 +57,8 @@
                                         <label>Comentario:</label>
                                         <asp:TextBox ID="txtComentario" TextMode="MultiLine" CssClass="form-control" runat="server"></asp:TextBox>
                                     </div>
+                                    <h4 style="color:red"><asp:Literal runat="server" ID="ltlError" Text="aaa" Visible="false"></asp:Literal></h4>
+                                    <h4 style="color:green"><asp:Literal runat="server" ID="ltlOK" Text="aaa" Visible="false"></asp:Literal></h4>
                                     <asp:Button ID="btnGuardarComentario" CssClass="btn btn-warning" runat="server" Text="Enviar" Visible="true" OnClick="btnGuardarComentario_Click" />
                                 </form>
                             </div>

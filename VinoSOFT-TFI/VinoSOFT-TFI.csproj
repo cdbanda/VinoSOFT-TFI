@@ -100,6 +100,7 @@
     <Content Include="CambiarContrasenia.aspx" />
     <Content Include="CarritoCliente.aspx" />
     <Content Include="ClienteDatos.aspx" />
+    <Content Include="database\Vinosoft_Entrega_Final.sql" />
     <Content Include="MisComprasCliente.aspx" />
     <Content Include="Contacto.aspx" />
     <Content Include="Content\bootstrap-grid.css" />
@@ -168,8 +169,7 @@
     <Content Include="Content\bootstrap-grid.css.map" />
     <Content Include="MasterPage.Master" />
     <Content Include="Backend.Master" />
-    <Content Include="database\Vinosoft_12_07_2022_v2.bak" />
-    <Content Include="database\vinosoft_13_07_2022_vacio.bak" />
+    <Content Include="database\Vinosoft_Entrega_Final.bak" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
